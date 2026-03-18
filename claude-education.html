@@ -824,42 +824,64 @@
                 </div>
             </div>
 
+            <div class="reveal" style="margin-top: var(--element-gap);">
+                <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">무료 Skill 목록: <a href="https://skills.sh/hot" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">skills.sh/hot</a></p>
+            </div>
+
             <blockquote class="reveal">매번 같은 지시를 반복하지 않아도 된다.</blockquote>
         </div>
         <span class="slide-number">07 / 12</span>
         <span class="section-label">Skills</span>
     </section>
 
-    <!-- =========== SLIDE 12: MCP =========== -->
+    <!-- =========== SLIDE 8: MCP =========== -->
     <section class="slide" aria-label="MCP">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">MCP — "외부 서비스 연결 통로"</h2>
+            <h2 class="reveal">MCP — Claude에 외부 프로그램을 연결해주는 도구</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <div class="reveal" style="margin-top: var(--element-gap); display: flex; flex-wrap: wrap; gap: clamp(0.4rem, 0.8vw, 0.6rem); max-width: min(90vw, 800px);">
-                <div class="icon-card" style="flex: 1 1 clamp(120px, 15vw, 160px);"><div class="ic">J</div><span><strong>Jira</strong> 티켓 조회/업데이트</span></div>
-                <div class="icon-card" style="flex: 1 1 clamp(120px, 15vw, 160px);"><div class="ic">C</div><span><strong>Confluence</strong> 페이지/보고서</span></div>
-                <div class="icon-card" style="flex: 1 1 clamp(120px, 15vw, 160px);"><div class="ic">M</div><span><strong>사내 메신저</strong> 메시지/채널</span></div>
-                <div class="icon-card" style="flex: 1 1 clamp(120px, 15vw, 160px);"><div class="ic">D</div><span><strong>DB</strong> 쿼리 실행/조회</span></div>
-                <div class="icon-card" style="flex: 1 1 clamp(120px, 15vw, 160px);"><div class="ic">G</div><span><strong>GitHub</strong> PR/이슈 관리</span></div>
-            </div>
-
-            <div class="reveal" style="margin-top: var(--content-gap);">
-                <h3 style="margin-bottom: var(--element-gap);">실제 프롬프트 예시</h3>
-                <div class="code-block" style="font-size: clamp(0.5rem, 0.8vw, 0.7rem); background: #1a1a1a;">
-                    <span class="val">"orders 테이블에서 최근 7일간 일별 주문 건수 조회해줘"</span><br>
-                    <span class="val">"이번 스프린트 Jira 티켓 현황을 Confluence 주간보고에 정리해줘"</span><br>
-                    <span class="val">"사내 메신저 #dev-alerts 채널에서 오늘 에러 메시지 찾아줘"</span><br>
-                    <span class="val">"이 이슈에 대한 PR을 만들어줘"</span>
+            <!-- 연결 구조 시각화 -->
+            <div class="reveal" style="margin-top: var(--content-gap); display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1.2rem); max-width: min(90vw, 800px);">
+                <!-- Claude Code (Client) -->
+                <div style="background: var(--text-primary); color: white; padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem); text-align: center; border-radius: clamp(4px, 0.5vw, 8px);">
+                    <div style="font-family: var(--font-display); font-weight: 900; font-size: clamp(0.8rem, 1.3vw, 1.1rem);">Claude Code</div>
+                    <div style="font-family: var(--font-ko); font-size: clamp(0.55rem, 0.8vw, 0.68rem); color: #999; margin-top: clamp(0.1rem, 0.2vw, 0.15rem);">MCP Client</div>
+                </div>
+                <!-- 화살표 -->
+                <div style="font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red); font-weight: 900;">→</div>
+                <!-- MCP Server -->
+                <div style="background: var(--accent-red); color: white; padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem); text-align: center; border-radius: clamp(4px, 0.5vw, 8px);">
+                    <div style="font-family: var(--font-display); font-weight: 900; font-size: clamp(0.8rem, 1.3vw, 1.1rem);">MCP Server</div>
+                    <div style="font-family: 'Courier New', monospace; font-size: clamp(0.55rem, 0.8vw, 0.68rem); color: rgba(255,255,255,0.7); margin-top: clamp(0.1rem, 0.2vw, 0.15rem);">jira-server</div>
+                </div>
+                <!-- 화살표 -->
+                <div style="font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red); font-weight: 900;">→</div>
+                <!-- 외부 프로그램 -->
+                <div style="background: white; border: 2px solid var(--text-primary); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem); text-align: center; border-radius: clamp(4px, 0.5vw, 8px);">
+                    <div style="font-family: var(--font-display); font-weight: 900; font-size: clamp(0.8rem, 1.3vw, 1.1rem);">Jira</div>
+                    <div style="font-family: var(--font-ko); font-size: clamp(0.55rem, 0.8vw, 0.68rem); color: var(--text-muted); margin-top: clamp(0.1rem, 0.2vw, 0.15rem);">외부 프로그램</div>
                 </div>
             </div>
 
-            <div class="reveal" style="margin-top: var(--content-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 2px solid var(--accent-red); background: var(--accent-red-light);">
-                <p style="font-size: var(--small-size); color: var(--text-primary);"><strong style="color: var(--accent-red);">주의:</strong> MCP는 대화 시작 시 활성화된 <strong>모든 MCP의 사용법</strong>을 컨텍스트에 포함시킴<br>→ 안 쓰는 MCP가 켜져 있으면 컨텍스트를 잡아먹는 주범 | <strong>/mcp</strong> 명령어로 확인 후 미사용 MCP 비활성화</p>
+            <!-- 프롬프트 예시 (터미널 UI) -->
+            <div class="reveal" style="margin-top: var(--content-gap);">
+                <h3 style="margin-bottom: var(--element-gap);">실제 프롬프트 예시</h3>
+                <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.8vw, 1.4rem); font-family: 'Courier New', monospace; font-size: clamp(0.65rem, 1vw, 0.85rem); line-height: 2; color: #e0e0e0;">
+                    <span style="color: #888;">›</span> <span style="color: #fff;">이번 스프린트 Jira 티켓 현황을 Confluence에 정리해줘</span><br>
+                    <span style="color: #888;">›</span> <span style="color: #fff;">orders 테이블에서 최근 7일간 주문 건수 조회해줘</span>
+                </div>
             </div>
 
-            <blockquote class="reveal">브라우저 열지 않아도, Claude가 알아서 연동한다.</blockquote>
+            <!-- 주의사항 -->
+            <div class="reveal" style="margin-top: var(--content-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 2px solid var(--accent-red); background: var(--accent-red-light);">
+                <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">주의:</strong> MCP는 대화 시작 시 활성화된 <strong>모든 MCP의 사용법</strong>을 컨텍스트에 포함시킴<br>→ 안 쓰는 MCP가 켜져 있으면 컨텍스트를 잡아먹는 주범 | <strong>/mcp</strong> 명령어로 확인 후 미사용 MCP 비활성화</p>
+            </div>
+
+            <!-- Smithery 링크 -->
+            <div class="reveal" style="margin-top: var(--element-gap);">
+                <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">사용 가능한 MCP 목록 + 연동 방법: <a href="https://smithery.ai/servers" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">smithery.ai/servers</a></p>
+            </div>
         </div>
         <span class="slide-number">08 / 12</span>
         <span class="section-label">MCP</span>
