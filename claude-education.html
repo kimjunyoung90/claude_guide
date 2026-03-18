@@ -447,6 +447,45 @@
             width: clamp(8px, 1vw, 12px); height: clamp(8px, 1vw, 12px); flex-shrink: 0;
         }
 
+        /* === CURSOR BLINK === */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* === SKILL TABS === */
+        .skill-tabs { display: flex; gap: 0; margin-bottom: 0; }
+        .skill-tab {
+            padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.6rem, 1.2vw, 1rem);
+            font-family: var(--font-display); font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+            font-weight: 700; cursor: pointer; border: 1px solid var(--rule-light);
+            border-bottom: none; background: var(--bg-off); color: var(--text-muted);
+            transition: all 0.2s ease; position: relative; top: 1px;
+        }
+        .skill-tab.active { background: var(--text-primary); color: white; border-color: var(--text-primary); }
+        .skill-tab:hover:not(.active) { background: var(--accent-red-light); }
+        .skill-panel { display: none; border: 1px solid var(--rule-light); padding: clamp(0.8rem, 1.5vw, 1.2rem); }
+        .skill-panel.active { display: block; }
+
+        .invoke-demo { display: flex; flex-direction: column; gap: clamp(0.4rem, 0.8vw, 0.6rem); }
+        .invoke-row {
+            display: flex; align-items: center; gap: clamp(0.4rem, 0.8vw, 0.6rem);
+            padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.5rem, 1vw, 0.8rem);
+            border: 1px solid var(--rule-light); transition: all 0.3s ease; cursor: default;
+        }
+        .invoke-row:hover { border-color: var(--accent-red); background: var(--accent-red-light); }
+        .invoke-badge {
+            font-family: var(--font-display); font-size: clamp(0.5rem, 0.7vw, 0.62rem);
+            font-weight: 800; padding: clamp(1px, 0.2vw, 3px) clamp(4px, 0.6vw, 8px);
+            letter-spacing: 0.05em; flex-shrink: 0;
+        }
+        .invoke-badge.manual { background: var(--accent-red); color: white; }
+        .invoke-badge.auto { background: var(--text-primary); color: white; }
+        .invoke-badge.block { background: var(--rule-light); color: var(--text-primary); }
+        .invoke-input {
+            font-family: 'Courier New', monospace; font-size: clamp(0.55rem, 0.85vw, 0.72rem);
+            color: var(--text-secondary); flex: 1;
+        }
+        .invoke-arrow { color: var(--accent-red); font-family: var(--font-display); font-weight: 800; font-size: clamp(0.7rem, 1vw, 0.85rem); }
+        .invoke-result { font-family: var(--font-ko); font-size: clamp(0.55rem, 0.8vw, 0.68rem); color: var(--text-secondary); }
+
         /* === DEMO FLOW (Slide 14) === */
         .demo-flow { display: flex; align-items: center; gap: clamp(0.3rem, 0.8vw, 0.5rem); flex-wrap: wrap; justify-content: center; margin-top: var(--content-gap); }
         .demo-step {
@@ -727,45 +766,60 @@
         <span class="section-label">CLAUDE.md</span>
     </section>
 
-    <!-- =========== SLIDE 11: Skills =========== -->
+    <!-- =========== SLIDE 7: Skills =========== -->
     <section class="slide" aria-label="Skills">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
             <h2 class="reveal">Skills — "자주 하는 일을 명령어로"</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <div class="reveal" style="margin-top: var(--element-gap); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(0.4rem, 1vw, 0.8rem);">
-                <!-- 개발자용 -->
-                <div style="border: 1px solid var(--rule-light); border-top: 3px solid var(--accent-red); padding: clamp(0.5rem, 1vw, 0.8rem);">
-                    <div style="font-family: var(--font-display); font-weight: 800; font-size: var(--small-size); color: var(--accent-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--element-gap);">개발자용</div>
-                    <div style="display: flex; flex-direction: column; gap: clamp(0.2rem, 0.4vw, 0.3rem);">
-                        <div style="display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem);"><span style="font-family: var(--font-display); font-weight: 900; color: var(--accent-red); font-size: var(--small-size);">/code-review</span></div>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">git diff → 🔴Critical 🟠Warning 🟡Suggestion</p>
-                        <div style="display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem); margin-top: clamp(0.2rem, 0.3vw, 0.25rem);"><span style="font-family: var(--font-display); font-weight: 900; color: var(--accent-red); font-size: var(--small-size);">/api-docs</span></div>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">Controller → API 명세서 자동 생성</p>
-                        <div style="display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem); margin-top: clamp(0.2rem, 0.3vw, 0.25rem);"><span style="font-family: var(--font-display); font-weight: 900; color: var(--accent-red); font-size: var(--small-size);">/commit</span></div>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">Conventional Commits 형식 자동 생성</p>
+            <div class="two-col reveal" style="margin-top: var(--element-gap);">
+                <!-- 왼쪽: 폴더 구조 + SKILL.md 예시 (탭) -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">Skill 폴더 구조</h3>
+                    <div class="code-block" style="font-size: clamp(0.58rem, 0.95vw, 0.82rem); line-height: 1.8; padding: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);">
+                        .claude/skills/<br>
+                        └── weekly-report/<br>
+                        &nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 메인 지침 (필수)</span><br>
+                        &nbsp;&nbsp;&nbsp; ├── examples/ <span class="cm">← 예시 (선택)</span><br>
+                        &nbsp;&nbsp;&nbsp; └── scripts/ <span class="cm">← 실행 스크립트 (선택)</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── helper.py
+                    </div>
+
+                    <h3 style="margin-top: var(--content-gap); margin-bottom: var(--element-gap);">SKILL.md 예시</h3>
+                    <div class="code-block" style="font-size: clamp(0.58rem, 0.95vw, 0.82rem); line-height: 1.8; padding: clamp(0.8rem, 1.5vw, 1.2rem); border-left: 3px solid var(--accent-red);">
+                        <span class="cm">---</span><br>
+                        <span class="cm">name:</span> weekly-report<br>
+                        <span class="cm">description:</span> <span class="val">이번 주 업무 보고서를 작성합니다. 주간 보고, 업무 정리, 이번 주 한 일 요약이 필요할 때 사용하세요.</span><br>
+                        <span class="cm">---</span><br><br>
+                        금주 처리 티켓 확인<br>
+                        주간 보고서 초안 생성
                     </div>
                 </div>
-                <!-- QA용 -->
-                <div style="border: 1px solid var(--rule-light); border-top: 3px solid var(--text-primary); padding: clamp(0.5rem, 1vw, 0.8rem);">
-                    <div style="font-family: var(--font-display); font-weight: 800; font-size: var(--small-size); color: var(--text-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--element-gap);">QA용</div>
-                    <div style="display: flex; flex-direction: column; gap: clamp(0.2rem, 0.4vw, 0.3rem);">
-                        <div style="display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem);"><span style="font-family: var(--font-display); font-weight: 900; color: var(--accent-red); font-size: var(--small-size);">/tc-generator</span></div>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">기능 명세서 → TC 자동 도출</p>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">정상/비정상/경계값/예외 분류</p>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">P1(핵심) / P2(주요) / P3(엣지)</p>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-secondary); margin-top: clamp(0.15rem, 0.2vw, 0.2rem); font-style: italic;">→ TC-ID | 우선순위 | 절차 | 기대결과</p>
+
+                <!-- 오른쪽: 호출 방식 (터미널 UI) -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">호출 방식</h3>
+
+                    <!-- 직접 호출 -->
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">직접 호출</p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.8vw, 1.4rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0; margin-bottom: clamp(0.6rem, 1.2vw, 1rem);">
+                        <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">/weekly-report</span><span style="display: inline-block; width: clamp(8px, 0.8vw, 10px); height: clamp(14px, 1.8vw, 20px); background: #fff; margin-left: 3px; vertical-align: text-bottom; position: relative; top: clamp(2px, 0.3vw, 4px); animation: blink 1s step-end infinite;"></span>
                     </div>
-                </div>
-                <!-- 일반 업무용 -->
-                <div style="border: 1px solid var(--rule-light); border-top: 3px solid #ff6633; padding: clamp(0.5rem, 1vw, 0.8rem);">
-                    <div style="font-family: var(--font-display); font-weight: 800; font-size: var(--small-size); color: #ff6633; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--element-gap);">일반 업무용</div>
-                    <div style="display: flex; flex-direction: column; gap: clamp(0.2rem, 0.4vw, 0.3rem);">
-                        <div style="display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem);"><span style="font-family: var(--font-display); font-weight: 900; color: var(--accent-red); font-size: var(--small-size);">/weekly-report</span></div>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">git 커밋/PR → 주간 보고서 초안</p>
-                        <div style="display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem); margin-top: clamp(0.2rem, 0.3vw, 0.25rem);"><span style="font-family: var(--font-display); font-weight: 900; color: var(--accent-red); font-size: var(--small-size);">/meeting-notes</span></div>
-                        <p style="font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted);">회의록 정리 → 액션 아이템 추출</p>
+
+                    <!-- 자동 호출 -->
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">자동 호출 (description 매칭)</p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.8vw, 1.4rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0;">
+                        <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">이번 주 보고서 만들어줘.</span><br>
+                        <br>
+                        <span style="color: #4ade80;">●</span> <strong style="color: #4ade80;">Skill</strong>(weekly-report)<br>
+                        <span style="color: #888;">&nbsp;&nbsp;└ Successfully loaded skill</span>
+                    </div>
+
+                    <div style="margin-top: var(--content-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
+                        <p style="font-size: clamp(0.58rem, 0.9vw, 0.75rem); color: var(--text-secondary);">
+                            <strong style="color: var(--accent-red);">핵심:</strong> Claude는 <strong>description</strong> 필드를 보고 자동 호출 여부를 판단합니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -996,6 +1050,12 @@
             updateNavDots() { if (this.dots) this.dots.forEach((d, i) => d.classList.toggle('active', i === this.currentSlide)); }
             goToSlide(i) { if (i < 0 || i >= this.slides.length) return; this.currentSlide = i; this.slides[i].scrollIntoView({ behavior: 'smooth' }); this.updateProgressBar(); this.updateNavDots(); }
         }
+        /* Skill tab switching */
+        function switchSkillTab(index) {
+            document.querySelectorAll('.skill-tab').forEach((t, i) => t.classList.toggle('active', i === index));
+            document.querySelectorAll('.skill-panel').forEach((p, i) => p.classList.toggle('active', i === index));
+        }
+
         document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
     </script>
 </body>
