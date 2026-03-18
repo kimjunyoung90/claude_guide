@@ -37,21 +37,7 @@
 
 ---
 
-## Slide 3: 왜 Claude Code인가?
-
-**웹에서 쓰던 방식**
-- 코드 복사 → 붙여넣기 → 답변 복사 → 다시 붙여넣기
-
-**Claude Code**
-- 내 프로젝트 폴더에서 바로 실행
-- 프로젝트 전체를 컨텍스트로 이해
-- 파일 수정 / 생성 / 삭제까지 직접 수행
-
-> 복붙 없이, 내 코드에 바로 적용된다.
-
----
-
-## Slide 4: 알아두면 좋은 기본 개념
+## Slide 3: 알아두면 좋은 기본 개념
 
 **토큰 (Token)**
 - AI가 읽고 쓰는 단위
@@ -67,7 +53,7 @@
 
 ---
 
-## Slide 5: 왜 불필요한 정보가 성능을 떨어뜨리는가?
+## Slide 4: 왜 불필요한 정보가 성능을 떨어뜨리는가?
 
 1. 컨텍스트에 정보가 많으면 AI가 **뭐가 중요한지 판단하기 어려워짐**
 2. 필요한 정보가 불필요한 정보에 **묻혀서 놓침**
@@ -77,93 +63,75 @@
 
 ---
 
-## Slide 6: 연구가 증명한 컨텍스트 관리의 중요성
-
-**논문: "Repository Level Context Files Helpful for Coding Agent?"**
-
-| 조건 | 작업 성공률 | 비용 | 핵심 |
-|---|---|---|---|
-| 컨텍스트 파일 없음 | 기준 | 기준 | 빠르고 저렴하지만 팀 규칙을 모름 |
-| AI가 자동 생성한 파일 | **2% 감소** | **20% 증가** | 중복 정보로 오히려 방해 |
-| **사람이 작성한 파일** | **19% 증가** | 소폭 증가 | **필수 요구사항만 → 최고 성능** |
-
-> 많이 쓰는 게 중요한 게 아니라, **잘 쓰는 게 중요하다**
-
----
-
-## Slide 7: 실무에서의 컨텍스트 관리 원칙
-
-**기억법 비유: 사람도 AI도 처음과 마지막이 가장 잘 기억된다**
-
-1. **CLAUDE.md는 200줄 이하** → 핵심 규칙만 (빌드 명령, 코딩 컨벤션)
-2. **SKILL.md는 500줄 이하** → 필요할 때만 로드되게
-3. **불필요한 정보는 삭제** → "혹시 몰라서" 넣은 내용이 성능을 깎는다
-4. **스킬로 분리** → 모든 정보를 한 파일에 넣지 말고, 작업별로 나누기
-5. **미사용 MCP는 비활성화** → 안 쓰는 MCP도 컨텍스트를 차지함
-
-| 잘못된 예 | 올바른 예 |
-|---|---|
-| CLAUDE.md에 500줄 → 전부 항상 로드 | CLAUDE.md 100줄 + 스킬 5개로 분리 |
-| "폴더 구조, 테스트 방법, API 문서..." 전부 | "빌드: pnpm build / 테스트: pnpm test" 핵심만 |
-
-> 짧고 핵심적으로 쓸수록, AI가 더 정확하게 동작한다.
-
----
-
-## Slide 8: Claude Code의 핵심 기능들
+## Slide 5: Claude Code의 핵심 기능들
 
 | 기능 | 한마디 정의 |
 |---|---|
-| **CLAUDE.md** | 우리 팀 규칙을 Claude에게 알려주는 설정 파일 |
+| **CLAUDE.md** | Claude가 자동으로 읽는 기본 지침서 |
 | **Skills** | 자주 쓰는 작업을 명령어로 만들어두는 것 (`/deploy`, `/review`) |
-| **MCP** | 외부 서비스(Jira, Slack, DB 등)를 Claude에 연결하는 통로 |
+| **MCP** | 외부 서비스(Jira, Confluence, DB 등)를 Claude에 연결하는 통로 |
 | **Subagents** | 큰 작업을 맡길 수 있는 부하 직원 (결과만 보고받음) |
 | **Agent Teams** | 여러 Claude가 팀을 이뤄 동시에 일하는 것 |
-| **Hooks** | 특정 상황에 자동으로 실행되는 스크립트 (파일 저장 시 린트 등) |
+| **Hooks** | 특정 상황에 자동으로 실행되는 스크립트 |
 | **Plugins** | 위 기능들을 묶어서 팀끼리 공유하는 패키지 |
+
+**폴더 구조:**
+```
+업무자동화/
+├── .claude/
+│   ├── settings.json      ← 클로드 설정
+│   ├── hooks/             ← Hook 실행 시 사용될 스크립트(코드)
+│   │   └── auto-format.sh
+│   ├── skills/            ← Skills
+│   │   └── review/
+│   │       └── SKILL.md
+│   ├── agents/            ← Subagents
+│   │   └── security-auditor.md
+│   └── rules/             ← 추가 규칙
+│       └── testing.md
+├── .mcp.json              ← MCP 서버 설정
+└── CLAUDE.md              ← 기본 지침서
+```
 
 ---
 
-## Slide 9: CLAUDE.md — "우리 팀 규칙서"
+## Slide 6: CLAUDE.md — Claude가 자동으로 읽는 기본 지침서
 
-프로젝트 루트에 `CLAUDE.md` 파일을 두면, **매 세션마다 Claude가 자동으로 읽음**
+간단한 기본 내용만 들어있고, **200줄을 넘기지 말라고 권고**
 
-**백엔드 (Spring Boot) 예시:**
+**개발팀 예시:**
 ```
-# 주문관리 API — Spring Boot 3.2 / Java 17
-
-## 명령어
+wehago/
+├── src/
+├── build.gradle
+└── CLAUDE.md     ← 여기에 위치
+```
+```
+# CLAUDE.md
 - ./gradlew test — 전체 테스트
-- ./gradlew bootRun — 로컬 실행
-
-## 컨벤션
-- DTO: {동사}{도메인}Request / {도메인}{용도}Response
-- 트랜잭션: Service 레이어에서만 @Transactional
-- 테스트 메서드명: given_when_then 형식
-
-## 절대 하지 말 것
-- System.out.println 금지 → logger 사용
-- application-prod.yml에 시크릿 하드코딩 금지
+- DTO: {동사}{도메인}Request 형식
+- System.out.println 금지
 ```
 
-**프론트엔드 (React) 예시:**
+**QA팀 예시:**
 ```
-# 어드민 대시보드 — React / TypeScript
-
-## 명령어
-- npm run dev / npm run lint / npm run test
-
-## 컨벤션
-- 컴포넌트: PascalCase, 한 파일에 하나만
-- 폴더: feature 기반 (src/features/{기능}/components, hooks, types)
-- 접근성: 모든 img에 alt 필수, 인터랙티브 요소에 aria-label 필수
+qa-workspace/
+├── 테스트케이스/
+├── 버그리포트/
+└── CLAUDE.md     ← 여기에 위치
+```
+```
+# CLAUDE.md
+- TC 작성 시 정상/비정상/경계값 반드시 포함
+- 버그 리포트는 재현 절차 필수
+- 우선순위: P1(핵심) / P2(주요) / P3(엣지)
 ```
 
 > 한번 적어두면, 매번 말 안 해도 Claude가 알아서 따른다.
 
 ---
 
-## Slide 10: Skills — "자주 하는 일을 명령어로"
+## Slide 7: Skills — "자주 하는 일을 명령어로"
 
 반복되는 워크플로우를 `/명령어`로 등록
 
@@ -186,7 +154,7 @@
 
 ---
 
-## Slide 11: MCP — "외부 서비스 연결 통로"
+## Slide 8: MCP — "외부 서비스 연결 통로"
 
 Claude Code가 **외부 도구에 직접 접근**할 수 있게 해주는 연결 장치
 
@@ -210,7 +178,7 @@ Claude Code가 **외부 도구에 직접 접근**할 수 있게 해주는 연결
 
 ---
 
-## Slide 12: Subagents & Agent Teams
+## Slide 9: Subagents & Agent Teams
 
 **Subagents** — 부하 직원에게 일 시키기
 
@@ -234,7 +202,7 @@ Claude Code가 **외부 도구에 직접 접근**할 수 있게 해주는 연결
 
 ---
 
-## Slide 13: Hooks & Plugins
+## Slide 10: Hooks & Plugins
 
 **Hooks** — 이벤트가 발생하면 자동 실행
 
@@ -253,7 +221,19 @@ Claude Code가 **외부 도구에 직접 접근**할 수 있게 해주는 연결
 
 ---
 
-## Slide 14: 데모 — 지라 티켓 하나로 PR까지
+## Slide 11: 컨텍스트 관리 원칙
+
+1. **CLAUDE.md는 200줄 이하** → 핵심 규칙만 (빌드 명령, 코딩 컨벤션)
+2. **SKILL.md는 500줄 이하** → 필요할 때만 로드되게
+3. **불필요한 정보는 삭제** → "혹시 몰라서" 넣은 내용이 성능을 깎는다
+4. **스킬로 분리** → 모든 정보를 한 파일에 넣지 말고, 작업별로 나누기
+5. **미사용 MCP는 비활성화** → 안 쓰는 MCP도 컨텍스트를 차지함
+
+> 짧고 핵심적으로 쓸수록, AI가 더 정확하게 동작한다.
+
+---
+
+## Slide 12: 데모 — 지라 티켓 하나로 PR까지
 
 **실제 워크플로우 시연**
 
