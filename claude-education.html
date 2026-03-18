@@ -890,7 +890,7 @@
 
             <!-- 주의사항 -->
             <div class="reveal" style="margin-top: var(--content-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 2px solid var(--accent-red); background: var(--accent-red-light);">
-                <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">주의:</strong> MCP는 대화 시작 시 활성화된 <strong>모든 MCP의 사용법</strong>을 컨텍스트에 포함시킴<br>→ 안 쓰는 MCP가 켜져 있으면 컨텍스트를 잡아먹는 주범 | 미사용 MCP는 반드시 비활성화</p>
+                <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">주의:</strong> MCP는 대화 시작 시 활성화된 <strong>모든 MCP의 사용법</strong>을 컨텍스트에 포함시킴<br>→ 예: Notion 15,076 토큰 + Slack 7,961 토큰 = MCP만으로 27,000+ 토큰 차지 | 미사용 MCP는 반드시 비활성화</p>
             </div>
 
             <!-- Smithery 링크 -->
@@ -1010,38 +1010,60 @@
         <span class="section-label">Agent Teams</span>
     </section>
 
-    <!-- =========== SLIDE 14: Hooks & Plugins =========== -->
-    <section class="slide" aria-label="Hooks & Plugins">
+    <!-- =========== SLIDE 11: 기타 기능 =========== -->
+    <section class="slide" aria-label="기타 기능">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">Hooks &amp; Plugins</h2>
+            <h2 class="reveal">기타 기능 &amp; 자주 사용하는 명령어</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <div class="reveal" style="margin-top: var(--element-gap);">
-                <h3 style="margin-bottom: var(--element-gap);">Hooks <span style="font-weight: 400; color: var(--text-muted);">— 이벤트 자동화</span></h3>
-                <table>
-                    <thead><tr><th>트리거</th><th>동작</th><th>효과</th></tr></thead>
-                    <tbody>
-                        <tr><td>파일 수정 후</td><td><code style="font-size: var(--small-size);">prettier --write</code></td><td>포맷팅 자동화</td></tr>
-                        <tr class="hl"><td><strong>.env 수정 시도</strong></td><td><strong>수정 차단 + 경고</strong></td><td><strong style="color: var(--accent-red);">보호 파일 실수 방지</strong></td></tr>
-                        <tr><td>.java 수정 후</td><td><code style="font-size: var(--small-size);">gradlew compileJava</code></td><td>컴파일 에러 즉시 감지</td></tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="two-col reveal" style="margin-top: var(--element-gap);">
+                <!-- 왼쪽: 기타 기능 -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">기타 기능</h3>
+                    <div style="display: flex; flex-direction: column; gap: clamp(0.4rem, 0.8vw, 0.6rem);">
+                        <div class="check-item" style="padding: clamp(0.5rem, 1vw, 0.8rem);">
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 16px);">⚙</div>
+                            <div class="check-text">
+                                <strong style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">Hooks</strong>
+                                <span>특정 이벤트 시 자동 실행되는 스크립트</span>
+                            </div>
+                        </div>
+                        <div class="check-item" style="padding: clamp(0.5rem, 1vw, 0.8rem);">
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 16px);">📦</div>
+                            <div class="check-text">
+                                <strong style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">Plugins</strong>
+                                <span>기능들을 묶어서 공유하는 패키지</span>
+                            </div>
+                        </div>
+                        <div class="check-item" style="padding: clamp(0.5rem, 1vw, 0.8rem);">
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 16px);">🔄</div>
+                            <div class="check-text">
+                                <strong style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">/loop</strong>
+                                <span>세션 안에서 프롬프트 반복 실행</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="reveal" style="margin-top: var(--content-gap);">
-                <h3 style="margin-bottom: var(--element-gap);">Plugins <span style="font-weight: 400; color: var(--text-muted);">— 묶어서 배포</span></h3>
-                <div style="display: flex; gap: clamp(0.4rem, 1vw, 0.8rem);">
-                    <div class="icon-card" style="flex: 1;"><div class="ic">📦</div><span>Skills + Hooks + MCP → <strong>한 묶음</strong></span></div>
-                    <div class="icon-card" style="flex: 1;"><div class="ic">🔗</div><span>Git repo → <strong>팀 전체 같은 환경</strong></span></div>
-                    <div class="icon-card" style="flex: 1;"><div class="ic">⬇</div><span><strong>/plugin install</strong>로 설치</span></div>
+                <!-- 오른쪽: 자주 사용하는 명령어 -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">자주 사용하는 명령어</h3>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.5vw, 1.2rem); font-family: 'Courier New', monospace; font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2.2; color: #e0e0e0;">
+                        <span style="color: var(--accent-red); font-weight: 700;">/init</span> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #888;">CLAUDE.md 자동 생성</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/clear</span> &nbsp;&nbsp;&nbsp;<span style="color: #888;">컨텍스트 초기화</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/compact</span> &nbsp;<span style="color: #888;">컨텍스트 압축</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/doctor</span> &nbsp;<span style="color: #888;">상태 진단</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/usage</span> &nbsp;&nbsp;<span style="color: #888;">사용량 확인</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/mcp</span> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #888;">MCP 연결 관리</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/model</span> &nbsp;&nbsp;<span style="color: #888;">모델 변경</span><br>
+                        <span style="color: var(--accent-red); font-weight: 700;">/export</span> &nbsp;<span style="color: #888;">대화 내보내기</span>
+                    </div>
                 </div>
             </div>
-
-            <blockquote class="reveal">반복 작업은 사람이 아니라 시스템이 한다.</blockquote>
         </div>
         <span class="slide-number">11 / 13</span>
-        <span class="section-label">Hooks & Plugins</span>
+        <span class="section-label">Others</span>
     </section>
 
     <!-- =========== SLIDE 11: 원칙 =========== -->
@@ -1076,6 +1098,32 @@
                     <div class="check-box">✓</div>
                     <div class="check-text"><strong>미사용 MCP는 비활성화</strong><span>안 쓰는 MCP도 컨텍스트를 차지함</span></div>
                     <div class="check-num">⏻</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-box">✓</div>
+                    <div class="check-text"><strong>작업 끝나면 /clear 또는 /compact</strong><span>컨텍스트를 비우거나 압축해서 다음 작업에 영향 없게</span></div>
+                    <div class="check-num">🧹</div>
+                </div>
+                <div class="check-item" style="cursor: pointer;" onclick="document.getElementById('doctor-modal').style.display = document.getElementById('doctor-modal').style.display === 'flex' ? 'none' : 'flex';">
+                    <div class="check-box">✓</div>
+                    <div class="check-text"><strong>/doctor로 상태 확인</strong><span>MCP 토큰 사용량, Context Usage Warnings 확인 가능 <strong style="color: var(--accent-red);">(클릭)</strong></span></div>
+                    <div class="check-num">🩺</div>
+                </div>
+
+                <!-- /doctor 모달 -->
+                <div id="doctor-modal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; cursor: pointer;" onclick="this.style.display='none';">
+                    <div style="background: #1e1e1e; border-radius: clamp(8px, 1vw, 12px); padding: clamp(1.5rem, 3vw, 2.5rem); max-width: min(90vw, 700px); font-family: 'Courier New', monospace; font-size: clamp(0.65rem, 1.05vw, 0.9rem); line-height: 2; color: #e0e0e0; box-shadow: 0 20px 60px rgba(0,0,0,0.5); cursor: default;" onclick="event.stopPropagation();">
+                        <strong style="color: #e0e0e0;">Context Usage Warnings</strong><br>
+                        <span style="color: #facc15;">&nbsp;&nbsp;└ ⚠ Large MCP tools context (~27,294 tokens > 25,000)</span><br>
+                        <span style="color: #888;">&nbsp;&nbsp;&nbsp;&nbsp;└ MCP servers:</span><br>
+                        <span style="color: #e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ claude_ai_Notion: 14 tools (~15,076 tokens)</span><br>
+                        <span style="color: #e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ claude_ai_Slack: 13 tools (~7,961 tokens)</span><br>
+                        <span style="color: #e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ mcp-obsidian: 12 tools (~1,650 tokens)</span><br>
+                        <span style="color: #e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ context7: 2 tools (~1,283 tokens)</span><br>
+                        <span style="color: #e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ sequential-thinking: 1 tools (~1,226 tokens)</span><br>
+                        <br>
+                        <span style="color: #f87171;">→ 대화 시작 전부터 MCP만으로 27,000+ 토큰 차지</span>
+                    </div>
                 </div>
             </div>
 
