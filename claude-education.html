@@ -110,6 +110,9 @@
         .divider-red { background: var(--accent-red); }
         .slide-number { position: absolute; top: var(--slide-padding); right: var(--slide-padding); font-family: var(--font-display); font-size: var(--label-size); font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; }
         .section-label { position: absolute; bottom: var(--slide-padding); left: clamp(3rem, 8vw, 8rem); font-family: var(--font-display); font-size: var(--label-size); font-weight: 700; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
+        .doc-link { position: absolute; bottom: var(--slide-padding); right: var(--slide-padding); font-family: var(--font-display); font-size: clamp(0.6rem, 0.9vw, 0.78rem); font-weight: 700; z-index: 10; }
+        .doc-link a { color: var(--accent-red); text-decoration: underline; transition: opacity 0.2s ease; opacity: 0.8; pointer-events: auto; }
+        .doc-link a:hover { opacity: 1; }
         .geo { position: absolute; pointer-events: none; }
         .geo-circle { width: clamp(100px, 18vw, 250px); height: clamp(100px, 18vw, 250px); border: 2px solid var(--text-primary); border-radius: 50%; opacity: 0.06; }
         .geo-square { width: clamp(60px, 10vw, 120px); height: clamp(60px, 10vw, 120px); border: 2px solid var(--accent-red); opacity: 0.08; transform: rotate(15deg); }
@@ -509,7 +512,7 @@
     <section class="slide" aria-label="타이틀">
         <div class="slide-content">
             <div class="red-block reveal-scale"></div>
-            <h1 class="reveal">Claude 교육</h1>
+            <h1 class="reveal">Claude</h1>
             <div class="divider divider-red reveal reveal-line"></div>
             <div class="icon-cards reveal" style="margin-top: var(--element-gap); max-width: min(80vw, 700px);">
                 <div class="icon-card"><div class="ic">&lt;/&gt;</div><span>코드 작성 / 분석</span></div>
@@ -523,6 +526,7 @@
         </div>
         <div class="geo geo-circle" style="right: clamp(3rem, 8vw, 8rem); top: 50%; transform: translateY(-50%);"></div>
         <span class="slide-number">01 / 13</span>
+        <span class="doc-link"><a href="https://docs.anthropic.com/en/docs/about-claude/models/overview" target="_blank">docs.anthropic.com/en/docs/about-claude/models</a></span>
     </section>
 
     <!-- =========== SLIDE 2: 어디서 =========== -->
@@ -557,6 +561,7 @@
         </div>
         <span class="slide-number">02 / 13</span>
         <span class="section-label">Platforms</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/overview" target="_blank">code.claude.com/docs/en/overview</a></span>
     </section>
 
     <!-- =========== SLIDE 3: 기본 개념 =========== -->
@@ -635,6 +640,7 @@
         </div>
         <span class="slide-number">03 / 13</span>
         <span class="section-label">Concepts</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/how-claude-code-works" target="_blank">code.claude.com/docs/en/how-claude-code-works</a></span>
     </section>
 
     <!-- =========== SLIDE 4: 왜 성능이 떨어지는가 =========== -->
@@ -717,6 +723,7 @@
         </div>
         <span class="slide-number">05 / 13</span>
         <span class="section-label">Features</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/features-overview" target="_blank">code.claude.com/docs/en/features-overview</a></span>
     </section>
 
     <!-- =========== SLIDE 6: CLAUDE.md =========== -->
@@ -764,6 +771,7 @@
         </div>
         <span class="slide-number">06 / 13</span>
         <span class="section-label">CLAUDE.md</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/memory" target="_blank">code.claude.com/docs/en/memory</a></span>
     </section>
 
     <!-- =========== SLIDE 7: Skills =========== -->
@@ -832,6 +840,7 @@
         </div>
         <span class="slide-number">07 / 13</span>
         <span class="section-label">Skills</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/skills" target="_blank">code.claude.com/docs/en/skills</a></span>
     </section>
 
     <!-- =========== SLIDE 8: MCP =========== -->
@@ -900,6 +909,7 @@
         </div>
         <span class="slide-number">08 / 13</span>
         <span class="section-label">MCP</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/mcp" target="_blank">code.claude.com/docs/en/mcp</a></span>
     </section>
 
     <!-- =========== SLIDE 9: Subagents =========== -->
@@ -966,6 +976,7 @@
         </div>
         <span class="slide-number">09 / 13</span>
         <span class="section-label">Subagents</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/sub-agents" target="_blank">code.claude.com/docs/en/sub-agents</a></span>
     </section>
 
     <!-- =========== SLIDE 10: Agent Teams =========== -->
@@ -1008,6 +1019,7 @@
         </div>
         <span class="slide-number">10 / 13</span>
         <span class="section-label">Agent Teams</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/agent-teams" target="_blank">code.claude.com/docs/en/agent-teams</a></span>
     </section>
 
     <!-- =========== SLIDE 11: 기타 기능 =========== -->
@@ -1064,6 +1076,7 @@
         </div>
         <span class="slide-number">11 / 13</span>
         <span class="section-label">Others</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/en/commands" target="_blank">code.claude.com/docs/en/commands</a></span>
     </section>
 
     <!-- =========== SLIDE 11: 원칙 =========== -->
