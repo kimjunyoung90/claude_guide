@@ -781,6 +781,8 @@
             <h2 class="reveal">Skills — "자주 하는 일을 명령어로"</h2>
             <div class="divider reveal reveal-line"></div>
 
+            <p class="reveal">SKILL.md는 <strong>500줄을 넘기지 말라고 권고</strong>, 넘으면 별도 파일로 분리</p>
+
             <div class="two-col reveal" style="margin-top: var(--element-gap);">
                 <!-- 왼쪽: 폴더 구조 + SKILL.md 예시 (탭) -->
                 <div>
@@ -788,7 +790,8 @@
                     <div class="code-block" style="font-size: clamp(0.58rem, 0.95vw, 0.82rem); line-height: 1.8; padding: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);">
                         .claude/skills/<br>
                         └── weekly-report/<br>
-                        &nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 메인 지침 (필수)</span><br>
+                        &nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 메인 지침 (필수, 500줄 이하)</span><br>
+                        &nbsp;&nbsp;&nbsp; ├── reference.md <span class="cm">← 상세 내용 (넘으면 분리)</span><br>
                         &nbsp;&nbsp;&nbsp; ├── examples/ <span class="cm">← 예시 (선택)</span><br>
                         &nbsp;&nbsp;&nbsp; └── scripts/ <span class="cm">← 실행 스크립트 (선택)</span><br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── helper.py
@@ -1092,10 +1095,34 @@
                     <div class="check-text"><strong>CLAUDE.md는 200줄 이하</strong><span>핵심 규칙만 — 빌드 명령, 코딩 컨벤션</span></div>
                     <div class="check-num">200</div>
                 </div>
-                <div class="check-item">
+                <div class="check-item" style="cursor: pointer;" onclick="document.getElementById('skill-split-modal').style.display = document.getElementById('skill-split-modal').style.display === 'flex' ? 'none' : 'flex';">
                     <div class="check-box">✓</div>
-                    <div class="check-text"><strong>SKILL.md는 500줄 이하</strong><span>필요할 때만 로드되게</span></div>
+                    <div class="check-text"><strong>SKILL.md는 500줄 이하</strong><span>넘으면 별도 파일로 분리 <strong style="color: var(--accent-red);">(클릭)</strong></span></div>
                     <div class="check-num">500</div>
+                </div>
+
+                <!-- SKILL 분리 모달 -->
+                <div id="skill-split-modal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; cursor: pointer;" onclick="this.style.display='none';">
+                    <div style="background: #1e1e1e; border-radius: clamp(8px, 1vw, 12px); padding: clamp(1.5rem, 3vw, 2.5rem); max-width: min(90vw, 600px); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.95rem); line-height: 2; color: #e0e0e0; box-shadow: 0 20px 60px rgba(0,0,0,0.5); cursor: default;" onclick="event.stopPropagation();">
+                        <strong style="color: #fff; font-family: var(--font-display); font-size: clamp(0.85rem, 1.3vw, 1.1rem);">SKILL.md가 500줄 넘으면?</strong><br>
+                        <span style="color: var(--accent-red);">→ 별도 파일로 분리하고 SKILL.md에서 참조</span><br>
+                        <br>
+                        code-review/<br>
+                        ├── <span style="color: #ff6633;">SKILL.md</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #888;">← 핵심 지침만</span><br>
+                        ├── <span style="color: #4ade80;">reference.md</span> <span style="color: #888;">← 상세 내용</span><br>
+                        └── <span style="color: #4ade80;">examples/</span> &nbsp;&nbsp;&nbsp;<span style="color: #888;">← 예시 모음</span><br>
+                        <br>
+                        <span style="color: #888;">── SKILL.md 작성 예시 ──</span><br>
+                        <span style="color: #ff6633;">---</span><br>
+                        <span style="color: #ff6633;">name:</span> code-review<br>
+                        <span style="color: #ff6633;">---</span><br>
+                        <br>
+                        ## 상세 내용<br>
+                        - API 상세는 <span style="color: #4ade80;">[reference.md](reference.md)</span> 참고<br>
+                        - 예시는 <span style="color: #4ade80;">[examples/](examples/)</span> 참고<br>
+                        <br>
+                        <span style="color: #888;">→ Claude가 필요할 때만 해당 파일을 읽음</span>
+                    </div>
                 </div>
                 <div class="check-item">
                     <div class="check-box">✓</div>
