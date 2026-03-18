@@ -977,22 +977,31 @@
 
             <div class="reveal" style="margin-top: var(--element-gap);">
                 <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(1.2rem, 2.5vw, 2rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2.2; color: #e0e0e0;">
-                    <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">결제 모듈을 리팩토링할 에이전트 팀을 만들어줘.</span><br>
+                    <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">JIRA-1234 버그를 에이전트 팀을 구성해서 수정해줘.</span><br>
                     <br>
-                    <span style="color: #fff;">&nbsp;&nbsp;- API 담당: 결제 API 엔드포인트와 DTO 리팩토링</span><br>
-                    <span style="color: #fff;">&nbsp;&nbsp;- DB 담당: 결제 테이블 마이그레이션 스크립트 작성</span><br>
-                    <span style="color: #fff;">&nbsp;&nbsp;- 테스트 담당: 결제 관련 통합 테스트 작성</span><br>
+                    <span style="color: #fff;">&nbsp;&nbsp;- 분석 담당: Jira 티켓 확인, 원인 파악</span><br>
+                    <span style="color: #fff;">&nbsp;&nbsp;- 프론트 담당: 화면 쪽 원인 탐색 및 수정</span><br>
+                    <span style="color: #fff;">&nbsp;&nbsp;- 백엔드 담당: API 쪽 원인 탐색 및 수정</span><br>
+                    <span style="color: #fff;">&nbsp;&nbsp;- 테스트 담당: 수정사항 기반 테스트 작성</span><br>
                     <br>
                     <span style="color: #fff; font-weight: 700;">&nbsp;&nbsp;서로 발견한 내용을 공유하면서 진행해.</span>
                 </div>
             </div>
 
             <div class="reveal" style="margin-top: var(--content-gap); display: flex; gap: clamp(0.5rem, 1.5vw, 1rem); align-items: center;">
-                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">🔌</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">API 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">엔드포인트 + DTO 리팩토링</p></div>
+                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">🔍</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">분석 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">Jira 티켓 확인, 원인 파악</p></div>
                 <div style="font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red);">⇄</div>
-                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">🗄</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">DB 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">마이그레이션 스크립트</p></div>
+                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">🖥</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">프론트 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">화면 쪽 원인 탐색 및 수정</p></div>
                 <div style="font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red);">⇄</div>
-                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">🧪</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">테스트 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">통합 테스트 작성</p></div>
+                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">⚙</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">백엔드 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">API 쪽 원인 탐색 및 수정</p></div>
+                <div style="font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red);">⇄</div>
+                <div class="feat-card" style="flex: 1; text-align: center; padding: clamp(1rem, 2vw, 1.5rem);"><div class="feat-icon" style="font-size: clamp(20px, 3vw, 32px);">🧪</div><h4 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem);">테스트 담당</h4><p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem);">수정사항 기반 테스트</p></div>
+            </div>
+
+            <div class="reveal" style="margin-top: var(--element-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
+                <p style="font-size: clamp(0.62rem, 0.95vw, 0.8rem); color: var(--text-secondary);">
+                    <strong>Subagents 병렬:</strong> 독립적인 작업 (각자 하고 결과만 반환) &nbsp;|&nbsp; <strong style="color: var(--accent-red);">Agent Teams:</strong> 서로 의존적인 작업 (소통하면서 진행)
+                </p>
             </div>
 
             <blockquote class="reveal">혼자 다 안 해도 된다. 팀을 꾸려서 시키면 된다.</blockquote>
