@@ -575,68 +575,64 @@
             <h2 class="reveal">알아두면 좋은 기본 개념</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <!-- 토큰 시각화 -->
-            <div class="reveal" style="margin-top: var(--element-gap);">
-                <h3>토큰 <span style="font-weight: 400; color: var(--text-muted);">Token</span> — AI가 읽고 쓰는 단위 <span style="font-weight: 400; color: var(--text-muted); font-size: 0.75em;">(영어 짧은 단어 ≈ 1토큰)</span></h3>
-                <div class="token-demo">
-                    <div class="token-row">
-                        <div class="token-input">I am a cat</div>
-                        <div class="token-arrow">→</div>
-                        <div class="token-blocks">
-                            <div class="token-block">I</div>
-                            <div class="token-block">am</div>
-                            <div class="token-block">a</div>
-                            <div class="token-block">cat</div>
-                        </div>
-                        <div class="token-count">= 4 토큰</div>
-                    </div>
-                    <div class="token-row">
-                        <div class="token-input">나는 고양이</div>
-                        <div class="token-arrow">→</div>
-                        <div class="token-blocks">
-                            <div class="token-block" style="border-color: var(--accent-red);">나</div>
-                            <div class="token-block" style="border-color: var(--accent-red);">는</div>
-                            <div class="token-block" style="border-color: var(--accent-red);"> </div>
-                            <div class="token-block" style="border-color: var(--accent-red);">고</div>
-                            <div class="token-block" style="border-color: var(--accent-red);">양</div>
-                            <div class="token-block" style="border-color: var(--accent-red);">이</div>
-                        </div>
-                        <div class="token-count" style="color: var(--accent-red);">= 6~8 토큰</div>
-                    </div>
-                    <div class="token-row">
-                        <div class="token-input" style="font-size: var(--small-size); color: var(--text-muted);">파일 1000줄</div>
-                        <div class="token-arrow">→</div>
-                        <div class="token-blocks">
-                            <div class="token-block">▪</div><div class="token-block">▪</div><div class="token-block">▪</div>
-                            <div class="token-block">▪</div><div class="token-block">▪</div><div class="token-block">▪</div>
-                            <div class="token-block" style="color: var(--text-muted);">···</div>
-                        </div>
-                        <div class="token-count">= 수천 토큰</div>
-                    </div>
-                </div>
-                <p class="reveal" style="font-size: var(--small-size); color: var(--text-muted); margin-top: var(--element-gap);">한글은 같은 의미라도 <strong style="color: var(--accent-red);">더 많은 토큰을 소모</strong> → 컨텍스트를 더 빨리 채움</p>
-            </div>
+            <div class="two-col reveal" style="margin-top: var(--content-gap);">
+                <!-- 토큰 -->
+                <div>
+                    <h3 style="margin-bottom: var(--content-gap); font-size: clamp(1.1rem, 2.2vw, 1.5rem);">토큰 <span style="font-weight: 400; color: var(--text-muted);">Token</span></h3>
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-secondary); margin-bottom: var(--content-gap);">AI가 읽고 쓰는 단위</p>
 
-            <!-- 컨텍스트 게이지 -->
-            <div class="ctx-gauge reveal" style="max-width: min(90vw, 750px);">
-                <h3>컨텍스트 <span style="font-weight: 400; color: var(--text-muted);">Context</span> — AI가 답변 생성 시 참고할 수 있는 텍스트의 양</h3>
-                <div class="ctx-gauge-label" style="margin-top: var(--element-gap);">
-                    <span>0 토큰</span>
-                    <span class="ctx-total">100만 토큰 ≈ 75만 단어 (한계)</span>
+                    <div style="margin-bottom: var(--content-gap);">
+                        <p style="font-family: var(--font-display); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 700; color: var(--text-muted); margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">같은 말, 다른 토큰</p>
+                        <div style="display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);">
+                            <span style="font-family: var(--font-ko); font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-secondary); min-width: clamp(100px, 15vw, 160px);">"I love coffee"</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(0.7rem, 1vw, 0.85rem); color: var(--text-muted);">→</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-weight: 900; color: var(--text-primary);">3</span>
+                            <span style="font-family: var(--font-ko); font-size: clamp(0.65rem, 1vw, 0.82rem); color: var(--text-muted);">토큰</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.2rem);">
+                            <span style="font-family: var(--font-ko); font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-secondary); min-width: clamp(100px, 15vw, 160px);">"나는 커피를 좋아해"</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(0.7rem, 1vw, 0.85rem); color: var(--text-muted);">→</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-weight: 900; color: var(--accent-red);">8</span>
+                            <span style="font-family: var(--font-ko); font-size: clamp(0.65rem, 1vw, 0.82rem); color: var(--text-muted);">토큰</span>
+                        </div>
+                    </div>
+
+                    <p style="font-size: clamp(0.65rem, 1vw, 0.82rem); color: var(--text-muted);">한글은 같은 의미라도 <strong style="color: var(--accent-red);">더 많은 토큰을 소모</strong></p>
                 </div>
-                <div class="ctx-bar-outer">
-                    <div class="ctx-bar-segment ctx-seg-system">시스템</div>
-                    <div class="ctx-bar-segment ctx-seg-claude">CLAUDE.md</div>
-                    <div class="ctx-bar-segment ctx-seg-chat">대화 내용</div>
-                    <div class="ctx-bar-segment ctx-seg-file">파일 읽기</div>
-                    <div class="ctx-bar-limit"><span>여유 공간</span></div>
-                </div>
-                <div class="ctx-legend">
-                    <div class="ctx-legend-item"><div class="ctx-legend-dot" style="background: #333;"></div>시스템 프롬프트</div>
-                    <div class="ctx-legend-item"><div class="ctx-legend-dot" style="background: var(--accent-red);"></div>CLAUDE.md / 설정</div>
-                    <div class="ctx-legend-item"><div class="ctx-legend-dot" style="background: #ff6633;"></div>대화 내용</div>
-                    <div class="ctx-legend-item"><div class="ctx-legend-dot" style="background: #ff9966;"></div>파일 내용</div>
-                    <div class="ctx-legend-item"><div class="ctx-legend-dot" style="background: var(--bg-off); border: 1px dashed var(--rule-light);"></div>남은 공간 (가득 차면 대화를 잊거나 맥락을 못 짚음)</div>
+
+                <!-- 컨텍스트 -->
+                <div>
+                    <h3 style="margin-bottom: var(--content-gap); font-size: clamp(1.1rem, 2.2vw, 1.5rem);">컨텍스트 <span style="font-weight: 400; color: var(--text-muted);">Context</span></h3>
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-secondary); margin-bottom: var(--content-gap);">AI가 답변 생성 시 참고할 수 있는 텍스트의 양<br><span style="color: var(--text-muted); font-size: 0.9em;">한계: 100만 토큰 ≈ 75만 단어</span></p>
+
+                    <!-- 게이지 -->
+                    <div style="margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: clamp(0.2rem, 0.3vw, 0.25rem);">
+                            <span style="font-family: var(--font-display); font-size: clamp(0.6rem, 0.85vw, 0.72rem); font-weight: 700; color: var(--text-muted);">여유</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(0.6rem, 0.85vw, 0.72rem); font-weight: 700; color: #4ade80;">정상</span>
+                        </div>
+                        <div style="width: 100%; height: clamp(28px, 4vh, 40px); background: #f0f0f0; border: 1px solid var(--rule-light); position: relative; overflow: hidden;">
+                            <div style="width: 35%; height: 100%; background: linear-gradient(90deg, #4ade80, #86efac);"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: clamp(0.2rem, 0.3vw, 0.25rem);">
+                            <span style="font-family: var(--font-display); font-size: clamp(0.6rem, 0.85vw, 0.72rem); font-weight: 700; color: var(--text-muted);">쌓이는 중</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(0.6rem, 0.85vw, 0.72rem); font-weight: 700; color: #f59e0b;">성능 저하 시작</span>
+                        </div>
+                        <div style="width: 100%; height: clamp(28px, 4vh, 40px); background: #f0f0f0; border: 1px solid var(--rule-light); position: relative; overflow: hidden;">
+                            <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #fbbf24, #f59e0b);"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: clamp(0.2rem, 0.3vw, 0.25rem);">
+                            <span style="font-family: var(--font-display); font-size: clamp(0.6rem, 0.85vw, 0.72rem); font-weight: 700; color: var(--text-muted);">가득 참</span>
+                            <span style="font-family: var(--font-display); font-size: clamp(0.6rem, 0.85vw, 0.72rem); font-weight: 700; color: var(--accent-red);">대화를 잊음</span>
+                        </div>
+                        <div style="width: 100%; height: clamp(28px, 4vh, 40px); background: #f0f0f0; border: 1px solid var(--rule-light); position: relative; overflow: hidden;">
+                            <div style="width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent-red), #dc2626);"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
