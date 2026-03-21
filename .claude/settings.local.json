@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "WebFetch(domain:claude.com)",
+      "Bash(find /Users/snvlqkq/.claude/plugins/marketplaces/claude-plugins-official/plugins -type f -name *.md -path *skills/* -o -type f -name *.md -path *commands/*)",
+      "Bash(find /Users/snvlqkq/.claude/plugins/cache -type f -name *.md -path *skills/* -o -type f -name *.md -path *commands/*)"
     ]
   }
 }

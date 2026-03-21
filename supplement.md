@@ -121,6 +121,7 @@ claude --dangerously-skip-permissions
 |--------|------|
 | `/resume` | 이전 세션으로 복귀한다. `claude --resume`으로도 동일하게 사용 가능. |
 | `/export` | 현재 대화를 텍스트 파일로 내보내거나 클립보드에 복사한다. |
+| `claude --continue` | 방금 종료된 대화를 재시작한다. |
 
 ### 설정
 
@@ -146,3 +147,68 @@ MCP는 활성화되어 있는 것만으로도 컨텍스트를 차지한다.
 반복적인 작업은 **Custom Command(스킬)**로 만들어 사용한다.
 
 매번 같은 지시를 반복하지 않아도 슬래시 명령어 하나로 실행할 수 있다.
+
+---
+
+## PPT 보충 예정 내용
+
+### 슬라이드 04 (왜 불필요한 정보가 성능을 떨어뜨리는가)
+
+- **Lost in the Middle 현상** 추가: 컨텍스트의 처음과 끝은 잘 기억하지만, 중간에 있는 정보는 놓치는 현상이 발생한다. (Stanford, Liu et al., 2023)
+- **프롬프트 엔지니어링 vs 컨텍스트 엔지니어링**: 프롬프트 엔지니어링은 "어떻게 질문할까"에 집중하지만, 컨텍스트 엔지니어링은 "어떤 정보를 넣어줄까"에 집중한다. AI의 성능은 질문을 잘 하는 것보다 적절한 맥락을 제공하는 것에 더 크게 좌우된다.
+- **컨텍스트의 종류**:
+  - **System Context** — 시스템 프롬프트, CLAUDE.md, rules 등 AI의 행동 방식을 정의하는 지침
+  - **Conversation Context** — 사용자와 AI 간의 대화 히스토리. 대화가 길어질수록 누적되어 컨텍스트 윈도우를 차지
+  - **Tool & Environment Context** — 파일 읽기, 검색 결과, MCP 도구 정의 등 외부에서 주입되는 정보
+
+### Hooks
+
+Claude Code는 특정 이벤트 발생 시 자동으로 실행되는 **Hooks**를 지원한다. 4가지 유형으로 분류된다.
+
+| 유형 | 설명 | 예시 |
+|------|------|------|
+| **Pre-action** | 작업이 실행되기 전에 실행 | SessionStart, PreToolUse, PreCompact |
+| **Post-action** | 작업이 완료된 후 실행 | SessionEnd, PostToolUse, PostCompact, Stop |
+| **Validation** | 작업을 허용/차단/수정할 수 있음 | UserPromptSubmit, PermissionRequest, TaskCompleted |
+| **Notification** | 이벤트를 관찰하고 반응 (차단 불가) | InstructionsLoaded, SubagentStart, Notification |
+
+### Subagents 모델 선택
+
+Subagent는 별도 컨텍스트에서 독립적으로 작업하는 만큼, 반드시 Opus를 쓸 필요가 없다. 작업 성격에 맞는 모델을 선택하면 토큰을 효율적으로 사용할 수 있다.
+
+| 작업 성격 | 추천 모델 | 이유 |
+|-----------|----------|------|
+| 파일 탐색, 단순 검색 | **Haiku** | 빠르고 저렴. 단순 조회에 충분 |
+| 코드 리뷰, 요약, 분석 | **Sonnet** | 판단력과 비용의 균형 |
+| 복잡한 설계, 아키텍처 결정 | **Opus** | 높은 추론 능력이 필요한 경우에만 |
+
+커스텀 에이전트의 frontmatter에서 `model` 필드로 지정한다:
+
+```markdown
+---
+name: code-searcher
+model: haiku
+---
+```
+
+API 기준으로 Opus 대비 Sonnet은 Input 40%·Output 40%, Haiku는 Input 20%·Output 20% 수준이므로 적절한 모델 선택만으로도 비용을 크게 줄일 수 있다.
+
+### Claude Code 구독 플랜
+
+Claude Code는 구독 플랜 또는 API를 통해 사용할 수 있다.
+
+| 플랜 | 가격 | Claude Code | 특징 |
+|------|------|-------------|------|
+| **Pro** | $20/월 | 포함 | Sonnet 모델 사용, 개인 개발자용 |
+| **Max** | $100~200/월 | 포함 | Pro 기능 + 높은 사용량, 영구 메모리, 신기능 조기 접근 |
+| **Team** | $30/유저/월 | 프리미엄 시트만 ($150/월) | 팀 협업, 최대 75석 |
+| **Enterprise** | 맞춤 가격 | 포함 | SSO, 감사 로그, 컴플라이언스 |
+| **API** | 토큰 종량제 | 별도 | 모델 선택 가능, 사용한 만큼 과금 |
+
+#### API 토큰 가격 (백만 토큰 기준)
+
+| 모델 | Input | Output |
+|------|-------|--------|
+| **Opus 4.6** | $5 | $25 |
+| **Sonnet 4.6** | $3 | $15 |
+| **Haiku 4.5** | $1 | $5 |
