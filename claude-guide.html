@@ -642,44 +642,64 @@
     </section>
 
     <!-- =========== SLIDE 4: 왜 성능이 떨어지는가 =========== -->
-    <section class="slide" aria-label="왜 성능이 떨어지는가">
-        <div class="slide-content">
-            <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">왜 불필요한 정보가 성능을 떨어뜨리는가?</h2>
-            <div class="divider reveal reveal-line"></div>
+    <style>
+        .s4-litm { margin-top: var(--content-gap); width: 100%; flex: 1; display: flex; flex-direction: column; }
+        .s4-litm-title { font-family: var(--font-display); font-size: var(--h3-size); font-weight: 800; margin-bottom: clamp(0.2rem, 0.4vw, 0.3rem); text-align: center; }
+        .s4-litm-sub { font-family: var(--font-ko); font-size: var(--small-size); color: var(--text-secondary); margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem); text-align: center; }
 
-            <div class="checklist reveal" style="margin-top: var(--element-gap); max-width: min(85vw, 750px);">
-                <div class="check-item">
-                    <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">1</div>
-                    <div class="check-text">
-                        <strong>뭐가 중요한지 판단하기 어려워짐</strong>
-                        <span>정보가 많아질수록 AI가 핵심을 구분하지 못함</span>
+        .s4-chart { display: flex; align-items: stretch; gap: clamp(0.6rem, 1vw, 1rem); flex: 1; }
+        .s4-yaxis { display: flex; flex-direction: column; justify-content: space-between; font-family: var(--font-display); font-size: clamp(0.5rem, 0.7vw, 0.65rem); color: var(--text-muted); letter-spacing: 0.05em; text-align: right; padding: 0 0 clamp(1.5rem, 2.5vw, 2rem) 0; }
+        .s4-chart-body { flex: 1; display: flex; flex-direction: column; }
+
+        /* U자형 바 차트 — 전체 높이 활용 */
+        .s4-bars { display: flex; align-items: flex-end; flex: 1; gap: clamp(4px, 0.8vw, 10px); border-bottom: 2px solid var(--rule-light); border-left: 2px solid var(--rule-light); padding: 0 clamp(4px, 0.8vw, 8px); }
+        .s4-bar { flex: 1; transition: all 0.4s var(--ease-out-expo); position: relative; min-width: 0; border-radius: 2px 2px 0 0; }
+        .s4-bar.high { background: var(--accent-red); }
+        .s4-bar.low { background: #d9d9d9; }
+        .s4-bar-labels { display: flex; justify-content: space-between; padding: clamp(6px, 0.8vw, 10px) clamp(4px, 0.8vw, 8px) 0; font-family: var(--font-ko); font-size: var(--body-size); }
+        .s4-bar-labels span { color: var(--text-secondary); }
+        .s4-bar-labels span:nth-child(2) { color: var(--text-muted); font-weight: 700; }
+    </style>
+    <section class="slide" aria-label="컨텍스트가 길어지면">
+        <div class="slide-content" style="align-items: center; padding: clamp(2rem, 4vw, 4rem) clamp(3rem, 6vw, 6rem);">
+            <h2 class="reveal" style="text-align: center;">컨텍스트가 길어지면 무슨 일이 생기는가?</h2>
+            <div class="divider reveal reveal-line" style="margin-left: auto; margin-right: auto;"></div>
+
+            <div class="s4-litm reveal">
+                <div class="s4-litm-title">Lost in the Middle</div>
+                <div class="s4-litm-sub">AI의 정보 인식률 — 컨텍스트 위치별 (Stanford, 2023)</div>
+
+                <div class="s4-chart">
+                    <div class="s4-yaxis">
+                        <span>HIGH</span>
+                        <span>LOW</span>
                     </div>
-                </div>
-                <div class="check-item">
-                    <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">2</div>
-                    <div class="check-text">
-                        <strong>필요한 정보가 불필요한 정보에 묻혀서 놓침</strong>
-                        <span>중요한 규칙이 있어도 주변 노이즈에 가려짐</span>
-                    </div>
-                </div>
-                <div class="check-item">
-                    <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">3</div>
-                    <div class="check-text">
-                        <strong>Lost in the Middle</strong>
-                        <span>컨텍스트의 처음과 끝은 잘 기억하지만, 중간에 있는 정보는 놓침 (Stanford, 2023)</span>
-                    </div>
-                </div>
-                <div class="check-item">
-                    <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">4</div>
-                    <div class="check-text">
-                        <strong>사람도 마찬가지</strong>
-                        <span>보고서 100페이지에서 핵심 3줄 찾기 vs 핵심만 정리된 1페이지</span>
+                    <div class="s4-chart-body">
+                        <div class="s4-bars">
+                            <div class="s4-bar high" style="height: 95%;"></div>
+                            <div class="s4-bar high" style="height: 85%;"></div>
+                            <div class="s4-bar high" style="height: 68%;"></div>
+                            <div class="s4-bar low" style="height: 48%;"></div>
+                            <div class="s4-bar low" style="height: 32%;"></div>
+                            <div class="s4-bar low" style="height: 22%;"></div>
+                            <div class="s4-bar low" style="height: 18%;"></div>
+                            <div class="s4-bar low" style="height: 22%;"></div>
+                            <div class="s4-bar low" style="height: 32%;"></div>
+                            <div class="s4-bar low" style="height: 48%;"></div>
+                            <div class="s4-bar high" style="height: 68%;"></div>
+                            <div class="s4-bar high" style="height: 85%;"></div>
+                            <div class="s4-bar high" style="height: 95%;"></div>
+                        </div>
+                        <div class="s4-bar-labels">
+                            <span>처음</span>
+                            <span>중간 — 정보를 놓치는 구간</span>
+                            <span>끝</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <blockquote class="reveal">많이 넣는다고 좋은 게 아니라, 핵심만 넣어야 AI가 제대로 동작한다.</blockquote>
+            <blockquote class="reveal" style="text-align: center;">컨텍스트가 길어질수록, 핵심 정보가 중간에 묻혀 성능이 떨어진다.</blockquote>
         </div>
         <span class="slide-number">04 / 14</span>
     </section>
