@@ -668,6 +668,13 @@
                 <div class="check-item">
                     <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">3</div>
                     <div class="check-text">
+                        <strong>Lost in the Middle</strong>
+                        <span>컨텍스트의 처음과 끝은 잘 기억하지만, 중간에 있는 정보는 놓침 (Stanford, 2023)</span>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">4</div>
+                    <div class="check-text">
                         <strong>사람도 마찬가지</strong>
                         <span>보고서 100페이지에서 핵심 3줄 찾기 vs 핵심만 정리된 1페이지</span>
                     </div>
@@ -972,6 +979,16 @@
                         <span style="color: #888;">자연어:</span> <span style="color: #fff;">search-agent 써서 찾아줘</span><br>
                         <span style="color: #888;">자&nbsp;&nbsp;동:</span> <span style="color: #fff;">Claude가 description 보고 알아서 위임</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- 모델 선택 + 병렬 실행 -->
+            <div class="reveal" style="margin-top: var(--element-gap); display: flex; gap: clamp(0.8rem, 2vw, 1.5rem);">
+                <div style="flex: 1; padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
+                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">모델 선택:</strong> 단순 검색 → <strong>Haiku</strong> | 코드 리뷰 → <strong>Sonnet</strong> | 복잡한 설계 → <strong>Opus</strong></p>
+                </div>
+                <div style="flex: 1; padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
+                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">병렬 실행:</strong> 독립 작업은 동시에 실행 가능<br><span style="color: var(--text-muted);">순차 6분 → 병렬 2분</span></p>
                 </div>
             </div>
 
