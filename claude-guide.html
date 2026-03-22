@@ -818,55 +818,80 @@
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
     </section>
 
-    <!-- =========== SLIDE 7: Plan 모드 =========== -->
+    <!-- =========== SLIDE 7: 작업 모드 & Plan 모드 =========== -->
     <style>
-        .s7-flow { display: flex; align-items: center; gap: clamp(0.4rem, 0.8vw, 0.8rem); flex-wrap: wrap; margin-top: var(--element-gap); }
-        .s7-step {
-            padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.2vw, 1rem);
-            font-family: var(--font-ko); font-size: var(--body-size); font-weight: 700;
-            border: 1.5px solid var(--rule-light); background: white;
+        /* 모드 카드 */
+        .s7-cards {
+            display: flex; gap: clamp(1rem, 2vw, 1.5rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
+            max-width: min(90vw, 800px); width: 100%;
         }
-        .s7-step.active { border-color: var(--accent-red); background: var(--accent-red-light); color: var(--accent-red); }
-        .s7-arrow { font-family: var(--font-display); color: var(--text-muted); font-size: var(--body-size); }
-        .s7-table { width: 100%; max-width: min(85vw, 600px); margin-top: var(--content-gap); border-collapse: collapse; }
-        .s7-table th, .s7-table td { padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.6rem, 1vw, 0.8rem); text-align: left; font-family: var(--font-ko); font-size: var(--body-size); border-bottom: 1px solid var(--rule-light); }
-        .s7-table th { font-family: var(--font-display); font-size: var(--small-size); font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
-        .s7-table .required { color: var(--accent-red); font-weight: 800; }
+        .s7-card {
+            flex: 1; padding: clamp(1.5rem, 2.5vw, 2rem);
+            border: 2px solid var(--rule-light); text-align: center;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        .s7-card-name {
+            font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 800; margin-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
+        }
+        .s7-card-desc {
+            font-family: var(--font-ko); font-size: var(--body-size);
+            color: var(--text-secondary); white-space: nowrap;
+        }
+        .s7-card.plan {
+            border-color: var(--accent-red); border-width: 3px;
+            background: var(--accent-red); color: white;
+            box-shadow: 0 8px 30px rgba(255, 51, 0, 0.2);
+            transform: scale(1.05);
+        }
+        .s7-card.plan .s7-card-name { color: white; }
+        .s7-card.plan .s7-card-desc { color: rgba(255,255,255,0.85); }
+
+        .s7-message {
+            margin-top: clamp(2rem, 4vw, 3rem); text-align: center;
+        }
+        .s7-message-text {
+            font-family: var(--font-display); font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+            font-weight: 900; line-height: 1.3; letter-spacing: -0.02em;
+        }
+        .s7-message-text .s7-highlight { color: var(--accent-red); }
+        .s7-message-sub {
+            font-family: var(--font-ko); font-size: var(--body-size);
+            color: var(--text-secondary); margin-top: clamp(0.8rem, 1.5vw, 1.2rem);
+        }
+
+        @media (max-width: 700px) { .s7-cards { flex-direction: column; } .s7-card.plan { transform: scale(1); } }
     </style>
-    <section class="slide" aria-label="Plan 모드">
-        <div class="slide-content">
-            <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">Plan 모드 — "코드 작성 전에 계획부터"</h2>
-            <div class="divider reveal reveal-line"></div>
+    <section class="slide" aria-label="작업 모드 & Plan 모드" id="slide7">
+        <div class="slide-content" style="align-items: center; padding: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 6rem);">
+            <h2 class="reveal" style="text-align: center;">Plan 모드</h2>
+            <p class="reveal" style="text-align: center; color: var(--text-secondary); font-size: var(--small-size); margin-top: var(--element-gap);"><code style="background: rgba(255,51,0,0.08); padding: 2px 6px;">Shift + Tab</code> 으로 전환</p>
 
-            <p class="reveal"><code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">Shift + Tab</code> 으로 Plan 모드 진입</p>
-
-            <div class="s7-flow reveal">
-                <div class="s7-step active">Plan 모드</div>
-                <div class="s7-arrow">→</div>
-                <div class="s7-step">계획 수립</div>
-                <div class="s7-arrow">→</div>
-                <div class="s7-step">리뷰 / 피드백</div>
-                <div class="s7-arrow">→</div>
-                <div class="s7-step">확정</div>
-                <div class="s7-arrow">→</div>
-                <div class="s7-step active">코드 작성 모드</div>
-                <div class="s7-arrow">→</div>
-                <div class="s7-step">구현</div>
+            <!-- Phase 0: 모드 카드 (처음부터 보임) -->
+            <div class="s7-cards reveal">
+                <div class="s7-card">
+                    <div class="s7-card-name">Ask permissions</div>
+                    <div class="s7-card-desc">도구 사용 시 승인 요청</div>
+                </div>
+                <div class="s7-card">
+                    <div class="s7-card-name">Auto accept edits</div>
+                    <div class="s7-card-desc">파일 수정만 자동 승인</div>
+                </div>
+                <div class="s7-card plan">
+                    <div class="s7-card-name">Plan</div>
+                    <div class="s7-card-desc">코드 작성 없이 계획만 수립</div>
+                </div>
             </div>
 
-            <table class="s7-table reveal">
-                <thead>
-                    <tr><th>작업 규모</th><th>Plan 모드</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>한 줄 수정, 오타 fix</td><td>불필요</td></tr>
-                    <tr><td>함수 추가, 리팩토링</td><td>권장</td></tr>
-                    <tr><td>새 기능, 아키텍처 변경</td><td class="required">필수</td></tr>
-                </tbody>
-            </table>
+            <div class="s7-message reveal">
+                <div class="s7-message-text">
+                    바로 코드 작성하지 말고,<br>
+                    <span class="s7-highlight">계획부터 세워라.</span>
+                </div>
+                <div class="s7-message-sub">Plan 없이 바로 시키면 실패 → 원복 → 재요청이 반복되어 비용과 시간을 낭비한다.</div>
+            </div>
 
-            <blockquote class="reveal">코드를 쓰기 전에 방향을 맞추면 재작업이 사라진다.</blockquote>
         </div>
         <span class="slide-number">07 / 15</span>
     </section>
