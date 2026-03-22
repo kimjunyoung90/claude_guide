@@ -290,7 +290,30 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 15: Agent Teams (약 1분 30초)
+## Slide 15: Subagents — 병렬 작업 예시 (약 1분)
+
+**실전 예시 — 프로젝트 분석을 3개 Subagent로 동시에:**
+
+```
+› 이 프로젝트의 보안, 성능, 테스트 커버리지를 분석해줘
+
+● Agent(security-auditor)   ← Haiku
+  └ 의존성 취약점, 인증 로직 점검
+
+● Agent(perf-analyzer)      ← Sonnet
+  └ N+1 쿼리, 느린 API 탐색
+
+● Agent(test-coverage)      ← Haiku
+  └ 미커버 코드 영역 리포트
+
+⏱ 각 2분 × 3개 = 순차 6분 → 병렬 2분
+```
+
+> 독립적인 작업은 쪼개서 동시에 돌려라.
+
+---
+
+## Slide 16: Agent Teams (약 1분 30초)
 
 **Agent Teams** — 여러 Claude가 동시에 협업
 
@@ -306,7 +329,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 16: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
+## Slide 17: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
 
 **Hooks** — 특정 이벤트가 발생할 때 실행할 동작을 정의
 
@@ -341,7 +364,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 17: Plugins (약 1분)
+## Slide 18: Plugins (약 1분)
 
 Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지
 
@@ -370,7 +393,7 @@ my-plugin/
 
 ---
 
-## Slide 18: 유용한 팁 (약 1분)
+## Slide 19: 유용한 팁 (약 1분)
 
 | 기능 | 설명 |
 |------|------|
@@ -386,7 +409,7 @@ my-plugin/
 
 ---
 
-## Slide 19: 데모 (약 5분)
+## Slide 20: 데모 (약 5분)
 
 **실제 워크플로우 시연**
 
