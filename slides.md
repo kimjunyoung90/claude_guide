@@ -99,25 +99,47 @@
 
 ---
 
-## Slide 6: CLAUDE.md — Claude가 자동으로 읽는 기본 지침서 (약 2분)
+## Slide 6: CLAUDE.md — Claude가 자동으로 읽는 기본 지침서 (약 1분)
 
 직접 작성하거나 `/init` 명령어로 생성. **200줄을 넘기지 말라고 권고**
 
-**상세 지침은 rules로 분리하고, CLAUDE.md에는 핵심 + 참조만:**
 ```
 # CLAUDE.md
 - ./gradlew test — 전체 테스트
 - DTO: {동사}{도메인}Request 형식
 - System.out.println 금지
-- 코드 스타일 @.claude/rules/code-style.md
-- 테스트 규칙 @.claude/rules/testing.md
+- 한국어로 응답
 ```
 
 > 한번 적어두면, 매번 말 안 해도 Claude가 알아서 따른다.
 
 ---
 
-## Slide 7: Plan 모드 (약 2분)
+## Slide 7: .claude/rules/ — 상세 지침은 분리하고, 필요할 때만 로드 (약 1분)
+
+CLAUDE.md는 **항상** 로드 → 내용이 많을수록 토큰 낭비
+
+**rules 파일 예시:** `.claude/rules/code-style.md`
+```markdown
+---
+paths:
+  - "src/**/*.java"
+---
+
+- 메서드명은 camelCase
+- 클래스당 300줄 이내
+- 매직넘버 금지 → 상수로 추출
+```
+
+- `paths`에 매칭되는 파일을 작업할 때 해당 rules 파일이 로드됨
+- CLAUDE.md에서 참조할 필요 없음
+- `paths` 미지정 → CLAUDE.md처럼 항상 로드
+
+> CLAUDE.md = 항상 로드 / rules + paths = 필요할 때만 로드 → 토큰 절약
+
+---
+
+## Slide 8: Plan 모드 (약 2분)
 
 **Claude Code의 작업 모드** — `Shift + Tab`으로 전환
 
@@ -138,7 +160,7 @@
 
 ---
 
-## Slide 8: Skills — 구조와 파일 예시 (약 1분)
+## Slide 9: Skills — 구조와 파일 예시 (약 1분)
 
 반복되는 작업을 `/명령어`로 등록
 
@@ -167,7 +189,7 @@ description: 주간 보고서를 작성합니다
 
 ---
 
-## Slide 9: Skills — 생성 방법과 호출 방법 (약 1분)
+## Slide 10: Skills — 생성 방법과 호출 방법 (약 1분)
 
 **생성 방법 2가지:**
 
@@ -189,7 +211,7 @@ description: 주간 보고서를 작성합니다
 
 ---
 
-## Slide 10: MCP — Claude에 외부 프로그램을 연결해주는 도구 (약 1분)
+## Slide 11: MCP — Claude에 외부 프로그램을 연결해주는 도구 (약 1분)
 
 **연결 구조:**
 Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
@@ -206,7 +228,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 ---
 
-## Slide 11: MCP — 주의사항 (약 1분)
+## Slide 12: MCP — 주의사항 (약 1분)
 
 **MCP 목록 확인:** `/mcp`
 
@@ -217,7 +239,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 ---
 
-## Slide 12: Subagents — 구조와 파일 예시 (약 1분)
+## Slide 13: Subagents — 구조와 파일 예시 (약 1분)
 
 **문제:** Claude에게 직접 탐색을 시키면, 탐색 과정 전부가 내 컨텍스트에 쌓임
 **해결:** Subagent에게 위임하면, 별도 컨텍스트에서 탐색하고 **결과 요약만 반환**
@@ -243,7 +265,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 13: Subagents — 생성 방법과 호출 방법 (약 1분 30초)
+## Slide 14: Subagents — 생성 방법과 호출 방법 (약 1분 30초)
 
 **생성 방법:** `/agents` → "Create new agent" 선택
 
@@ -268,7 +290,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 14: Agent Teams (약 1분 30초)
+## Slide 15: Agent Teams (약 1분 30초)
 
 **Agent Teams** — 여러 Claude가 동시에 협업
 
@@ -284,7 +306,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 15: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
+## Slide 16: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
 
 **Hooks** — 특정 이벤트가 발생할 때 실행할 동작을 정의
 
@@ -319,7 +341,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 16: Plugins (약 1분)
+## Slide 17: Plugins (약 1분)
 
 Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지
 
@@ -348,7 +370,7 @@ my-plugin/
 
 ---
 
-## Slide 17: 유용한 팁 (약 1분)
+## Slide 18: 유용한 팁 (약 1분)
 
 | 기능 | 설명 |
 |------|------|
@@ -364,7 +386,7 @@ my-plugin/
 
 ---
 
-## Slide 18: 데모 (약 5분)
+## Slide 19: 데모 (약 5분)
 
 **실제 워크플로우 시연**
 

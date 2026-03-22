@@ -525,7 +525,7 @@
             <blockquote class="reveal" style="margin-top: var(--content-gap);">코딩만이 아니라, 모든 업무에 활용 가능</blockquote>
         </div>
         <div class="geo geo-circle" style="right: clamp(3rem, 8vw, 8rem); top: 50%; transform: translateY(-50%);"></div>
-        <span class="slide-number">01 / 18</span>
+        <span class="slide-number">01 / 19</span>
         <span class="doc-link"><a href="https://docs.anthropic.com/ko/docs/about-claude/models/overview" target="_blank">docs.anthropic.com/ko/docs/about-claude/models</a></span>
     </section>
 
@@ -563,7 +563,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">02 / 18</span>
+        <span class="slide-number">02 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/overview" target="_blank">code.claude.com/docs/ko/overview</a></span>
     </section>
 
@@ -637,7 +637,7 @@
 
             <blockquote class="reveal">불필요한 정보가 컨텍스트를 차지할수록, AI 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">03 / 18</span>
+        <span class="slide-number">03 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/how-claude-code-works" target="_blank">code.claude.com/docs/ko/how-claude-code-works</a></span>
     </section>
 
@@ -701,7 +701,7 @@
 
             <blockquote class="reveal" style="text-align: center;">컨텍스트가 길어질수록, 핵심 정보가 중간에 묻혀 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">04 / 18</span>
+        <span class="slide-number">04 / 19</span>
     </section>
 
 
@@ -745,80 +745,73 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">05 / 18</span>
+        <span class="slide-number">05 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/features-overview" target="_blank">code.claude.com/docs/ko/features-overview</a></span>
     </section>
 
     <!-- =========== SLIDE 6: CLAUDE.md =========== -->
     <style>
-        .s6-layout { display: flex; gap: clamp(1rem, 2vw, 1.5rem); align-items: flex-start; margin-top: var(--content-gap); }
-        .s6-tree { flex: 0 0 auto; min-width: clamp(180px, 22vw, 280px); display: flex; flex-direction: column; }
-        .s6-tree-block {
-            font-family: 'Courier New', monospace; font-size: clamp(0.6rem, 0.95vw, 0.8rem);
-            line-height: 2; padding: clamp(0.8rem, 1.5vw, 1.2rem);
-            background: #2a2a2a; color: #ccc; flex: 1;
-        }
         .s6-tree-block .s6-highlight { color: var(--accent-red); font-weight: 700; }
         .s6-tree-block .s6-rule { color: #8bc34a; }
-        .s6-tree-block .s6-dim { color: #666; }
-        .s6-detail { flex: 1; display: flex; flex-direction: column; }
-        .s6-detail .code-block { flex: 1; }
-        @media (max-width: 700px) {
-            .s6-layout { flex-direction: column; }
-        }
     </style>
     <section class="slide" aria-label="CLAUDE.md">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
             <h2 class="reveal">CLAUDE.md — Claude가 자동으로 읽는 기본 지침서</h2>
             <div class="divider reveal reveal-line"></div>
-            <p class="reveal">직접 작성하거나 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">/init</code> 으로 생성. <strong>상세 지침은 rules로 분리하고, CLAUDE.md에는 핵심 + 참조만</strong></p>
+            <p class="reveal">직접 작성하거나 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">/init</code> 으로 생성. <strong>200줄을 넘기지 말라고 권고</strong></p>
 
-            <div class="s6-layout reveal">
-                <!-- 왼쪽: 폴더 트리 (축소) -->
-                <div class="s6-tree">
-                    <div class="s6-tree-block">
-                        wehago/<br>
-                        ├── ...<br>
-                        ├── <span class="s6-dim">.claude/</span><br>
-                        │&nbsp;&nbsp; └── <span class="s6-dim">rules/</span><br>
-                        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── <span class="s6-rule">code-style.md</span><br>
-                        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── <span class="s6-rule">testing.md</span><br>
-                        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── <span class="s6-rule">frontend.md</span><br>
-                        └── <span class="s6-highlight">CLAUDE.md</span>
-                    </div>
-                </div>
-
-                <!-- 오른쪽: CLAUDE.md 실제 내용 -->
-                <div class="s6-detail">
-                    <div class="code-block" style="font-size: clamp(0.6rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem);">
-                        <span class="cm"># 프로젝트 개요</span><br>
-                        Spring Boot 기반 위하고 플랫폼. Java 17, Gradle 빌드.<br>
-                        <br>
-                        <span class="cm"># 빌드 & 테스트</span><br>
-                        - `./gradlew build` — 전체 빌드<br>
-                        - `./gradlew test` — 전체 테스트<br>
-                        <br>
-                        <span class="cm"># 핵심 규칙</span><br>
-                        - DTO 네이밍: {동사}{도메인}Request/Response<br>
-                        - System.out.println 사용 금지 → Logger 사용<br>
-                        - 한국어로 응답<br>
-                        <br>
-                        <span class="cm"># 세부 규칙</span><br>
-                        - 코드 스타일 <span class="val">@.claude/rules/code-style.md</span><br>
-                        - 테스트 작성 <span class="val">@.claude/rules/testing.md</span><br>
-                        - 프론트엔드 <span class="val">@.claude/rules/frontend.md</span>
-                    </div>
-                </div>
+            <div class="code-block reveal" style="font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2.2; padding: clamp(1.2rem, 2vw, 1.8rem); margin-top: var(--content-gap);">
+                <span class="cm"># 빌드 & 테스트</span><br>
+                - `./gradlew test` — 전체 테스트<br>
+                <br>
+                <span class="cm"># 핵심 규칙</span><br>
+                - DTO 네이밍: {동사}{도메인}Request/Response<br>
+                - System.out.println 사용 금지 → Logger 사용<br>
+                - 한국어로 응답
             </div>
 
-            <blockquote class="reveal">한번 적어두면, 매번 말 안 해도 알아서 따른다.</blockquote>
+            <blockquote class="reveal">한번 적어두면, 매번 말 안 해도 Claude가 알아서 따른다.</blockquote>
         </div>
-        <span class="slide-number">06 / 18</span>
+        <span class="slide-number">06 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
     </section>
 
-    <!-- =========== SLIDE 7: 작업 모드 & Plan 모드 =========== -->
+    <!-- =========== SLIDE 7: .claude/rules/ =========== -->
+    <section class="slide" aria-label=".claude/rules/">
+        <div class="slide-content">
+            <div class="red-block red-sm reveal-scale"></div>
+            <h2 class="reveal">.claude/rules/ — 상세 지침은 분리, 필요할 때만 로드</h2>
+            <div class="divider reveal reveal-line"></div>
+            <p class="reveal">CLAUDE.md는 <strong>항상</strong> 로드 → 내용이 많을수록 토큰 낭비. 상세 지침은 rules로 분리</p>
+
+            <div class="reveal" style="margin-top: var(--content-gap);">
+                <p style="font-family: var(--font-display); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem); color: #8bc34a;">.claude/rules/code-style.md</p>
+                <div class="code-block" style="font-size: clamp(0.7rem, 1.15vw, 0.95rem); line-height: 2.2; padding: clamp(1rem, 1.8vw, 1.4rem);">
+                    <span class="cm">---</span><br>
+                    <span class="key">paths:</span><br>
+                    &nbsp;&nbsp;- <span class="val">"src/**/*.java"</span><br>
+                    <span class="cm">---</span><br>
+                    <br>
+                    - 메서드명은 camelCase<br>
+                    - 클래스당 300줄 이내<br>
+                    - 매직넘버 금지 → 상수로 추출
+                </div>
+            </div>
+
+            <div style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.3rem, 0.6vw, 0.5rem);" class="reveal">
+                <p style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">&#x2714; <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">paths</code>에 매칭되는 파일을 작업할 때 해당 rules 파일이 로드됨</p>
+                <p style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">&#x2714; CLAUDE.md에서 참조할 필요 없음</p>
+                <p style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">&#x2714; <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">paths</code> 미지정 → CLAUDE.md처럼 항상 로드</p>
+            </div>
+
+            <blockquote class="reveal">CLAUDE.md = 항상 로드 / rules + paths = 필요할 때만 로드 → 토큰 절약</blockquote>
+        </div>
+        <span class="slide-number">07 / 19</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
+    </section>
+
+    <!-- =========== SLIDE 8: 작업 모드 & Plan 모드 =========== -->
     <style>
         /* 모드 카드 */
         .s7-cards {
@@ -891,10 +884,10 @@
             </div>
 
         </div>
-        <span class="slide-number">07 / 18</span>
+        <span class="slide-number">08 / 19</span>
     </section>
 
-    <!-- =========== SLIDE 8: Skills 구조와 파일 예시 =========== -->
+    <!-- =========== SLIDE 9: Skills 구조와 파일 예시 =========== -->
     <section class="slide" aria-label="Skills 구조">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -934,11 +927,11 @@
             </div>
 
         </div>
-        <span class="slide-number">08 / 18</span>
+        <span class="slide-number">09 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
     </section>
 
-    <!-- =========== SLIDE 9: Skills 생성과 호출 =========== -->
+    <!-- =========== SLIDE 10: Skills 생성과 호출 =========== -->
     <section class="slide" aria-label="Skills 생성과 호출">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -990,11 +983,11 @@
 
             <blockquote class="reveal">매번 같은 지시를 반복하지 않아도 된다.</blockquote>
         </div>
-        <span class="slide-number">09 / 18</span>
+        <span class="slide-number">10 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/slash-commands" target="_blank">code.claude.com/docs/ko/slash-commands</a></span>
     </section>
 
-    <!-- =========== SLIDE 10: MCP 등록 =========== -->
+    <!-- =========== SLIDE 11: MCP 등록 =========== -->
     <section class="slide" aria-label="MCP">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1049,11 +1042,11 @@
                 <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">사용 가능한 MCP 목록 + 연동 방법: <a href="https://smithery.ai/servers" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">https://smithery.ai/servers</a></p>
             </div>
         </div>
-        <span class="slide-number">10 / 18</span>
+        <span class="slide-number">11 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/mcp" target="_blank">code.claude.com/docs/ko/mcp</a></span>
     </section>
 
-    <!-- =========== SLIDE 11: MCP 주의사항 =========== -->
+    <!-- =========== SLIDE 12: MCP 주의사항 =========== -->
     <section class="slide" aria-label="MCP 주의사항">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1082,10 +1075,10 @@
                 </p>
             </div>
         </div>
-        <span class="slide-number">11 / 18</span>
+        <span class="slide-number">12 / 19</span>
     </section>
 
-    <!-- =========== SLIDE 12: Subagents 구조와 파일 예시 =========== -->
+    <!-- =========== SLIDE 13: Subagents 구조와 파일 예시 =========== -->
     <section class="slide" aria-label="Subagents 구조">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1146,11 +1139,11 @@
 
             <blockquote class="reveal">탐색 과정은 Subagent에게, 결과만 내 컨텍스트에.</blockquote>
         </div>
-        <span class="slide-number">12 / 18</span>
+        <span class="slide-number">13 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
-    <!-- =========== SLIDE 13: Subagents 생성과 호출 =========== -->
+    <!-- =========== SLIDE 14: Subagents 생성과 호출 =========== -->
     <section class="slide" aria-label="Subagents 생성과 호출">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1206,11 +1199,11 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">13 / 18</span>
+        <span class="slide-number">14 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
-    <!-- =========== SLIDE 14: Agent Teams =========== -->
+    <!-- =========== SLIDE 15: Agent Teams =========== -->
     <section class="slide" aria-label="Agent Teams">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1248,11 +1241,11 @@
 
             <blockquote class="reveal">혼자 다 안 해도 된다. 팀을 꾸려서 시키면 된다.</blockquote>
         </div>
-        <span class="slide-number">14 / 18</span>
+        <span class="slide-number">15 / 19</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
-    <!-- =========== SLIDE 15: Hooks =========== -->
+    <!-- =========== SLIDE 16: Hooks =========== -->
     <section class="slide" aria-label="Hooks">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1305,10 +1298,10 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">15 / 18</span>
+        <span class="slide-number">16 / 19</span>
     </section>
 
-    <!-- =========== SLIDE 16: Plugins 구조 =========== -->
+    <!-- =========== SLIDE 17: Plugins 구조 =========== -->
     <section class="slide" aria-label="Plugins 구조">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1350,10 +1343,10 @@
 
             <blockquote class="reveal">배포: Git repo → 마켓플레이스 등록 → <code style="background: rgba(255,51,0,0.08); padding: 1px 4px;">/plugin install</code>로 설치</blockquote>
         </div>
-        <span class="slide-number">16 / 18</span>
+        <span class="slide-number">17 / 19</span>
     </section>
 
-    <!-- =========== SLIDE 17: 유용한 팁 =========== -->
+    <!-- =========== SLIDE 18: 유용한 팁 =========== -->
     <section class="slide" aria-label="유용한 팁">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1382,10 +1375,10 @@
                 </table>
             </div>
         </div>
-        <span class="slide-number">17 / 18</span>
+        <span class="slide-number">18 / 19</span>
     </section>
 
-    <!-- =========== SLIDE 18: 데모 =========== -->
+    <!-- =========== SLIDE 19: 데모 =========== -->
     <section class="slide centered" aria-label="데모">
         <div class="slide-content">
             <div class="red-block reveal-scale"></div>
@@ -1406,7 +1399,7 @@
         </div>
         <div class="geo geo-circle" style="left: clamp(2rem, 5vw, 5rem); bottom: clamp(2rem, 5vw, 5rem);"></div>
         <div class="geo geo-square" style="right: clamp(5rem, 10vw, 10rem); top: clamp(3rem, 6vw, 6rem);"></div>
-        <span class="slide-number">18 / 18</span>
+        <span class="slide-number">19 / 19</span>
     </section>
 
     <script>
