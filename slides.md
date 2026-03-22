@@ -25,7 +25,7 @@
 
 ---
 
-## Slide 2: Claude를 만나는 방법 (약 1분)
+## Slide 2: Claude 제공 형태 (약 1분)
 
 | | 웹 Claude | Claude Desktop | **Claude Code** |
 |---|---|---|---|
