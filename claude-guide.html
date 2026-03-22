@@ -525,7 +525,7 @@
             <blockquote class="reveal" style="margin-top: var(--content-gap);">코딩만이 아니라, 모든 업무에 활용 가능</blockquote>
         </div>
         <div class="geo geo-circle" style="right: clamp(3rem, 8vw, 8rem); top: 50%; transform: translateY(-50%);"></div>
-        <span class="slide-number">01 / 17</span>
+        <span class="slide-number">01 / 18</span>
         <span class="doc-link"><a href="https://docs.anthropic.com/ko/docs/about-claude/models/overview" target="_blank">docs.anthropic.com/ko/docs/about-claude/models</a></span>
     </section>
 
@@ -563,7 +563,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">02 / 17</span>
+        <span class="slide-number">02 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/overview" target="_blank">code.claude.com/docs/ko/overview</a></span>
     </section>
 
@@ -637,7 +637,7 @@
 
             <blockquote class="reveal">불필요한 정보가 컨텍스트를 차지할수록, AI 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">03 / 17</span>
+        <span class="slide-number">03 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/how-claude-code-works" target="_blank">code.claude.com/docs/ko/how-claude-code-works</a></span>
     </section>
 
@@ -701,7 +701,7 @@
 
             <blockquote class="reveal" style="text-align: center;">컨텍스트가 길어질수록, 핵심 정보가 중간에 묻혀 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">04 / 17</span>
+        <span class="slide-number">04 / 18</span>
     </section>
 
 
@@ -745,7 +745,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">05 / 17</span>
+        <span class="slide-number">05 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/features-overview" target="_blank">code.claude.com/docs/ko/features-overview</a></span>
     </section>
 
@@ -814,7 +814,7 @@
 
             <blockquote class="reveal">한번 적어두면, 매번 말 안 해도 알아서 따른다.</blockquote>
         </div>
-        <span class="slide-number">06 / 17</span>
+        <span class="slide-number">06 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
     </section>
 
@@ -891,7 +891,7 @@
             </div>
 
         </div>
-        <span class="slide-number">07 / 17</span>
+        <span class="slide-number">07 / 18</span>
     </section>
 
     <!-- =========== SLIDE 8: Skills 구조와 파일 예시 =========== -->
@@ -934,7 +934,7 @@
             </div>
 
         </div>
-        <span class="slide-number">08 / 17</span>
+        <span class="slide-number">08 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
     </section>
 
@@ -990,7 +990,7 @@
 
             <blockquote class="reveal">매번 같은 지시를 반복하지 않아도 된다.</blockquote>
         </div>
-        <span class="slide-number">09 / 17</span>
+        <span class="slide-number">09 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/slash-commands" target="_blank">code.claude.com/docs/ko/slash-commands</a></span>
     </section>
 
@@ -1049,7 +1049,7 @@
                 <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">사용 가능한 MCP 목록 + 연동 방법: <a href="https://smithery.ai/servers" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">https://smithery.ai/servers</a></p>
             </div>
         </div>
-        <span class="slide-number">10 / 17</span>
+        <span class="slide-number">10 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/mcp" target="_blank">code.claude.com/docs/ko/mcp</a></span>
     </section>
 
@@ -1082,86 +1082,135 @@
                 </p>
             </div>
         </div>
-        <span class="slide-number">11 / 17</span>
+        <span class="slide-number">11 / 18</span>
     </section>
 
-    <!-- =========== SLIDE 12: Subagents =========== -->
-    <section class="slide" aria-label="Subagents">
+    <!-- =========== SLIDE 12: Subagents 구조와 파일 예시 =========== -->
+    <section class="slide" aria-label="Subagents 구조">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">Subagents — 별도 컨텍스트에서 일하는 독립 작업자</h2>
+            <h2 class="reveal">Subagents — 구조와 파일 예시</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <div class="two-col reveal" style="margin-top: var(--element-gap);">
-                <!-- 왼쪽: 비교 시각화 -->
-                <div>
-                    <h3 style="margin-bottom: var(--element-gap); font-size: clamp(1rem, 2vw, 1.4rem);">왜 Subagent가 필요한가?</h3>
-
-                    <!-- 직접 실행 -->
-                    <p style="font-size: clamp(0.75rem, 1.1vw, 0.92rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">직접 실행 시</p>
-                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.5vw, 1.2rem); font-family: 'Courier New', monospace; font-size: clamp(0.65rem, 1.05vw, 0.88rem); line-height: 2; color: #e0e0e0; margin-bottom: clamp(0.5rem, 1vw, 0.8rem);">
-                        <span style="color: #888;">›</span> <span style="color: #fff;">Confluence에서 결제 서비스 정책 찾아줘.</span><br>
+            <div class="reveal" style="margin-top: var(--content-gap); display: flex; gap: clamp(1rem, 2vw, 1.5rem); max-width: min(90vw, 800px);">
+                <!-- 직접 실행 -->
+                <div style="flex: 1;">
+                    <p style="font-size: clamp(0.75rem, 1.1vw, 0.92rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">직접 실행</p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.9rem); line-height: 2; color: #e0e0e0;">
+                        <span style="color: #888;">›</span> <span style="color: #fff;">결제 서비스 정책 찾아줘</span><br>
                         <br>
-                        <span style="color: #f87171;">📄 문서 1 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
-                        <span style="color: #f87171;">📄 문서 2 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
-                        <span style="color: #f87171;">📄 문서 3 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
-                        <span style="color: #f87171;">⚠ 탐색 과정 전부가 컨텍스트를 차지</span>
+                        <span style="color: #f87171;">문서 1 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
+                        <span style="color: #f87171;">문서 2 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
+                        <span style="color: #f87171;">문서 3 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span>
                     </div>
-
-                    <!-- Subagent 위임 -->
-                    <p style="font-size: clamp(0.75rem, 1.1vw, 0.92rem); color: var(--accent-red); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">Subagent에게 위임 시</p>
-                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.5vw, 1.2rem); font-family: 'Courier New', monospace; font-size: clamp(0.65rem, 1.05vw, 0.88rem); line-height: 2; color: #e0e0e0;">
-                        <span style="color: #888;">›</span> <span style="color: #fff;">@search-agent 결제 서비스 정책 찾아줘.</span><br>
+                </div>
+                <!-- Subagent 위임 -->
+                <div style="flex: 1;">
+                    <p style="font-size: clamp(0.75rem, 1.1vw, 0.92rem); color: var(--accent-red); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">Subagent 위임</p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.9rem); line-height: 2; color: #e0e0e0; border: 2px solid var(--accent-red);">
+                        <span style="color: #888;">›</span> <span style="color: #fff;">@search-agent 결제 서비스 정책 찾아줘</span><br>
                         <br>
                         <span style="color: #888;">→ (별도 컨텍스트에서 탐색 중...)</span><br>
                         <span style="color: #4ade80;">✓ 결과 요약만 내 컨텍스트에 반환</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- 오른쪽: 만드는 법 + 호출 방식 -->
+            <div class="two-col reveal" style="margin-top: var(--content-gap);">
+                <!-- 왼쪽: 구조 -->
                 <div>
-                    <h3 style="margin-bottom: var(--element-gap); font-size: clamp(1rem, 2vw, 1.4rem);">만드는 법</h3>
-                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 1.9; padding: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.5rem, 1vw, 0.8rem);">
-                        .claude/agents/<br>
-                        └── <span class="val">search-agent.md</span>
+                    <h3 style="margin-bottom: var(--element-gap);">구조</h3>
+                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem);">
+                        .claude/<br>
+                        └── agents/<br>
+                        &nbsp;&nbsp;&nbsp; └── <span class="val">search-agent.md</span>
                     </div>
-                    <div class="code-block" style="font-size: clamp(0.58rem, 0.95vw, 0.8rem); line-height: 1.8; padding: clamp(0.8rem, 1.5vw, 1.2rem); border-left: 3px solid var(--accent-red);">
+                </div>
+
+                <!-- 오른쪽: 파일 예시 -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">파일 예시</h3>
+                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem); border-left: 3px solid var(--accent-red);">
                         <span class="cm">---</span><br>
                         <span class="cm">name:</span> search-agent<br>
                         <span class="cm">description:</span> <span class="val">Confluence에서 문서를 검색합니다</span><br>
                         <span class="cm">tools:</span> Read, Grep, Glob<br>
                         <span class="cm">model:</span> haiku<br>
-                        <span class="cm">---</span><br><br>
+                        <span class="cm">---</span><br>
+                        <br>
                         Confluence에서 문서를 검색하고<br>
                         핵심 내용만 요약해서 보고합니다.
                     </div>
-
-                    <h3 style="margin-top: var(--content-gap); margin-bottom: var(--element-gap); font-size: clamp(1rem, 2vw, 1.4rem);">호출 방식</h3>
-                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.5vw, 1.2rem); font-family: 'Courier New', monospace; font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; color: #e0e0e0;">
-                        <span style="color: #888;">@멘션:</span> <span style="color: #fff;">@search-agent 결제 서비스 정책 찾아줘</span><br>
-                        <span style="color: #888;">자연어:</span> <span style="color: #fff;">search-agent 써서 찾아줘</span><br>
-                        <span style="color: #888;">자&nbsp;&nbsp;동:</span> <span style="color: #fff;">Claude가 description 보고 알아서 위임</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 모델 선택 + 병렬 실행 -->
-            <div class="reveal" style="margin-top: var(--element-gap); display: flex; gap: clamp(0.8rem, 2vw, 1.5rem);">
-                <div style="flex: 1; padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
-                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">모델 선택:</strong> 단순 검색 → <strong>Haiku</strong> | 코드 리뷰 → <strong>Sonnet</strong> | 복잡한 설계 → <strong>Opus</strong></p>
-                </div>
-                <div style="flex: 1; padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
-                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-primary);"><strong style="color: var(--accent-red);">병렬 실행:</strong> 독립 작업은 동시에 실행 가능<br><span style="color: var(--text-muted);">순차 6분 → 병렬 2분</span></p>
                 </div>
             </div>
 
             <blockquote class="reveal">탐색 과정은 Subagent에게, 결과만 내 컨텍스트에.</blockquote>
         </div>
-        <span class="slide-number">12 / 17</span>
+        <span class="slide-number">12 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
-    <!-- =========== SLIDE 13: Agent Teams =========== -->
+    <!-- =========== SLIDE 13: Subagents 생성과 호출 =========== -->
+    <section class="slide" aria-label="Subagents 생성과 호출">
+        <div class="slide-content">
+            <div class="red-block red-sm reveal-scale"></div>
+            <h2 class="reveal">Subagents — 생성 방법과 호출 방법</h2>
+            <div class="divider reveal reveal-line"></div>
+
+            <div class="reveal" style="margin-top: var(--content-gap);">
+                <h3 style="margin-bottom: var(--element-gap);">생성 방법</h3>
+                <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.8rem, 1.3vw, 1.1rem); line-height: 2; color: #e0e0e0;">
+                    <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">/agents</span> → <span style="color: #4ade80;">Create new agent</span>
+                </div>
+            </div>
+
+            <div class="two-col reveal" style="margin-top: var(--content-gap);">
+                <!-- 왼쪽: 모델 선택 -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">모델 선택</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.5rem, 0.8vw, 0.6rem); text-align: left; font-family: var(--font-display); font-size: var(--small-size); font-weight: 800; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 2px solid var(--rule-light);">작업 성격</th>
+                                <th style="padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.5rem, 0.8vw, 0.6rem); text-align: left; font-family: var(--font-display); font-size: var(--small-size); font-weight: 800; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 2px solid var(--rule-light);">추천 모델</th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-family: var(--font-ko); font-size: var(--body-size);">
+                            <tr><td style="padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.5rem, 0.8vw, 0.6rem); border-bottom: 1px solid var(--rule-light);">단순 검색</td><td style="padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.5rem, 0.8vw, 0.6rem); border-bottom: 1px solid var(--rule-light);"><strong>Haiku</strong></td></tr>
+                            <tr><td style="padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.5rem, 0.8vw, 0.6rem); border-bottom: 1px solid var(--rule-light);">코드 리뷰, 요약</td><td style="padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.5rem, 0.8vw, 0.6rem); border-bottom: 1px solid var(--rule-light);"><strong>Sonnet</strong></td></tr>
+                            <tr><td style="padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.5rem, 0.8vw, 0.6rem); border-bottom: 1px solid var(--rule-light);">복잡한 설계</td><td style="padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.5rem, 0.8vw, 0.6rem); border-bottom: 1px solid var(--rule-light);"><strong>Opus</strong></td></tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: var(--content-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
+                        <p style="font-size: var(--small-size); color: var(--text-primary);"><strong style="color: var(--accent-red);">병렬 실행:</strong> 독립 작업은 동시에 실행 가능<br><span style="color: var(--text-muted);">순차 6분 → 병렬 2분</span></p>
+                    </div>
+                </div>
+
+                <!-- 오른쪽: 호출 방법 -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">호출 방법</h3>
+
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">@멘션</p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0; margin-bottom: clamp(0.6rem, 1.2vw, 1rem);">
+                        <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">@search-agent 결제 서비스 정책 찾아줘</span>
+                    </div>
+
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">자동 호출</p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0;">
+                        <span style="color: #888;">›</span> <span style="color: #fff;">결제 서비스 정책 찾아줘</span><br>
+                        <br>
+                        <span style="color: #4ade80;">●</span> <strong style="color: #4ade80;">Agent</strong>(search-agent)<br>
+                        <span style="color: #888;">&nbsp;&nbsp;└ Claude가 description 보고 자동 위임</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">13 / 18</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
+    </section>
+
+    <!-- =========== SLIDE 14: Agent Teams =========== -->
     <section class="slide" aria-label="Agent Teams">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1199,11 +1248,11 @@
 
             <blockquote class="reveal">혼자 다 안 해도 된다. 팀을 꾸려서 시키면 된다.</blockquote>
         </div>
-        <span class="slide-number">13 / 17</span>
+        <span class="slide-number">14 / 18</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
-    <!-- =========== SLIDE 14: 기타 기능 =========== -->
+    <!-- =========== SLIDE 15: 기타 기능 =========== -->
     <section class="slide" aria-label="기타 기능">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1255,10 +1304,10 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">14 / 17</span>
+        <span class="slide-number">15 / 18</span>
     </section>
 
-    <!-- =========== SLIDE 15: 원칙 =========== -->
+    <!-- =========== SLIDE 16: 원칙 =========== -->
     <section class="slide" aria-label="관리 원칙">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1350,10 +1399,10 @@
 
             <blockquote class="reveal">짧고 핵심적으로 쓸수록, AI가 더 정확하게 동작한다.</blockquote>
         </div>
-        <span class="slide-number">15 / 17</span>
+        <span class="slide-number">16 / 18</span>
     </section>
 
-    <!-- =========== SLIDE 16: 데모 =========== -->
+    <!-- =========== SLIDE 17: 데모 =========== -->
     <section class="slide centered" aria-label="데모">
         <div class="slide-content">
             <div class="red-block reveal-scale"></div>
@@ -1374,15 +1423,15 @@
         </div>
         <div class="geo geo-circle" style="left: clamp(2rem, 5vw, 5rem); bottom: clamp(2rem, 5vw, 5rem);"></div>
         <div class="geo geo-square" style="right: clamp(5rem, 10vw, 10rem); top: clamp(3rem, 6vw, 6rem);"></div>
-        <span class="slide-number">16 / 17</span>
+        <span class="slide-number">17 / 18</span>
     </section>
 
-    <!-- =========== SLIDE 17: 클로징 =========== -->
+    <!-- =========== SLIDE 18: 클로징 =========== -->
     <section class="slide centered" aria-label="클로징">
         <div class="slide-content" style="display: flex; align-items: center; justify-content: center; min-height: 60vh;">
             <h1 class="reveal" style="font-size: clamp(3rem, 8vw, 7rem); text-align: center;">무엇을 하고 싶은가<span style="color: var(--accent-red);">?</span></h1>
         </div>
-        <span class="slide-number">17 / 17</span>
+        <span class="slide-number">18 / 18</span>
     </section>
 
     <script>
