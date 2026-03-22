@@ -154,16 +154,19 @@
 
 ## Slide 8: Skills — 구조와 파일 예시 (약 1분)
 
-반복되는 워크플로우를 `/명령어`로 등록
+반복되는 작업을 `/명령어`로 등록
 
 **구조:**
 ```
-.claude/skills/
-└── weekly-report/
-    ├── SKILL.md        ← 메인 지침 (필수)
-    ├── reference.md    ← 상세 내용 (선택)
-    └── examples/       ← 예시 (선택)
+.claude/
+└── skills/
+    └── weekly-report/
+        ├── SKILL.md        ← 핵심 지침 (필수)
+        ├── reference.md    ← 보조 문서 (선택, 필요 시 로드)
+        └── scripts/        ← 필요한 스크립트 추가 (선택)
 ```
+
+**작성 권고:** SKILL.md는 **500줄 이내**로 간결하게. 상세 내용은 보조 문서로 분리 → 필요할 때만 로드
 
 **SKILL.md 파일 예시:**
 ```markdown
@@ -176,17 +179,16 @@ description: 주간 보고서를 작성합니다
 2. 주간 보고서 초안 생성
 ```
 
-- `name` → 슬래시 명령어가 됨 (`/weekly-report`)
-- `description` → Claude가 자동 호출 판단 기준
-- 본문 → Claude가 따를 지침
-
 ---
 
 ## Slide 9: Skills — 생성 방법과 호출 방법 (약 1분)
 
-**생성 방법:**
-1. `.claude/skills/{스킬이름}/` 디렉토리 생성
-2. `SKILL.md` 작성 (name + description + 지침)
+**생성 방법 2가지:**
+
+| 방법 | 설명 | 권장 |
+|------|------|------|
+| **직접 생성** | `.claude/skills/{이름}/SKILL.md` 파일을 직접 작성 | 기본 |
+| **Skill Creator** | 공식 플러그인. 자연어로 요청하면 자동 생성 | 복잡한 스킬의 초안 |
 
 **호출 방법:**
 - 직접 호출: `/weekly-report`

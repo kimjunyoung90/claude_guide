@@ -901,18 +901,19 @@
             <h2 class="reveal">Skills — 구조와 파일 예시</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <p class="reveal">반복되는 워크플로우를 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px;">/명령어</code>로 등록</p>
+            <p class="reveal">반복되는 작업을 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px;">/명령어</code>로 등록</p>
 
             <div class="two-col reveal" style="margin-top: var(--content-gap);">
                 <!-- 왼쪽: 폴더 구조 -->
                 <div>
                     <h3 style="margin-bottom: var(--element-gap);">구조</h3>
                     <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem);">
-                        .claude/skills/<br>
-                        └── weekly-report/<br>
-                        &nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 필수</span><br>
-                        &nbsp;&nbsp;&nbsp; ├── reference.md <span class="cm">← 선택</span><br>
-                        &nbsp;&nbsp;&nbsp; └── examples/ <span class="cm">← 선택</span>
+                        .claude/<br>
+                        └── skills/<br>
+                        &nbsp;&nbsp;&nbsp; └── weekly-report/<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 핵심 지침 (필수)</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── reference.md <span class="cm">← 보조 문서 (선택, 필요 시 로드)</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── scripts/ <span class="cm">← 필요한 스크립트 추가 (선택)</span>
                     </div>
                 </div>
 
@@ -932,7 +933,6 @@
                 </div>
             </div>
 
-            <blockquote class="reveal"><strong>name</strong> → 슬래시 명령어 &nbsp;|&nbsp; <strong>description</strong> → 자동 호출 판단 기준 &nbsp;|&nbsp; <strong>본문</strong> → Claude가 따를 지침</blockquote>
         </div>
         <span class="slide-number">08 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
@@ -949,16 +949,24 @@
                 <!-- 왼쪽: 생성 방법 -->
                 <div>
                     <h3 style="margin-bottom: var(--element-gap);">생성 방법</h3>
-                    <div class="checklist" style="max-width: min(85vw, 400px);">
+
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">1. 직접 생성 <span style="color: var(--accent-red); font-size: var(--small-size);">기본</span></p>
+                    <div class="checklist" style="max-width: min(85vw, 400px); margin-bottom: clamp(0.8rem, 1.5vw, 1rem);">
                         <div class="check-item">
-                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">1</div>
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">①</div>
                             <div class="check-text"><strong>.claude/skills/{이름}/ 디렉토리 생성</strong></div>
                         </div>
                         <div class="check-item">
-                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">2</div>
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">②</div>
                             <div class="check-text"><strong>SKILL.md 작성</strong><span>name + description + 지침</span></div>
                         </div>
                     </div>
+
+                    <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">2. Skill Creator <span style="color: var(--text-muted); font-size: var(--small-size);">공식 플러그인</span></p>
+                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.9rem); line-height: 2; color: #e0e0e0;">
+                        <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">코드 리뷰 스킬 만들어줘</span>
+                    </div>
+                    <p style="font-size: var(--small-size); color: var(--text-secondary); margin-top: clamp(0.2rem, 0.4vw, 0.3rem);">자연어로 요청하면 SKILL.md를 자동 생성</p>
                 </div>
 
                 <!-- 오른쪽: 호출 방법 (터미널 UI) -->
@@ -967,7 +975,7 @@
 
                     <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">직접 호출</p>
                     <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.8vw, 1.4rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0; margin-bottom: clamp(0.6rem, 1.2vw, 1rem);">
-                        <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">/weekly-report</span><span style="display: inline-block; width: clamp(8px, 0.8vw, 10px); height: clamp(14px, 1.8vw, 20px); background: #fff; margin-left: 3px; vertical-align: text-bottom; position: relative; top: clamp(2px, 0.3vw, 4px); animation: blink 1s step-end infinite;"></span>
+                        <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">/weekly-report</span><span style="display: inline-block; width: clamp(2px, 0.3vw, 3px); height: clamp(14px, 1.8vw, 20px); background: #fff; margin-left: 3px; vertical-align: text-bottom; position: relative; top: clamp(2px, 0.3vw, 4px); animation: blink 1s step-end infinite;"></span>
                     </div>
 
                     <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">자동 호출 (description 매칭)</p>
