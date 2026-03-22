@@ -135,6 +135,23 @@ qa-workspace/
 
 반복되는 워크플로우를 `/명령어`로 등록
 
+**SKILL.md는 500줄을 넘기지 말라고 권고**, 넘으면 별도 파일로 분리
+
+**폴더 구조:**
+```
+.claude/skills/
+└── weekly-report/
+    ├── SKILL.md        ← 메인 지침 (필수, 500줄 이하)
+    ├── reference.md    ← 상세 내용 (넘으면 분리)
+    ├── examples/       ← 예시 (선택)
+    └── scripts/        ← 실행 스크립트 (선택)
+        └── helper.py
+```
+
+**호출 방식:**
+- 직접 호출: `/weekly-report`
+- 자동 호출: Claude가 **description** 필드를 보고 자동으로 매칭하여 호출
+
 **개발자용:**
 - `/code-review` → git diff 기반, 🔴Critical / 🟠Warning / 🟡Suggestion 분류
 - `/api-docs` → Controller 분석 → API 명세서 자동 생성
@@ -165,6 +182,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 **주의:** MCP는 대화 시작 시 활성화된 모든 MCP의 사용법을 컨텍스트에 포함시킴
 → 안 쓰는 MCP가 켜져 있으면 컨텍스트를 잡아먹는 주범
+→ 예: Notion 15,076 토큰 + Slack 7,961 토큰 = MCP만으로 27,000+ 토큰 차지
 → `/mcp` 명령어로 확인 후 미사용 MCP 비활성화
 
 **사용 가능한 MCP 목록 + 연동 방법:** https://smithery.ai/servers
@@ -174,6 +192,31 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 ## Slide 9: Subagents & Agent Teams
 
 **Subagents** — 부하 직원에게 일 시키기
+
+**왜 Subagent가 필요한가?**
+- 직접 실행 시: 탐색 과정 전부가 내 컨텍스트에 쌓임
+- Subagent 위임 시: 별도 컨텍스트에서 탐색하고, 결과 요약만 반환
+
+**만드는 법:**
+```
+.claude/agents/
+└── search-agent.md
+```
+```
+---
+name: search-agent
+description: Confluence에서 문서를 검색합니다
+tools: Read, Grep, Glob
+model: haiku
+---
+Confluence에서 문서를 검색하고
+핵심 내용만 요약해서 보고합니다.
+```
+
+**호출 방식:**
+- @멘션: `@search-agent 결제 서비스 정책 찾아줘`
+- 자연어: `search-agent 써서 찾아줘`
+- 자동: Claude가 description 보고 알아서 위임
 
 | 에이전트 | 역할 | 예시 |
 |---|---|---|
@@ -205,6 +248,8 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 | .env 파일 수정 시도 | **수정 차단** + 경고 메시지 | 보호 파일 실수 방지 |
 | .java 파일 수정 후 | `gradlew compileJava` 자동 실행 | 컴파일 에러 즉시 감지 |
 
+**/loop** — 세션 안에서 프롬프트 반복 실행
+
 **Plugins** — 위 기능들을 하나로 묶어 배포
 - Skills + Hooks + MCP를 한 묶음으로 패키징
 - Git repo로 공유 → 팀 전체가 같은 환경
@@ -221,6 +266,9 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 3. **불필요한 정보는 삭제** → "혹시 몰라서" 넣은 내용이 성능을 깎는다
 4. **스킬로 분리** → 모든 정보를 한 파일에 넣지 말고, 작업별로 나누기
 5. **미사용 MCP는 비활성화** → 안 쓰는 MCP도 컨텍스트를 차지함
+6. **작업 중 진행사항을 문서로 저장** → 컨텍스트가 길어지면 `/compact`로 압축
+7. **작업 끝나면 `/clear`로 초기화** → 다음 작업에 영향 없게
+8. **/doctor로 상태 확인** → MCP 토큰 사용량, Context Usage Warnings 확인 가능
 
 > 짧고 핵심적으로 쓸수록, AI가 더 정확하게 동작한다.
 
@@ -237,5 +285,11 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 5. PR 생성
 
 > (라이브 데모 또는 녹화 영상)
+
+---
+
+## Slide 13: 무엇을 하고 싶은가?
+
+> 무엇을 하고 싶은가?
 
 ---
