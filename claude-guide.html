@@ -525,7 +525,7 @@
             <blockquote class="reveal" style="margin-top: var(--content-gap);">코딩만이 아니라, 모든 업무에 활용 가능</blockquote>
         </div>
         <div class="geo geo-circle" style="right: clamp(3rem, 8vw, 8rem); top: 50%; transform: translateY(-50%);"></div>
-        <span class="slide-number">01 / 14</span>
+        <span class="slide-number">01 / 15</span>
         <span class="doc-link"><a href="https://docs.anthropic.com/ko/docs/about-claude/models/overview" target="_blank">docs.anthropic.com/ko/docs/about-claude/models</a></span>
     </section>
 
@@ -563,7 +563,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">02 / 14</span>
+        <span class="slide-number">02 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/overview" target="_blank">code.claude.com/docs/ko/overview</a></span>
     </section>
 
@@ -637,7 +637,7 @@
 
             <blockquote class="reveal">불필요한 정보가 컨텍스트를 차지할수록, AI 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">03 / 14</span>
+        <span class="slide-number">03 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/how-claude-code-works" target="_blank">code.claude.com/docs/ko/how-claude-code-works</a></span>
     </section>
 
@@ -701,7 +701,7 @@
 
             <blockquote class="reveal" style="text-align: center;">컨텍스트가 길어질수록, 핵심 정보가 중간에 묻혀 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">04 / 14</span>
+        <span class="slide-number">04 / 15</span>
     </section>
 
 
@@ -745,7 +745,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">05 / 14</span>
+        <span class="slide-number">05 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/features-overview" target="_blank">code.claude.com/docs/ko/features-overview</a></span>
     </section>
 
@@ -814,11 +814,64 @@
 
             <blockquote class="reveal">한번 적어두면, 매번 말 안 해도 알아서 따른다.</blockquote>
         </div>
-        <span class="slide-number">06 / 14</span>
+        <span class="slide-number">06 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
     </section>
 
-    <!-- =========== SLIDE 7: Skills =========== -->
+    <!-- =========== SLIDE 7: Plan 모드 =========== -->
+    <style>
+        .s7-flow { display: flex; align-items: center; gap: clamp(0.4rem, 0.8vw, 0.8rem); flex-wrap: wrap; margin-top: var(--element-gap); }
+        .s7-step {
+            padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.2vw, 1rem);
+            font-family: var(--font-ko); font-size: var(--body-size); font-weight: 700;
+            border: 1.5px solid var(--rule-light); background: white;
+        }
+        .s7-step.active { border-color: var(--accent-red); background: var(--accent-red-light); color: var(--accent-red); }
+        .s7-arrow { font-family: var(--font-display); color: var(--text-muted); font-size: var(--body-size); }
+        .s7-table { width: 100%; max-width: min(85vw, 600px); margin-top: var(--content-gap); border-collapse: collapse; }
+        .s7-table th, .s7-table td { padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.6rem, 1vw, 0.8rem); text-align: left; font-family: var(--font-ko); font-size: var(--body-size); border-bottom: 1px solid var(--rule-light); }
+        .s7-table th { font-family: var(--font-display); font-size: var(--small-size); font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
+        .s7-table .required { color: var(--accent-red); font-weight: 800; }
+    </style>
+    <section class="slide" aria-label="Plan 모드">
+        <div class="slide-content">
+            <div class="red-block red-sm reveal-scale"></div>
+            <h2 class="reveal">Plan 모드 — "코드 작성 전에 계획부터"</h2>
+            <div class="divider reveal reveal-line"></div>
+
+            <p class="reveal"><code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">Shift + Tab</code> 으로 Plan 모드 진입</p>
+
+            <div class="s7-flow reveal">
+                <div class="s7-step active">Plan 모드</div>
+                <div class="s7-arrow">→</div>
+                <div class="s7-step">계획 수립</div>
+                <div class="s7-arrow">→</div>
+                <div class="s7-step">리뷰 / 피드백</div>
+                <div class="s7-arrow">→</div>
+                <div class="s7-step">확정</div>
+                <div class="s7-arrow">→</div>
+                <div class="s7-step active">코드 작성 모드</div>
+                <div class="s7-arrow">→</div>
+                <div class="s7-step">구현</div>
+            </div>
+
+            <table class="s7-table reveal">
+                <thead>
+                    <tr><th>작업 규모</th><th>Plan 모드</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>한 줄 수정, 오타 fix</td><td>불필요</td></tr>
+                    <tr><td>함수 추가, 리팩토링</td><td>권장</td></tr>
+                    <tr><td>새 기능, 아키텍처 변경</td><td class="required">필수</td></tr>
+                </tbody>
+            </table>
+
+            <blockquote class="reveal">코드를 쓰기 전에 방향을 맞추면 재작업이 사라진다.</blockquote>
+        </div>
+        <span class="slide-number">07 / 15</span>
+    </section>
+
+    <!-- =========== SLIDE 8: Skills =========== -->
     <section class="slide" aria-label="Skills">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -885,11 +938,11 @@
 
             <blockquote class="reveal">매번 같은 지시를 반복하지 않아도 된다.</blockquote>
         </div>
-        <span class="slide-number">07 / 14</span>
+        <span class="slide-number">08 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
     </section>
 
-    <!-- =========== SLIDE 8: MCP =========== -->
+    <!-- =========== SLIDE 9: MCP =========== -->
     <section class="slide" aria-label="MCP">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -953,11 +1006,11 @@
                 <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">사용 가능한 MCP 목록 + 연동 방법: <a href="https://smithery.ai/servers" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">https://smithery.ai/servers</a></p>
             </div>
         </div>
-        <span class="slide-number">08 / 14</span>
+        <span class="slide-number">09 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/mcp" target="_blank">code.claude.com/docs/ko/mcp</a></span>
     </section>
 
-    <!-- =========== SLIDE 9: Subagents =========== -->
+    <!-- =========== SLIDE 10: Subagents =========== -->
     <section class="slide" aria-label="Subagents">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1029,11 +1082,11 @@
 
             <blockquote class="reveal">탐색 과정은 Subagent에게, 결과만 내 컨텍스트에.</blockquote>
         </div>
-        <span class="slide-number">09 / 14</span>
+        <span class="slide-number">10 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
-    <!-- =========== SLIDE 10: Agent Teams =========== -->
+    <!-- =========== SLIDE 11: Agent Teams =========== -->
     <section class="slide" aria-label="Agent Teams">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1071,11 +1124,11 @@
 
             <blockquote class="reveal">혼자 다 안 해도 된다. 팀을 꾸려서 시키면 된다.</blockquote>
         </div>
-        <span class="slide-number">10 / 14</span>
+        <span class="slide-number">11 / 15</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
-    <!-- =========== SLIDE 11: 기타 기능 =========== -->
+    <!-- =========== SLIDE 12: 기타 기능 =========== -->
     <section class="slide" aria-label="기타 기능">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1127,10 +1180,10 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">11 / 14</span>
+        <span class="slide-number">12 / 15</span>
     </section>
 
-    <!-- =========== SLIDE 11: 원칙 =========== -->
+    <!-- =========== SLIDE 13: 원칙 =========== -->
     <section class="slide" aria-label="관리 원칙">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1222,10 +1275,10 @@
 
             <blockquote class="reveal">짧고 핵심적으로 쓸수록, AI가 더 정확하게 동작한다.</blockquote>
         </div>
-        <span class="slide-number">12 / 14</span>
+        <span class="slide-number">13 / 15</span>
     </section>
 
-    <!-- =========== SLIDE 12: 데모 =========== -->
+    <!-- =========== SLIDE 14: 데모 =========== -->
     <section class="slide centered" aria-label="데모">
         <div class="slide-content">
             <div class="red-block reveal-scale"></div>
@@ -1246,15 +1299,15 @@
         </div>
         <div class="geo geo-circle" style="left: clamp(2rem, 5vw, 5rem); bottom: clamp(2rem, 5vw, 5rem);"></div>
         <div class="geo geo-square" style="right: clamp(5rem, 10vw, 10rem); top: clamp(3rem, 6vw, 6rem);"></div>
-        <span class="slide-number">13 / 14</span>
+        <span class="slide-number">14 / 15</span>
     </section>
 
-    <!-- =========== SLIDE 14: 클로징 =========== -->
+    <!-- =========== SLIDE 15: 클로징 =========== -->
     <section class="slide centered" aria-label="클로징">
         <div class="slide-content" style="display: flex; align-items: center; justify-content: center; min-height: 60vh;">
             <h1 class="reveal" style="font-size: clamp(3rem, 8vw, 7rem); text-align: center;">무엇을 하고 싶은가<span style="color: var(--accent-red);">?</span></h1>
         </div>
-        <span class="slide-number">14 / 14</span>
+        <span class="slide-number">15 / 15</span>
     </section>
 
     <script>
