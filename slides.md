@@ -298,28 +298,84 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 15: 기타 기능 & 자주 사용하는 명령어 (약 1분 30초)
+## Slide 15: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
 
-**Hooks** — 이벤트가 발생하면 자동 실행
+**Hooks** — 특정 이벤트가 발생할 때 실행할 동작을 정의
 
-| 트리거 | 동작 | 효과 |
-|---|---|---|
-| 파일 수정 후 | `prettier --write` 자동 실행 | 포맷팅 신경 안 써도 됨 |
-| .env 파일 수정 시도 | **수정 차단** + 경고 메시지 | 보호 파일 실수 방지 |
-| .java 파일 수정 후 | `gradlew compileJava` 자동 실행 | 컴파일 에러 즉시 감지 |
+**주요 이벤트:**
 
-**/loop** — 세션 안에서 프롬프트 반복 실행
+| 이벤트 | 시점 |
+|--------|------|
+| **PreToolUse** | 도구 실행 전 |
+| **PostToolUse** | 도구 실행 후 |
+| **Stop** | Claude 응답 완료 시 |
+| **SessionStart / End** | 세션 시작 / 종료 시 |
+| **UserPromptSubmit** | 사용자 입력 시 |
 
-**Plugins** — 위 기능들을 하나로 묶어 배포
-- Skills + Hooks + MCP를 한 묶음으로 패키징
-- Git repo로 공유 → 팀 전체가 같은 환경
-- `claude --plugin-dir ./my-plugin` 또는 `/plugin install`로 설치
+**생성 방법:** 프롬프트로 요청하거나 `settings.json`에 직접 작성
+```
+› 작업 완료되면 알림보내는 훅 만들어줘
+```
 
-> 반복 작업은 사람이 아니라 시스템이 한다.
+**실제 사용 예시 — 응답 완료 시 알림:**
+```json
+{
+  "hooks": {
+    "Stop": [{
+      "hooks": [{
+        "type": "command",
+        "command": "osascript -e '...알림...'"
+      }]
+    }]
+  }
+}
+```
 
 ---
 
-## Slide 16: 컨텍스트 관리 원칙 (약 2분)
+## Slide 16: Plugins — 구조와 파일 예시 (약 1분)
+
+Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지
+
+**구조:**
+```
+my-plugin/
+├── .claude-plugin/
+│   └── plugin.json      ← 매니페스트 (필수)
+├── skills/              ← 스킬들
+├── agents/              ← 에이전트들
+├── hooks/               ← 훅 설정
+└── settings.json        ← 기본 설정
+```
+
+**plugin.json 예시:**
+```json
+{
+  "name": "my-plugin",
+  "description": "팀 공통 개발 도구",
+  "version": "1.0.0",
+  "author": { "name": "Your Name" }
+}
+```
+
+---
+
+## Slide 17: Plugins — 테스트와 배포 (약 1분)
+
+**로컬 테스트:**
+```bash
+claude --plugin-dir ./my-plugin
+```
+
+**배포:**
+- Git repo에 올린 후 `/plugin install`로 설치
+- 또는 마켓플레이스에 등록하여 팀 전체 배포
+
+> 팀 전체가 같은 환경에서 작업할 수 있다.
+
+---
+
+## Slide 18: 컨텍스트 관리 원칙 (약 2분)
 
 1. **CLAUDE.md는 200줄 이하** → 핵심 규칙만 (빌드 명령, 코딩 컨벤션)
 2. **SKILL.md는 500줄 이하** → 필요할 때만 로드되게
@@ -334,7 +390,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 17: 데모 — 지라 티켓 하나로 PR까지 (약 5분)
+## Slide 19: 데모 — 지라 티켓 하나로 PR까지 (약 5분)
 
 **실제 워크플로우 시연**
 
@@ -348,7 +404,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 18: 무엇을 하고 싶은가? (약 2분)
+## Slide 20: 무엇을 하고 싶은가? (약 2분)
 
 > 무엇을 하고 싶은가?
 
