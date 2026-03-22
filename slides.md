@@ -2,7 +2,7 @@
 
 ---
 
-## Slide 1: Claude란?
+## Slide 1: Claude란? (약 1분 30초)
 
 **모델 종류**
 
@@ -25,7 +25,7 @@
 
 ---
 
-## Slide 2: Claude, 어디서 쓸 수 있나?
+## Slide 2: Claude를 만나는 방법 (약 1분)
 
 | | 웹 Claude | Claude Desktop | **Claude Code** |
 |---|---|---|---|
@@ -37,7 +37,7 @@
 
 ---
 
-## Slide 3: 알아두면 좋은 기본 개념
+## Slide 3: 알아두면 좋은 기본 개념 (약 2분)
 
 **토큰 (Token)**
 - AI가 읽고 쓰는 단위
@@ -53,7 +53,7 @@
 
 ---
 
-## Slide 4: 왜 불필요한 정보가 성능을 떨어뜨리는가?
+## Slide 4: 왜 불필요한 정보가 성능을 떨어뜨리는가? (약 1분 30초)
 
 1. 컨텍스트에 정보가 많으면 AI가 **뭐가 중요한지 판단하기 어려워짐**
 2. 필요한 정보가 불필요한 정보에 **묻혀서 놓침**
@@ -64,7 +64,7 @@
 
 ---
 
-## Slide 5: Claude Code의 핵심 기능들
+## Slide 5: Claude Code의 핵심 기능들 (약 1분 30초)
 
 | 기능 | 한마디 정의 |
 |---|---|
@@ -96,7 +96,7 @@
 
 ---
 
-## Slide 6: CLAUDE.md — Claude가 자동으로 읽는 기본 지침서
+## Slide 6: CLAUDE.md — Claude가 자동으로 읽는 기본 지침서 (약 1분 30초)
 
 간단한 기본 내용만 들어있고, **200줄을 넘기지 말라고 권고**
 
@@ -132,7 +132,7 @@ qa-workspace/
 
 ---
 
-## Slide 7: Skills — "자주 하는 일을 명령어로"
+## Slide 7: Skills — "자주 하는 일을 명령어로" (약 1분 30초)
 
 반복되는 워크플로우를 `/명령어`로 등록
 
@@ -163,7 +163,7 @@ qa-workspace/
 
 ---
 
-## Slide 8: MCP — Claude에 외부 프로그램을 연결해주는 도구
+## Slide 8: MCP — Claude에 외부 프로그램을 연결해주는 도구 (약 1분 30초)
 
 **연결 구조:**
 Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
@@ -181,7 +181,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 ---
 
-## Slide 9: Subagents & Agent Teams
+## Slide 9: Subagents (약 2분)
 
 **Subagents** — 부하 직원에게 일 시키기
 
@@ -230,6 +230,8 @@ Confluence에서 문서를 검색하고
 [병렬] 보안 + 성능 + 테스트 = 총 2분
 ```
 
+## Slide 10: Agent Teams (약 1분)
+
 **Agent Teams** — 여러 Claude가 동시에 협업
 
 ```
@@ -244,7 +246,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 10: Hooks & Plugins
+## Slide 11: 기타 기능 & 자주 사용하는 명령어 (약 1분)
 
 **Hooks** — 이벤트가 발생하면 자동 실행
 
@@ -265,7 +267,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 11: 컨텍스트 관리 원칙
+## Slide 12: 컨텍스트 관리 원칙 (약 1분 30초)
 
 1. **CLAUDE.md는 200줄 이하** → 핵심 규칙만 (빌드 명령, 코딩 컨벤션)
 2. **SKILL.md는 500줄 이하** → 필요할 때만 로드되게
@@ -280,7 +282,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 12: 데모 — 지라 티켓 하나로 PR까지
+## Slide 13: 데모 — 지라 티켓 하나로 PR까지 (약 5분)
 
 **실제 워크플로우 시연**
 
@@ -294,7 +296,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 13: 무엇을 하고 싶은가?
+## Slide 14: 무엇을 하고 싶은가? (약 1분 30초)
 
 > 무엇을 하고 싶은가?
 
