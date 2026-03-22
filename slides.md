@@ -109,21 +109,18 @@
 
 ## Slide 6: CLAUDE.md — Claude가 자동으로 읽는 기본 지침서 (약 2분)
 
-직접 장성하거나 간단하게 `/init` 명령어로 생성가능. 기본 내용만 들어있고, **200줄을 넘기지 말라고 권고**
+직접 작성하거나 `/init` 명령어로 생성. **200줄을 넘기지 말라고 권고**
 
-**예시:**
-```
-wehago/
-├── src/
-├── build.gradle
-└── CLAUDE.md     ← 여기에 위치
-```
+**상세 지침은 rules로 분리하고, CLAUDE.md에는 핵심 + 참조만:**
 ```
 # CLAUDE.md
 - ./gradlew test — 전체 테스트
 - DTO: {동사}{도메인}Request 형식
 - System.out.println 금지
+- 코드 스타일 @.claude/rules/code-style.md
+- 테스트 규칙 @.claude/rules/testing.md
 ```
+
 > 한번 적어두면, 매번 말 안 해도 Claude가 알아서 따른다.
 
 ---

@@ -750,42 +750,64 @@
     </section>
 
     <!-- =========== SLIDE 6: CLAUDE.md =========== -->
+    <style>
+        .s6-layout { display: flex; gap: clamp(1rem, 2vw, 1.5rem); align-items: flex-start; margin-top: var(--content-gap); }
+        .s6-tree { flex: 0 0 auto; min-width: clamp(180px, 22vw, 280px); display: flex; flex-direction: column; }
+        .s6-tree-block {
+            font-family: 'Courier New', monospace; font-size: clamp(0.6rem, 0.95vw, 0.8rem);
+            line-height: 2; padding: clamp(0.8rem, 1.5vw, 1.2rem);
+            background: #2a2a2a; color: #ccc; flex: 1;
+        }
+        .s6-tree-block .s6-highlight { color: var(--accent-red); font-weight: 700; }
+        .s6-tree-block .s6-rule { color: #8bc34a; }
+        .s6-tree-block .s6-dim { color: #666; }
+        .s6-detail { flex: 1; display: flex; flex-direction: column; }
+        .s6-detail .code-block { flex: 1; }
+        @media (max-width: 700px) {
+            .s6-layout { flex-direction: column; }
+        }
+    </style>
     <section class="slide" aria-label="CLAUDE.md">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
             <h2 class="reveal">CLAUDE.md — Claude가 자동으로 읽는 기본 지침서</h2>
             <div class="divider reveal reveal-line"></div>
-            <p class="reveal">간단한 기본 내용만 들어있고, <strong>200줄을 넘기지 말라고 권고</strong></p>
+            <p class="reveal">직접 작성하거나 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">/init</code> 으로 생성. <strong>상세 지침은 rules로 분리하고, CLAUDE.md에는 핵심 + 참조만</strong></p>
 
-            <div class="two-col reveal" style="margin-top: var(--content-gap);">
-                <div>
-                    <h3 style="margin-bottom: var(--element-gap); font-size: clamp(1.1rem, 2.2vw, 1.5rem);">개발팀 <span style="color: var(--accent-red);">예시</span></h3>
-                    <div class="code-block" style="font-size: clamp(0.6rem, 1vw, 0.85rem); line-height: 1.9; padding: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem); background: #2a2a2a;">
+            <div class="s6-layout reveal">
+                <!-- 왼쪽: 폴더 트리 (축소) -->
+                <div class="s6-tree">
+                    <div class="s6-tree-block">
                         wehago/<br>
-                        ├── src/<br>
-                        ├── build.gradle<br>
-                        └── <span class="val">CLAUDE.md</span> ← 여기에 위치
-                    </div>
-                    <div class="code-block" style="font-size: clamp(0.6rem, 1vw, 0.85rem); line-height: 1.9; padding: clamp(0.8rem, 1.5vw, 1.2rem);">
-                        <span class="cm"># CLAUDE.md</span><br>
-                        - ./gradlew test — 전체 테스트<br>
-                        - DTO: {동사}{도메인}Request 형식<br>
-                        - System.out.println 금지
+                        ├── ...<br>
+                        ├── <span class="s6-dim">.claude/</span><br>
+                        │&nbsp;&nbsp; └── <span class="s6-dim">rules/</span><br>
+                        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── <span class="s6-rule">code-style.md</span><br>
+                        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── <span class="s6-rule">testing.md</span><br>
+                        │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── <span class="s6-rule">frontend.md</span><br>
+                        └── <span class="s6-highlight">CLAUDE.md</span>
                     </div>
                 </div>
-                <div>
-                    <h3 style="margin-bottom: var(--element-gap); font-size: clamp(1.1rem, 2.2vw, 1.5rem);">QA팀 <span style="color: var(--accent-red);">예시</span></h3>
-                    <div class="code-block" style="font-size: clamp(0.6rem, 1vw, 0.85rem); line-height: 1.9; padding: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem); background: #2a2a2a;">
-                        qa-workspace/<br>
-                        ├── 테스트케이스/<br>
-                        ├── 버그리포트/<br>
-                        └── <span class="val">CLAUDE.md</span> ← 여기에 위치
-                    </div>
-                    <div class="code-block" style="font-size: clamp(0.6rem, 1vw, 0.85rem); line-height: 1.9; padding: clamp(0.8rem, 1.5vw, 1.2rem);">
-                        <span class="cm"># CLAUDE.md</span><br>
-                        - TC 작성 시 정상/비정상/경계값 필수<br>
-                        - 버그 리포트는 재현 절차 필수<br>
-                        - 우선순위: P1 / P2 / P3
+
+                <!-- 오른쪽: CLAUDE.md 실제 내용 -->
+                <div class="s6-detail">
+                    <div class="code-block" style="font-size: clamp(0.6rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem);">
+                        <span class="cm"># 프로젝트 개요</span><br>
+                        Spring Boot 기반 위하고 플랫폼. Java 17, Gradle 빌드.<br>
+                        <br>
+                        <span class="cm"># 빌드 & 테스트</span><br>
+                        - `./gradlew build` — 전체 빌드<br>
+                        - `./gradlew test` — 전체 테스트<br>
+                        <br>
+                        <span class="cm"># 핵심 규칙</span><br>
+                        - DTO 네이밍: {동사}{도메인}Request/Response<br>
+                        - System.out.println 사용 금지 → Logger 사용<br>
+                        - 한국어로 응답<br>
+                        <br>
+                        <span class="cm"># 세부 규칙</span><br>
+                        - 코드 스타일 <span class="val">@.claude/rules/code-style.md</span><br>
+                        - 테스트 작성 <span class="val">@.claude/rules/testing.md</span><br>
+                        - 프론트엔드 <span class="val">@.claude/rules/frontend.md</span>
                     </div>
                 </div>
             </div>
