@@ -210,11 +210,11 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 **등록:** `claude mcp add --scope <scope> <서버명> ...`
 
-| scope | 범위 |
-|-------|------|
-| **local** (기본) | 이 프로젝트, 나만 |
-| **project** | 이 프로젝트, 팀 공유 |
-| **user** | 모든 프로젝트 |
+| scope | 범위 | 저장 위치 |
+|-------|------|----------|
+| **local** (기본) | 이 프로젝트, 나만 | `~/.claude.json` (프로젝트별) |
+| **project** | 이 프로젝트, 팀 공유 | `.mcp.json` |
+| **user** | 모든 프로젝트, 나만 | `~/.claude.json` |
 
 **사용 가능한 MCP 목록 + 연동 방법:** https://smithery.ai/servers
 
