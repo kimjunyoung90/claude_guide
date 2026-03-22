@@ -525,7 +525,7 @@
             <blockquote class="reveal" style="margin-top: var(--content-gap);">코딩만이 아니라, 모든 업무에 활용 가능</blockquote>
         </div>
         <div class="geo geo-circle" style="right: clamp(3rem, 8vw, 8rem); top: 50%; transform: translateY(-50%);"></div>
-        <span class="slide-number">01 / 15</span>
+        <span class="slide-number">01 / 16</span>
         <span class="doc-link"><a href="https://docs.anthropic.com/ko/docs/about-claude/models/overview" target="_blank">docs.anthropic.com/ko/docs/about-claude/models</a></span>
     </section>
 
@@ -563,7 +563,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">02 / 15</span>
+        <span class="slide-number">02 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/overview" target="_blank">code.claude.com/docs/ko/overview</a></span>
     </section>
 
@@ -637,7 +637,7 @@
 
             <blockquote class="reveal">불필요한 정보가 컨텍스트를 차지할수록, AI 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">03 / 15</span>
+        <span class="slide-number">03 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/how-claude-code-works" target="_blank">code.claude.com/docs/ko/how-claude-code-works</a></span>
     </section>
 
@@ -701,7 +701,7 @@
 
             <blockquote class="reveal" style="text-align: center;">컨텍스트가 길어질수록, 핵심 정보가 중간에 묻혀 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">04 / 15</span>
+        <span class="slide-number">04 / 16</span>
     </section>
 
 
@@ -745,7 +745,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">05 / 15</span>
+        <span class="slide-number">05 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/features-overview" target="_blank">code.claude.com/docs/ko/features-overview</a></span>
     </section>
 
@@ -814,7 +814,7 @@
 
             <blockquote class="reveal">한번 적어두면, 매번 말 안 해도 알아서 따른다.</blockquote>
         </div>
-        <span class="slide-number">06 / 15</span>
+        <span class="slide-number">06 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
     </section>
 
@@ -891,54 +891,85 @@
             </div>
 
         </div>
-        <span class="slide-number">07 / 15</span>
+        <span class="slide-number">07 / 16</span>
     </section>
 
-    <!-- =========== SLIDE 8: Skills =========== -->
-    <section class="slide" aria-label="Skills">
+    <!-- =========== SLIDE 8: Skills 구조와 파일 예시 =========== -->
+    <section class="slide" aria-label="Skills 구조">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">Skills — "자주 하는 일을 명령어로"</h2>
+            <h2 class="reveal">Skills — 구조와 파일 예시</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <p class="reveal">SKILL.md는 <strong>500줄을 넘기지 말라고 권고</strong>, 넘으면 별도 파일로 분리</p>
+            <p class="reveal">반복되는 워크플로우를 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px;">/명령어</code>로 등록</p>
 
-            <div class="two-col reveal" style="margin-top: var(--element-gap);">
-                <!-- 왼쪽: 폴더 구조 + SKILL.md 예시 (탭) -->
+            <div class="two-col reveal" style="margin-top: var(--content-gap);">
+                <!-- 왼쪽: 폴더 구조 -->
                 <div>
-                    <h3 style="margin-bottom: var(--element-gap);">Skill 폴더 구조</h3>
-                    <div class="code-block" style="font-size: clamp(0.58rem, 0.95vw, 0.82rem); line-height: 1.8; padding: clamp(0.8rem, 1.5vw, 1.2rem); margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);">
+                    <h3 style="margin-bottom: var(--element-gap);">구조</h3>
+                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem);">
                         .claude/skills/<br>
                         └── weekly-report/<br>
-                        &nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 메인 지침 (필수, 500줄 이하)</span><br>
-                        &nbsp;&nbsp;&nbsp; ├── reference.md <span class="cm">← 상세 내용 (넘으면 분리)</span><br>
-                        &nbsp;&nbsp;&nbsp; ├── examples/ <span class="cm">← 예시 (선택)</span><br>
-                        &nbsp;&nbsp;&nbsp; └── scripts/ <span class="cm">← 실행 스크립트 (선택)</span><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── helper.py
-                    </div>
-
-                    <h3 style="margin-top: var(--content-gap); margin-bottom: var(--element-gap);">SKILL.md 예시</h3>
-                    <div class="code-block" style="font-size: clamp(0.58rem, 0.95vw, 0.82rem); line-height: 1.8; padding: clamp(0.8rem, 1.5vw, 1.2rem); border-left: 3px solid var(--accent-red);">
-                        <span class="cm">---</span><br>
-                        <span class="cm">name:</span> weekly-report<br>
-                        <span class="cm">description:</span> <span class="val">이번 주 업무 보고서를 작성합니다. 주간 보고, 업무 정리, 이번 주 한 일 요약이 필요할 때 사용하세요.</span><br>
-                        <span class="cm">---</span><br><br>
-                        금주 처리 티켓 확인<br>
-                        주간 보고서 초안 생성
+                        &nbsp;&nbsp;&nbsp; ├── <span class="val">SKILL.md</span> <span class="cm">← 필수</span><br>
+                        &nbsp;&nbsp;&nbsp; ├── reference.md <span class="cm">← 선택</span><br>
+                        &nbsp;&nbsp;&nbsp; └── examples/ <span class="cm">← 선택</span>
                     </div>
                 </div>
 
-                <!-- 오른쪽: 호출 방식 (터미널 UI) -->
+                <!-- 오른쪽: SKILL.md 파일 예시 -->
                 <div>
-                    <h3 style="margin-bottom: var(--element-gap);">호출 방식</h3>
+                    <h3 style="margin-bottom: var(--element-gap);">SKILL.md 파일 예시</h3>
+                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem); border-left: 3px solid var(--accent-red);">
+                        <span class="cm">---</span><br>
+                        <span class="cm">name:</span> weekly-report <span class="cm">← /명령어</span><br>
+                        <span class="cm">description:</span> <span class="val">주간 보고서를 작성합니다</span><br>
+                        <span class="cm">---</span><br>
+                        <br>
+                        <span class="cm"># 지침</span><br>
+                        1. 금주 처리 티켓 확인<br>
+                        2. 주간 보고서 초안 생성
+                    </div>
+                </div>
+            </div>
 
-                    <!-- 직접 호출 -->
+            <blockquote class="reveal"><strong>name</strong> → 슬래시 명령어 &nbsp;|&nbsp; <strong>description</strong> → 자동 호출 판단 기준 &nbsp;|&nbsp; <strong>본문</strong> → Claude가 따를 지침</blockquote>
+        </div>
+        <span class="slide-number">08 / 16</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
+    </section>
+
+    <!-- =========== SLIDE 9: Skills 생성과 호출 =========== -->
+    <section class="slide" aria-label="Skills 생성과 호출">
+        <div class="slide-content">
+            <div class="red-block red-sm reveal-scale"></div>
+            <h2 class="reveal">Skills — 생성 방법과 호출 방법</h2>
+            <div class="divider reveal reveal-line"></div>
+
+            <div class="two-col reveal" style="margin-top: var(--content-gap);">
+                <!-- 왼쪽: 생성 방법 -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">생성 방법</h3>
+                    <div class="checklist" style="max-width: min(85vw, 400px);">
+                        <div class="check-item">
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">1</div>
+                            <div class="check-text"><strong>.claude/skills/{이름}/ 디렉토리 생성</strong></div>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-box" style="font-size: clamp(12px, 1.5vw, 18px);">2</div>
+                            <div class="check-text"><strong>SKILL.md 작성</strong><span>name + description + 지침</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오른쪽: 호출 방법 (터미널 UI) -->
+                <div>
+                    <h3 style="margin-bottom: var(--element-gap);">호출 방법</h3>
+
                     <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">직접 호출</p>
                     <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.8vw, 1.4rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0; margin-bottom: clamp(0.6rem, 1.2vw, 1rem);">
                         <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">/weekly-report</span><span style="display: inline-block; width: clamp(8px, 0.8vw, 10px); height: clamp(14px, 1.8vw, 20px); background: #fff; margin-left: 3px; vertical-align: text-bottom; position: relative; top: clamp(2px, 0.3vw, 4px); animation: blink 1s step-end infinite;"></span>
                     </div>
 
-                    <!-- 자동 호출 -->
                     <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">자동 호출 (description 매칭)</p>
                     <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.8rem, 1.8vw, 1.4rem); font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2; color: #e0e0e0;">
                         <span style="color: #888;">›</span> <span style="color: #fff; font-weight: 700;">이번 주 보고서 만들어줘.</span><br>
@@ -946,26 +977,16 @@
                         <span style="color: #4ade80;">●</span> <strong style="color: #4ade80;">Skill</strong>(weekly-report)<br>
                         <span style="color: #888;">&nbsp;&nbsp;└ Successfully loaded skill</span>
                     </div>
-
-                    <div style="margin-top: var(--content-gap); padding: clamp(0.5rem, 1vw, 0.8rem); border: 1px solid var(--rule-light); background: var(--bg-off);">
-                        <p style="font-size: clamp(0.58rem, 0.9vw, 0.75rem); color: var(--text-secondary);">
-                            <strong style="color: var(--accent-red);">핵심:</strong> Claude는 <strong>description</strong> 필드를 보고 자동 호출 여부를 판단합니다.
-                        </p>
-                    </div>
                 </div>
-            </div>
-
-            <div class="reveal" style="margin-top: var(--element-gap);">
-                <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">무료 Skill 목록: <a href="https://skills.sh/hot" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">https://skills.sh/hot</a></p>
             </div>
 
             <blockquote class="reveal">매번 같은 지시를 반복하지 않아도 된다.</blockquote>
         </div>
-        <span class="slide-number">08 / 15</span>
-        <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
+        <span class="slide-number">09 / 16</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/ko/slash-commands" target="_blank">code.claude.com/docs/ko/slash-commands</a></span>
     </section>
 
-    <!-- =========== SLIDE 9: MCP =========== -->
+    <!-- =========== SLIDE 10: MCP =========== -->
     <section class="slide" aria-label="MCP">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1029,11 +1050,11 @@
                 <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">사용 가능한 MCP 목록 + 연동 방법: <a href="https://smithery.ai/servers" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">https://smithery.ai/servers</a></p>
             </div>
         </div>
-        <span class="slide-number">09 / 15</span>
+        <span class="slide-number">10 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/mcp" target="_blank">code.claude.com/docs/ko/mcp</a></span>
     </section>
 
-    <!-- =========== SLIDE 10: Subagents =========== -->
+    <!-- =========== SLIDE 11: Subagents =========== -->
     <section class="slide" aria-label="Subagents">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1105,11 +1126,11 @@
 
             <blockquote class="reveal">탐색 과정은 Subagent에게, 결과만 내 컨텍스트에.</blockquote>
         </div>
-        <span class="slide-number">10 / 15</span>
+        <span class="slide-number">11 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
-    <!-- =========== SLIDE 11: Agent Teams =========== -->
+    <!-- =========== SLIDE 12: Agent Teams =========== -->
     <section class="slide" aria-label="Agent Teams">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1147,11 +1168,11 @@
 
             <blockquote class="reveal">혼자 다 안 해도 된다. 팀을 꾸려서 시키면 된다.</blockquote>
         </div>
-        <span class="slide-number">11 / 15</span>
+        <span class="slide-number">12 / 16</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
-    <!-- =========== SLIDE 12: 기타 기능 =========== -->
+    <!-- =========== SLIDE 13: 기타 기능 =========== -->
     <section class="slide" aria-label="기타 기능">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1203,10 +1224,10 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">12 / 15</span>
+        <span class="slide-number">13 / 16</span>
     </section>
 
-    <!-- =========== SLIDE 13: 원칙 =========== -->
+    <!-- =========== SLIDE 14: 원칙 =========== -->
     <section class="slide" aria-label="관리 원칙">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1298,10 +1319,10 @@
 
             <blockquote class="reveal">짧고 핵심적으로 쓸수록, AI가 더 정확하게 동작한다.</blockquote>
         </div>
-        <span class="slide-number">13 / 15</span>
+        <span class="slide-number">14 / 16</span>
     </section>
 
-    <!-- =========== SLIDE 14: 데모 =========== -->
+    <!-- =========== SLIDE 15: 데모 =========== -->
     <section class="slide centered" aria-label="데모">
         <div class="slide-content">
             <div class="red-block reveal-scale"></div>
@@ -1322,15 +1343,15 @@
         </div>
         <div class="geo geo-circle" style="left: clamp(2rem, 5vw, 5rem); bottom: clamp(2rem, 5vw, 5rem);"></div>
         <div class="geo geo-square" style="right: clamp(5rem, 10vw, 10rem); top: clamp(3rem, 6vw, 6rem);"></div>
-        <span class="slide-number">14 / 15</span>
+        <span class="slide-number">15 / 16</span>
     </section>
 
-    <!-- =========== SLIDE 15: 클로징 =========== -->
+    <!-- =========== SLIDE 16: 클로징 =========== -->
     <section class="slide centered" aria-label="클로징">
         <div class="slide-content" style="display: flex; align-items: center; justify-content: center; min-height: 60vh;">
             <h1 class="reveal" style="font-size: clamp(3rem, 8vw, 7rem); text-align: center;">무엇을 하고 싶은가<span style="color: var(--accent-red);">?</span></h1>
         </div>
-        <span class="slide-number">15 / 15</span>
+        <span class="slide-number">16 / 16</span>
     </section>
 
     <script>

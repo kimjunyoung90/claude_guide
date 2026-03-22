@@ -152,38 +152,56 @@
 
 ---
 
-## Slide 8: Skills — "자주 하는 일을 명령어로" (약 2분)
+## Slide 8: Skills — 구조와 파일 예시 (약 1분)
 
 반복되는 워크플로우를 `/명령어`로 등록
 
-**SKILL.md는 500줄을 넘기지 말라고 권고**, 넘으면 별도 파일로 분리
-
-**폴더 구조:**
+**구조:**
 ```
 .claude/skills/
 └── weekly-report/
-    ├── SKILL.md        ← 메인 지침 (필수, 500줄 이하)
-    ├── reference.md    ← 상세 내용 (넘으면 분리)
-    ├── examples/       ← 예시 (선택)
-    └── scripts/        ← 실행 스크립트 (선택)
-        └── helper.py
+    ├── SKILL.md        ← 메인 지침 (필수)
+    ├── reference.md    ← 상세 내용 (선택)
+    └── examples/       ← 예시 (선택)
 ```
 
-**호출 방식:**
+**SKILL.md 파일 예시:**
+```markdown
+---
+name: weekly-report
+description: 주간 보고서를 작성합니다
+---
+
+1. 금주 처리 티켓 확인
+2. 주간 보고서 초안 생성
+```
+
+- `name` → 슬래시 명령어가 됨 (`/weekly-report`)
+- `description` → Claude가 자동 호출 판단 기준
+- 본문 → Claude가 따를 지침
+
+---
+
+## Slide 9: Skills — 생성 방법과 호출 방법 (약 1분)
+
+**생성 방법:**
+1. `.claude/skills/{스킬이름}/` 디렉토리 생성
+2. `SKILL.md` 작성 (name + description + 지침)
+
+**호출 방법:**
 - 직접 호출: `/weekly-report`
-- 자동 호출: Claude가 **description** 필드를 보고 자동으로 매칭하여 호출
+- 자동 호출: "이번 주 보고서 만들어줘" → Claude가 description 보고 자동 매칭
 
 **예시:**
 - `/code-review` → git diff 기반 코드 리뷰
 - `/commit` → 커밋 메시지 자동 생성
-- `/tc-generator` → 기능 명세서에서 테스트 케이스 도출
-- `/weekly-report` → 주간 보고서 초안 생성
+- `/tc-generator` → 테스트 케이스 도출
 
 > "매번 같은 지시를 반복하지 않아도 된다"
 
 ---
 
-## Slide 9: MCP — Claude에 외부 프로그램을 연결해주는 도구 (약 2분)
+## Slide 10: MCP — Claude에 외부 프로그램을 연결해주는 도구 (약 2분)
 
 **연결 구조:**
 Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
@@ -201,7 +219,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 ---
 
-## Slide 10: Subagents (약 2분 30초)
+## Slide 11: Subagents (약 2분 30초)
 
 **Subagents** — 부하 직원에게 일 시키기
 
@@ -250,7 +268,7 @@ Confluence에서 문서를 검색하고
 [병렬] 보안 + 성능 + 테스트 = 총 2분
 ```
 
-## Slide 11: Agent Teams (약 1분 30초)
+## Slide 12: Agent Teams (약 1분 30초)
 
 **Agent Teams** — 여러 Claude가 동시에 협업
 
@@ -266,7 +284,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 12: 기타 기능 & 자주 사용하는 명령어 (약 1분 30초)
+## Slide 13: 기타 기능 & 자주 사용하는 명령어 (약 1분 30초)
 
 **Hooks** — 이벤트가 발생하면 자동 실행
 
@@ -287,7 +305,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 13: 컨텍스트 관리 원칙 (약 2분)
+## Slide 14: 컨텍스트 관리 원칙 (약 2분)
 
 1. **CLAUDE.md는 200줄 이하** → 핵심 규칙만 (빌드 명령, 코딩 컨벤션)
 2. **SKILL.md는 500줄 이하** → 필요할 때만 로드되게
@@ -302,7 +320,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 14: 데모 — 지라 티켓 하나로 PR까지 (약 5분)
+## Slide 15: 데모 — 지라 티켓 하나로 PR까지 (약 5분)
 
 **실제 워크플로우 시연**
 
@@ -316,7 +334,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 15: 무엇을 하고 싶은가? (약 2분)
+## Slide 16: 무엇을 하고 싶은가? (약 2분)
 
 > 무엇을 하고 싶은가?
 
