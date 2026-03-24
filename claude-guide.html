@@ -569,21 +569,39 @@
 
     <!-- =========== SLIDE 3: Claude Code 실행 방법 =========== -->
     <section class="slide" aria-label="Claude Code 실행 방법">
-        <div class="slide-content">
-            <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">Claude Code 실행 방법</h2>
-            <div class="divider reveal reveal-line"></div>
+        <div class="slide-content" style="align-items: center;">
+            <h2 class="reveal" style="text-align: center; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">Claude Code 실행 방법</h2>
 
-            <div class="reveal" style="margin-top: var(--content-gap);">
-                <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(1.2rem, 2.5vw, 2rem); font-family: 'Courier New', monospace; font-size: clamp(0.8rem, 1.3vw, 1.1rem); line-height: 2.4; color: #e0e0e0;">
-                    <span style="color: #888;">~/my-project ›</span> <span style="color: #fff; font-weight: 700;">claude</span><br>
-                    <br>
-                    <span style="color: #888;">›</span> <span style="color: #fff;">JIRA-1234 버그 분석하고 수정해줘</span>
+            <div class="reveal" style="width: min(90vw, 820px);">
+                <!-- Mac Terminal Window -->
+                <div class="mac-window" style="border-radius: clamp(8px, 1vw, 12px); overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.15);">
+                    <!-- Title Bar -->
+                    <div style="background: linear-gradient(180deg, #e8e6e8 0%, #d6d4d6 100%); padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px); display: flex; align-items: center; position: relative; border-bottom: 1px solid #b8b6b8;">
+                        <!-- Traffic Lights -->
+                        <div style="display: flex; gap: clamp(6px, 0.6vw, 8px);">
+                            <div style="width: clamp(10px, 1vw, 12px); height: clamp(10px, 1vw, 12px); border-radius: 50%; background: #ff5f57; border: 1px solid #e0443e;"></div>
+                            <div style="width: clamp(10px, 1vw, 12px); height: clamp(10px, 1vw, 12px); border-radius: 50%; background: #febc2e; border: 1px solid #dea123;"></div>
+                            <div style="width: clamp(10px, 1vw, 12px); height: clamp(10px, 1vw, 12px); border-radius: 50%; background: #28c840; border: 1px solid #1aab29;"></div>
+                        </div>
+                        <!-- Title -->
+                        <div style="position: absolute; left: 50%; transform: translateX(-50%); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; font-size: clamp(0.65rem, 0.9vw, 0.8rem); color: #4d4d4d; font-weight: 500;">my-project — zsh — 80×24</div>
+                    </div>
+                    <!-- Terminal Body -->
+                    <div style="background: #1e1e1e; padding: clamp(2rem, 4vw, 3rem) clamp(1.8rem, 3vw, 2.5rem); font-family: 'SF Mono', 'Menlo', 'Courier New', monospace; font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 2.4; color: #e0e0e0; min-height: clamp(220px, 30vh, 340px);">
+                        <span style="color: #78d84e;">❯</span> <span style="color: #888;">~/my-project</span><br>
+                        <span style="color: #78d84e;">$</span> <span style="color: #fff; font-weight: 600;">claude</span><br>
+                        <br>
+                        <span style="color: #c4a0f5;">›</span> <span style="color: #f0f0f0;">JIRA-1234 버그 분석하고 수정해줘</span><span style="display: inline-block; width: 8px; height: 1.1em; background: #f0f0f0; vertical-align: text-bottom; margin-left: 2px; animation: termBlink 1s step-end infinite;"></span>
+                    </div>
                 </div>
             </div>
         </div>
         <span class="slide-number">03 / 21</span>
     </section>
+    <style>
+        @keyframes termBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    </style>
 
     <!-- =========== SLIDE 4: 기본 개념 =========== -->
     <section class="slide" aria-label="알아두면 좋은 기본 개념">
