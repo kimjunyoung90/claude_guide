@@ -1808,47 +1808,92 @@
         <span class="slide-number">22 / 25</span>
     </section>
 
-    <!-- =========== SLIDE 20: Plugins 구조 =========== -->
-    <section class="slide" aria-label="Plugins 구조">
-        <div class="slide-content">
-            <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">Plugins — 구조와 파일 예시</h2>
-            <div class="divider reveal reveal-line"></div>
+    <!-- =========== SLIDE 23: Plugins =========== -->
+    <style>
+        .s11-flow {
+            display: flex; align-items: center; justify-content: center;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            margin-top: clamp(1.5rem, 3vw, 2.5rem);
+            max-width: min(92vw, 900px); width: 100%;
+        }
+        .s11-box {
+            flex: 1; padding: clamp(1.5rem, 2.5vw, 2rem);
+            border: 1px solid var(--rule-light);
+            display: flex; flex-direction: column; align-items: center;
+            gap: clamp(0.8rem, 1.2vw, 1rem);
+        }
+        .s11-label {
+            font-family: var(--font-display); font-size: var(--label-size);
+            font-weight: 800; letter-spacing: 0.08em; color: var(--text-muted);
+        }
+        .s11-items {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: clamp(0.4rem, 0.8vw, 0.6rem);
+        }
+        .s11-item {
+            padding: clamp(0.4rem, 0.7vw, 0.6rem) clamp(0.8rem, 1.2vw, 1rem);
+            border: 1px solid var(--rule-light);
+            font-family: var(--font-ko); font-size: var(--small-size);
+            font-weight: 700; background: rgba(0,0,0,0.02);
+        }
+        .s11-down {
+            font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--text-muted);
+        }
+        .s11-folder {
+            padding: clamp(0.6rem, 1vw, 0.8rem) clamp(1.2rem, 2vw, 1.8rem);
+            background: var(--accent-red); color: white;
+            font-family: var(--font-display); font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+            font-weight: 800;
+        }
+        .s11-arrow {
+            font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 900; color: var(--text-muted);
+        }
+        .s11-step {
+            font-family: var(--font-ko); font-size: var(--body-size);
+            font-weight: 700; text-align: center;
+        }
+        .s11-step code {
+            background: rgba(255,51,0,0.08); padding: 2px 6px;
+            font-family: 'Courier New', monospace;
+        }
+        @media (max-width: 700px) {
+            .s11-flow { flex-direction: column; }
+            .s11-arrow { transform: rotate(90deg); }
+        }
+    </style>
+    <section class="slide" aria-label="Plugins">
+        <div class="slide-content" style="align-items: center; padding: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 6rem);">
+            <h2 class="reveal" style="text-align: center;">Plugins</h2>
+            <p class="reveal" style="text-align: center; color: var(--text-secondary); font-size: var(--small-size); margin-top: var(--element-gap);">Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지</p>
 
-            <p class="reveal">Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지</p>
-
-            <div class="two-col reveal" style="margin-top: var(--content-gap);">
-                <!-- 왼쪽: 구조 -->
-                <div>
-                    <h3 style="margin-bottom: var(--element-gap);">구조</h3>
-                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem);">
-                        my-plugin/<br>
-                        ├── <span class="cm">.claude-plugin/</span><br>
-                        │&nbsp;&nbsp; └── <span class="val">plugin.json</span> <span class="cm">← 매니페스트 (필수)</span><br>
-                        ├── skills/ <span class="cm">← 스킬들</span><br>
-                        ├── agents/ <span class="cm">← 에이전트들</span><br>
-                        ├── hooks/ <span class="cm">← 훅 설정</span><br>
-                        └── <span class="val">settings.json</span> <span class="cm">← 기본 설정</span>
+            <div class="s11-flow reveal">
+                <!-- 왼쪽: 묶기 -->
+                <div class="s11-box">
+                    <div class="s11-label">묶기</div>
+                    <div class="s11-items">
+                        <div class="s11-item">📋 Skills</div>
+                        <div class="s11-item">🔗 MCP</div>
+                        <div class="s11-item">🤖 Agents</div>
+                        <div class="s11-item">⚡ Hooks</div>
                     </div>
+                    <div class="s11-down">↓</div>
+                    <div class="s11-folder">📁 my-plugin/</div>
                 </div>
 
-                <!-- 오른쪽: plugin.json 예시 -->
-                <div>
-                    <h3 style="margin-bottom: var(--element-gap);">plugin.json</h3>
-                    <div class="code-block" style="font-size: clamp(0.62rem, 1vw, 0.85rem); line-height: 2; padding: clamp(1rem, 1.8vw, 1.4rem); border-left: 3px solid var(--accent-red);">
-                        {<br>
-                        &nbsp;&nbsp;<span class="cm">"name"</span>: <span class="val">"my-plugin"</span>,<br>
-                        &nbsp;&nbsp;<span class="cm">"description"</span>: <span class="val">"팀 공통 개발 도구"</span>,<br>
-                        &nbsp;&nbsp;<span class="cm">"version"</span>: <span class="val">"1.0.0"</span>,<br>
-                        &nbsp;&nbsp;<span class="cm">"author"</span>: {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">"name"</span>: <span class="val">"Your Name"</span><br>
-                        &nbsp;&nbsp;}<br>
-                        }
-                    </div>
+                <div class="s11-arrow">→</div>
+
+                <!-- 오른쪽: 공유 -->
+                <div class="s11-box">
+                    <div class="s11-label">공유</div>
+                    <div class="s11-step">📁 my-plugin/</div>
+                    <div class="s11-down">↓</div>
+                    <div class="s11-step">🗂️ Git repo</div>
+                    <div class="s11-down">↓</div>
+                    <div class="s11-step"><code>/plugin install</code></div>
                 </div>
             </div>
 
-            <blockquote class="reveal">배포: Git repo → 마켓플레이스 등록 → <code style="background: rgba(255,51,0,0.08); padding: 1px 4px;">/plugin install</code>로 설치</blockquote>
         </div>
         <span class="slide-number">23 / 25</span>
     </section>

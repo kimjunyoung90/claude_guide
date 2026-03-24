@@ -411,28 +411,11 @@ Confluence에서 문서를 검색하고
 
 Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지
 
-**구조:**
-```
-my-plugin/
-├── .claude-plugin/
-│   └── plugin.json      ← 매니페스트 (필수)
-├── skills/              ← 스킬들
-├── agents/              ← 에이전트들
-├── hooks/               ← 훅 설정
-└── settings.json        ← 기본 설정
-```
+[묶기]
+📋 Skills + 🔗 MCP + 🤖 Agents + ⚡ Hooks → my-plugin/
 
-**plugin.json 예시:**
-```json
-{
-  "name": "my-plugin",
-  "description": "팀 공통 개발 도구",
-  "version": "1.0.0",
-  "author": { "name": "Your Name" }
-}
-```
-
-**배포:** Git repo → 마켓플레이스 등록 → `/plugin install`로 설치
+[공유]
+my-plugin/ → Git repo → /plugin install
 
 ---
 
