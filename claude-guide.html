@@ -2004,49 +2004,67 @@
             font-size: clamp(0.9rem, 1.4vw, 1.2rem); color: var(--text-muted);
             margin-left: clamp(0.1rem, 0.2vw, 0.15rem);
         }
-        /* --- Apple-style folder (right) --- */
+        /* --- macOS-style folder (right) --- */
         .s11-folder-wrap {
             position: relative;
-            width: clamp(120px, 18vw, 200px);
+            width: clamp(90px, 13vw, 150px);
+            aspect-ratio: 1 / 0.82;
             flex-shrink: 0;
         }
-        /* Folder tab */
-        .s11-folder-tab {
-            position: relative; left: clamp(8px, 1.2vw, 14px);
-            width: clamp(48px, 7vw, 76px); height: clamp(14px, 2vw, 22px);
-            background: linear-gradient(180deg, #6CB4EE 0%, #4A9DE0 100%);
-            border-radius: clamp(5px, 0.7vw, 8px) clamp(5px, 0.7vw, 8px) 0 0;
+        /* Back panel (behind, visible as top edge + tab) */
+        .s11-folder-back {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, #4BA3E2 0%, #3A8FD0 100%);
+            border-radius: clamp(4px, 0.6vw, 6px) clamp(4px, 0.6vw, 6px)
+                           clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px);
             z-index: 1;
         }
-        /* Folder body */
-        .s11-folder-body {
-            position: relative;
-            width: 100%;
-            height: clamp(80px, 12vw, 130px);
-            background: linear-gradient(180deg, #5AABEE 0%, #3D8CD4 40%, #2E7BC0 100%);
-            border-radius: 0 clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px);
+        /* Tab — SVG shape for natural curve */
+        .s11-folder-tab-svg {
+            position: absolute; top: 0; left: 0;
+            width: 45%; height: clamp(16px, 2.2vw, 24px);
+            z-index: 3;
+        }
+        /* Front panel (overlaps back, slightly shorter) */
+        .s11-folder-front {
+            position: absolute;
+            left: 0; right: 0;
+            top: clamp(14px, 2vw, 22px);
+            bottom: 0;
+            background: linear-gradient(180deg, #5DB8F0 0%, #4AA2E4 30%, #3B90D4 100%);
+            border-radius: clamp(6px, 0.8vw, 10px) clamp(6px, 0.8vw, 10px)
+                           clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px);
             box-shadow:
-                0 4px 12px rgba(46,123,192,0.2),
-                0 12px 32px rgba(0,0,0,0.1),
-                inset 0 1px 0 rgba(255,255,255,0.2);
+                0 1px 0 rgba(255,255,255,0.25) inset,
+                0 -1px 0 rgba(0,0,0,0.06) inset,
+                0 6px 16px rgba(46,123,192,0.18),
+                0 16px 40px rgba(0,0,0,0.10);
+            z-index: 2;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            gap: clamp(0.2rem, 0.4vw, 0.35rem);
-            z-index: 2;
-            margin-top: -1px;
+            gap: clamp(0.15rem, 0.3vw, 0.25rem);
+        }
+        /* Subtle shine across front */
+        .s11-folder-front::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+            border-radius: clamp(6px, 0.8vw, 10px) clamp(6px, 0.8vw, 10px) 0 0;
+            pointer-events: none;
         }
         .s11-folder-name {
             font-family: var(--font-display); font-weight: 800;
-            font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+            font-size: clamp(0.72rem, 1.15vw, 0.98rem);
             color: rgba(255,255,255,0.95);
             letter-spacing: -0.01em;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
         }
         .s11-folder-sub {
             font-family: var(--font-ko); font-weight: 400;
-            font-size: clamp(0.42rem, 0.6vw, 0.52rem);
-            color: rgba(255,255,255,0.6);
+            font-size: clamp(0.42rem, 0.62vw, 0.54rem);
+            color: rgba(255,255,255,0.55);
         }
-        /* static folder — no animation */
         /* --- Share flow (below folder) --- */
         .s11-share {
             display: flex; align-items: center; justify-content: center;
@@ -2096,10 +2114,14 @@
                     <span class="s11-trail-arrow">›</span>
                 </div>
 
-                <!-- Right: Apple folder -->
+                <!-- Right: macOS folder -->
                 <div class="s11-folder-wrap">
-                    <div class="s11-folder-tab"></div>
-                    <div class="s11-folder-body">
+                    <div class="s11-folder-back"></div>
+                    <svg class="s11-folder-tab-svg" viewBox="0 0 90 24" preserveAspectRatio="none">
+                        <path d="M0,24 L0,6 Q0,0 6,0 L62,0 Q68,0 72,4 L82,16 Q86,22 90,24 Z"
+                              fill="#4BA3E2"/>
+                    </svg>
+                    <div class="s11-folder-front">
                         <div class="s11-folder-name">my-plugin/</div>
                         <div class="s11-folder-sub">Plugin Package</div>
                     </div>
