@@ -525,7 +525,7 @@
             <blockquote class="reveal" style="margin-top: var(--content-gap);">코딩만이 아니라, 모든 업무에 활용 가능</blockquote>
         </div>
         <div class="geo geo-circle" style="right: clamp(3rem, 8vw, 8rem); top: 50%; transform: translateY(-50%);"></div>
-        <span class="slide-number">01 / 23</span>
+        <span class="slide-number">01 / 24</span>
         <span class="doc-link"><a href="https://docs.anthropic.com/ko/docs/about-claude/models/overview" target="_blank">docs.anthropic.com/ko/docs/about-claude/models</a></span>
     </section>
 
@@ -563,7 +563,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">02 / 23</span>
+        <span class="slide-number">02 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/overview" target="_blank">code.claude.com/docs/ko/overview</a></span>
     </section>
 
@@ -596,7 +596,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">03 / 23</span>
+        <span class="slide-number">03 / 24</span>
     </section>
     <style>
         @keyframes termBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -673,7 +673,7 @@
 
             <blockquote class="reveal">불필요한 정보가 컨텍스트를 차지할수록, AI 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">04 / 23</span>
+        <span class="slide-number">04 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/how-claude-code-works" target="_blank">code.claude.com/docs/ko/how-claude-code-works</a></span>
     </section>
 
@@ -737,7 +737,7 @@
 
             <blockquote class="reveal" style="text-align: center;">컨텍스트가 길어질수록, 핵심 정보가 중간에 묻혀 성능이 떨어진다.</blockquote>
         </div>
-        <span class="slide-number">05 / 23</span>
+        <span class="slide-number">05 / 24</span>
     </section>
 
     <!-- =========== SLIDE 6: 컨텍스트 관리 =========== -->
@@ -788,7 +788,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">06 / 23</span>
+        <span class="slide-number">06 / 24</span>
     </section>
 
     <!-- =========== SLIDE 7: 기능 =========== -->
@@ -830,7 +830,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">07 / 23</span>
+        <span class="slide-number">07 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/features-overview" target="_blank">code.claude.com/docs/ko/features-overview</a></span>
     </section>
 
@@ -857,7 +857,7 @@
                 - 커밋 메시지는 conventional commits 형식
             </div>
         </div>
-        <span class="slide-number">08 / 23</span>
+        <span class="slide-number">08 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
     </section>
 
@@ -1016,7 +1016,7 @@
             </div>
 
         </div>
-        <span class="slide-number">09 / 23</span>
+        <span class="slide-number">09 / 24</span>
     </section>
 
     <!-- =========== SLIDE 10: 반복되는 지시 =========== -->
@@ -1082,7 +1082,7 @@
             </div>
 
         </div>
-        <span class="slide-number">10 / 23</span>
+        <span class="slide-number">10 / 24</span>
     </section>
 
     <!-- =========== SLIDE 11: Skills 구조와 파일 예시 =========== -->
@@ -1125,7 +1125,7 @@
             </div>
 
         </div>
-        <span class="slide-number">11 / 23</span>
+        <span class="slide-number">11 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/skills" target="_blank">code.claude.com/docs/ko/skills</a></span>
     </section>
 
@@ -1179,11 +1179,146 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">12 / 23</span>
+        <span class="slide-number">12 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/slash-commands" target="_blank">code.claude.com/docs/ko/slash-commands</a></span>
     </section>
 
-    <!-- =========== SLIDE 12: MCP 등록 =========== -->
+    <!-- =========== SLIDE 13: 외부 프로그램 연동 필요성 =========== -->
+    <style>
+        .s9-bridge {
+            display: flex; align-items: center; justify-content: center;
+            gap: clamp(2rem, 4vw, 4rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
+        }
+        /* Claude 터미널 (연한 스타일) */
+        .s9-terminal {
+            width: clamp(200px, 22vw, 280px);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .s9-term-bar {
+            background: linear-gradient(180deg, #e8e6e8 0%, #d6d4d6 100%);
+            padding: clamp(6px, 0.7vw, 9px) clamp(10px, 1.2vw, 14px);
+            display: flex; align-items: center; gap: clamp(5px, 0.5vw, 7px);
+            border-bottom: 1px solid #b8b6b8;
+        }
+        .s9-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; }
+        .s9-dot-r { background: #ff5f57; border: 1px solid #e0443e; }
+        .s9-dot-y { background: #febc2e; border: 1px solid #dea123; }
+        .s9-dot-g { background: #28c840; border: 1px solid #1aab29; }
+        .s9-term-body {
+            background: #1e1e1e;
+            padding: clamp(1.2rem, 2vw, 1.8rem);
+            font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
+            font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+            color: #e0e0e0; line-height: 1.8;
+            min-height: clamp(80px, 12vh, 120px);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .s9-term-body span { color: #c4a0f5; font-weight: 700; font-size: clamp(1.5rem, 2.5vw, 2rem); }
+
+        /* 가운데: 이모지 + 구름 말풍선 */
+        .s9-center {
+            display: flex; flex-direction: column; align-items: flex-start;
+            position: relative;
+            min-width: clamp(280px, 35vw, 420px);
+            min-height: clamp(200px, 28vw, 300px);
+            justify-content: flex-end;
+        }
+        .s9-emoji { font-size: clamp(3rem, 5vw, 4.5rem); margin-left: clamp(1rem, 2vw, 2rem); }
+        /* 구름 말풍선 — 둥근 뭉게구름 형태 */
+        .s9-cloud {
+            position: absolute;
+            top: 0; left: clamp(30px, 5vw, 60px);
+            background: white;
+            border-radius: 50% / 40%;
+            padding: clamp(1.5rem, 2.5vw, 2.5rem) clamp(2rem, 3vw, 3rem);
+            display: flex; flex-direction: column;
+            gap: clamp(0.4rem, 0.6vw, 0.6rem);
+            min-width: clamp(240px, 28vw, 360px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            z-index: 2;
+        }
+        /* 구름 꼬리 — 작은 원 2개 */
+        .s9-cloud::before {
+            content: ''; position: absolute;
+            bottom: -14px; left: 30px;
+            width: 20px; height: 20px;
+            background: white; border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .s9-cloud::after {
+            content: ''; position: absolute;
+            bottom: -26px; left: 18px;
+            width: 12px; height: 12px;
+            background: white; border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .s9-cloud-line {
+            font-family: var(--font-ko); font-size: clamp(0.7rem, 1vw, 0.88rem);
+            color: #555; font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* 오른쪽: 프로그램 목록 */
+        .s9-tools {
+            display: flex; flex-direction: column;
+            gap: clamp(0.5rem, 1vw, 0.8rem);
+        }
+        .s9-tool {
+            padding: clamp(0.6rem, 1vw, 0.8rem) clamp(1rem, 1.5vw, 1.5rem);
+            border: 1px solid var(--rule-light);
+            font-family: var(--font-ko); font-size: var(--body-size);
+            font-weight: 700;
+        }
+        @media (max-width: 700px) {
+            .s9-bridge { flex-direction: column; gap: clamp(2rem, 4vw, 3rem); }
+            .s9-center { min-width: auto; min-height: auto; align-items: center; }
+            .s9-cloud { position: static; border-radius: 20px; min-width: auto; }
+            .s9-cloud::before, .s9-cloud::after { display: none; }
+        }
+    </style>
+    <section class="slide" aria-label="외부 프로그램 연동">
+        <div class="slide-content" style="align-items: center; padding: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 6rem);">
+            <h2 class="reveal" style="text-align: center;">외부 프로그램도 AI로 다루고 싶다면?</h2>
+
+            <div class="s9-bridge reveal">
+                <!-- 왼쪽: Claude 터미널 -->
+                <div class="s9-terminal">
+                    <div class="s9-term-bar">
+                        <div class="s9-dot s9-dot-r"></div>
+                        <div class="s9-dot s9-dot-y"></div>
+                        <div class="s9-dot s9-dot-g"></div>
+                    </div>
+                    <div class="s9-term-body">
+                        <span>Claude</span>
+                    </div>
+                </div>
+
+                <!-- 가운데: 생각 이모지 + 구름 말풍선 -->
+                <div class="s9-center">
+                    <div class="s9-cloud">
+                        <div class="s9-cloud-line">지라에서 티켓 목록 조회하고 싶은데...</div>
+                        <div class="s9-cloud-line">Wiki에서 결제 서비스 문서 확인하고 싶은데...</div>
+                        <div class="s9-cloud-line">DB에서 데이터 조회하고 싶은데...</div>
+                    </div>
+                    <div class="s9-emoji">🤔</div>
+                </div>
+
+                <!-- 오른쪽: 프로그램 목록 -->
+                <div class="s9-tools">
+                    <div class="s9-tool">🎫 Jira</div>
+                    <div class="s9-tool">📖 Wiki</div>
+                    <div class="s9-tool">🗄️ DB</div>
+                </div>
+            </div>
+
+        </div>
+        <span class="slide-number">13 / 24</span>
+    </section>
+
+    <!-- =========== SLIDE 14: MCP 등록 =========== -->
     <section class="slide" aria-label="MCP">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -1238,7 +1373,7 @@
                 <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted);">사용 가능한 MCP 목록 + 연동 방법: <a href="https://smithery.ai/servers" target="_blank" style="color: var(--accent-red); font-weight: 700; text-decoration: underline;">https://smithery.ai/servers</a></p>
             </div>
         </div>
-        <span class="slide-number">13 / 23</span>
+        <span class="slide-number">14 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/mcp" target="_blank">code.claude.com/docs/ko/mcp</a></span>
     </section>
 
@@ -1271,7 +1406,7 @@
                 </p>
             </div>
         </div>
-        <span class="slide-number">14 / 23</span>
+        <span class="slide-number">15 / 24</span>
     </section>
 
     <!-- =========== SLIDE 14: Subagents 구조와 파일 예시 =========== -->
@@ -1335,7 +1470,7 @@
 
             <blockquote class="reveal">탐색 과정은 Subagent에게, 결과만 내 컨텍스트에.</blockquote>
         </div>
-        <span class="slide-number">15 / 23</span>
+        <span class="slide-number">16 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
@@ -1395,7 +1530,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">16 / 23</span>
+        <span class="slide-number">17 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
@@ -1432,7 +1567,7 @@
 
             <blockquote class="reveal">독립적인 작업은 쪼개서 동시에 돌려라.</blockquote>
         </div>
-        <span class="slide-number">17 / 23</span>
+        <span class="slide-number">18 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/sub-agents" target="_blank">code.claude.com/docs/ko/sub-agents</a></span>
     </section>
 
@@ -1458,7 +1593,7 @@
 
             <blockquote class="reveal">혼자 다 안 해도 된다. 팀을 꾸려서 시키면 된다.</blockquote>
         </div>
-        <span class="slide-number">18 / 23</span>
+        <span class="slide-number">19 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
@@ -1531,7 +1666,7 @@
                 </p>
             </div>
         </div>
-        <span class="slide-number">19 / 23</span>
+        <span class="slide-number">20 / 24</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
@@ -1588,7 +1723,7 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">20 / 23</span>
+        <span class="slide-number">21 / 24</span>
     </section>
 
     <!-- =========== SLIDE 20: Plugins 구조 =========== -->
@@ -1633,7 +1768,7 @@
 
             <blockquote class="reveal">배포: Git repo → 마켓플레이스 등록 → <code style="background: rgba(255,51,0,0.08); padding: 1px 4px;">/plugin install</code>로 설치</blockquote>
         </div>
-        <span class="slide-number">21 / 23</span>
+        <span class="slide-number">22 / 24</span>
     </section>
 
     <!-- =========== SLIDE 21: 유용한 팁 =========== -->
@@ -1665,7 +1800,7 @@
                 </table>
             </div>
         </div>
-        <span class="slide-number">22 / 23</span>
+        <span class="slide-number">23 / 24</span>
     </section>
 
     <!-- =========== SLIDE 22: 데모 =========== -->
@@ -1689,7 +1824,7 @@
         </div>
         <div class="geo geo-circle" style="left: clamp(2rem, 5vw, 5rem); bottom: clamp(2rem, 5vw, 5rem);"></div>
         <div class="geo geo-square" style="right: clamp(5rem, 10vw, 10rem); top: clamp(3rem, 6vw, 6rem);"></div>
-        <span class="slide-number">23 / 23</span>
+        <span class="slide-number">24 / 24</span>
     </section>
 
     <script>
