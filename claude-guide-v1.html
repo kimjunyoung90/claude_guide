@@ -569,39 +569,21 @@
 
     <!-- =========== SLIDE 3: Claude Code 실행 방법 =========== -->
     <section class="slide" aria-label="Claude Code 실행 방법">
-        <div class="slide-content" style="align-items: center;">
-            <h2 class="reveal" style="text-align: center; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">Claude Code 실행 방법</h2>
+        <div class="slide-content">
+            <div class="red-block red-sm reveal-scale"></div>
+            <h2 class="reveal">Claude Code 실행 방법</h2>
+            <div class="divider reveal reveal-line"></div>
 
-            <div class="reveal" style="width: min(90vw, 820px);">
-                <!-- Mac Terminal Window -->
-                <div class="mac-window" style="border-radius: clamp(8px, 1vw, 12px); overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.15);">
-                    <!-- Title Bar -->
-                    <div style="background: linear-gradient(180deg, #e8e6e8 0%, #d6d4d6 100%); padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px); display: flex; align-items: center; position: relative; border-bottom: 1px solid #b8b6b8;">
-                        <!-- Traffic Lights -->
-                        <div style="display: flex; gap: clamp(6px, 0.6vw, 8px);">
-                            <div style="width: clamp(10px, 1vw, 12px); height: clamp(10px, 1vw, 12px); border-radius: 50%; background: #ff5f57; border: 1px solid #e0443e;"></div>
-                            <div style="width: clamp(10px, 1vw, 12px); height: clamp(10px, 1vw, 12px); border-radius: 50%; background: #febc2e; border: 1px solid #dea123;"></div>
-                            <div style="width: clamp(10px, 1vw, 12px); height: clamp(10px, 1vw, 12px); border-radius: 50%; background: #28c840; border: 1px solid #1aab29;"></div>
-                        </div>
-                        <!-- Title -->
-                        <div style="position: absolute; left: 50%; transform: translateX(-50%); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; font-size: clamp(0.65rem, 0.9vw, 0.8rem); color: #4d4d4d; font-weight: 500;">my-project — zsh — 80×24</div>
-                    </div>
-                    <!-- Terminal Body -->
-                    <div style="background: #1e1e1e; padding: clamp(2rem, 4vw, 3rem) clamp(1.8rem, 3vw, 2.5rem); font-family: 'SF Mono', 'Menlo', 'Courier New', monospace; font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 2.4; color: #e0e0e0; min-height: clamp(220px, 30vh, 340px);">
-                        <span style="color: #78d84e;">❯</span> <span style="color: #888;">~/my-project</span><br>
-                        <span style="color: #78d84e;">$</span> <span style="color: #fff; font-weight: 600;">claude</span><br>
-                        <br>
-                        <span style="color: #c4a0f5;">›</span> <span style="color: #f0f0f0;">JIRA-1234 버그 분석하고 수정해줘</span><span style="display: inline-block; width: 8px; height: 1.1em; background: #f0f0f0; vertical-align: text-bottom; margin-left: 2px; animation: termBlink 1s step-end infinite;"></span>
-                    </div>
+            <div class="reveal" style="margin-top: var(--content-gap);">
+                <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(1.2rem, 2.5vw, 2rem); font-family: 'Courier New', monospace; font-size: clamp(0.8rem, 1.3vw, 1.1rem); line-height: 2.4; color: #e0e0e0;">
+                    <span style="color: #888;">~/my-project ›</span> <span style="color: #fff; font-weight: 700;">claude</span><br>
+                    <br>
+                    <span style="color: #888;">›</span> <span style="color: #fff;">JIRA-1234 버그 분석하고 수정해줘</span>
                 </div>
             </div>
         </div>
         <span class="slide-number">03 / 22</span>
     </section>
-    <style>
-        @keyframes termBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-    </style>
 
     <!-- =========== SLIDE 4: 기본 개념 =========== -->
     <section class="slide" aria-label="알아두면 좋은 기본 개념">
@@ -740,58 +722,9 @@
         <span class="slide-number">05 / 22</span>
     </section>
 
-    <!-- =========== SLIDE 6: 컨텍스트 관리 =========== -->
-    <section class="slide" aria-label="컨텍스트 관리">
-        <div class="slide-content" style="align-items: center;">
-            <h2 class="reveal" style="text-align: center;">컨텍스트 관리</h2>
-            <div class="divider reveal reveal-line" style="margin-left: auto; margin-right: auto;"></div>
 
-            <div class="reveal" style="display: flex; gap: clamp(3.5rem, 7vw, 6rem); margin-top: clamp(1.5rem, 3vw, 2.5rem); width: min(92vw, 900px);">
-                <!-- /clear terminal -->
-                <div style="flex: 1;">
-                    <div style="border-radius: clamp(8px, 1vw, 12px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.25), 0 5px 15px rgba(0,0,0,0.12);">
-                        <div style="background: linear-gradient(180deg, #e8e6e8 0%, #d6d4d6 100%); padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px); display: flex; align-items: center; border-bottom: 1px solid #b8b6b8;">
-                            <div style="display: flex; gap: clamp(5px, 0.5vw, 7px);">
-                                <div style="width: clamp(9px, 0.9vw, 12px); height: clamp(9px, 0.9vw, 12px); border-radius: 50%; background: #ff5f57; border: 1px solid #e0443e;"></div>
-                                <div style="width: clamp(9px, 0.9vw, 12px); height: clamp(9px, 0.9vw, 12px); border-radius: 50%; background: #febc2e; border: 1px solid #dea123;"></div>
-                                <div style="width: clamp(9px, 0.9vw, 12px); height: clamp(9px, 0.9vw, 12px); border-radius: 50%; background: #28c840; border: 1px solid #1aab29;"></div>
-                            </div>
-                        </div>
-                        <div style="background: #1e1e1e; padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.2rem, 2vw, 1.8rem); font-family: 'SF Mono', 'Menlo', 'Courier New', monospace; font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 2.2; color: #e0e0e0; min-height: clamp(140px, 20vh, 220px);">
-                            <span><span style="color: #c4a0f5;">›</span> <span style="color: #fff; font-weight: 600;">/clear</span></span>
-                        </div>
-                    </div>
-                    <div style="text-align: center; margin-top: clamp(0.8rem, 1.5vw, 1.2rem);">
-                        <p style="font-family: var(--font-display); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 800;">대화 초기화</p>
-                        <p style="font-family: var(--font-ko); font-size: var(--body-size); color: var(--text-secondary); margin-top: clamp(0.2rem, 0.4vw, 0.3rem);">새 작업 시작 전에</p>
-                    </div>
-                </div>
 
-                <!-- /compact terminal -->
-                <div style="flex: 1;">
-                    <div style="border-radius: clamp(8px, 1vw, 12px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.25), 0 5px 15px rgba(0,0,0,0.12);">
-                        <div style="background: linear-gradient(180deg, #e8e6e8 0%, #d6d4d6 100%); padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px); display: flex; align-items: center; border-bottom: 1px solid #b8b6b8;">
-                            <div style="display: flex; gap: clamp(5px, 0.5vw, 7px);">
-                                <div style="width: clamp(9px, 0.9vw, 12px); height: clamp(9px, 0.9vw, 12px); border-radius: 50%; background: #ff5f57; border: 1px solid #e0443e;"></div>
-                                <div style="width: clamp(9px, 0.9vw, 12px); height: clamp(9px, 0.9vw, 12px); border-radius: 50%; background: #febc2e; border: 1px solid #dea123;"></div>
-                                <div style="width: clamp(9px, 0.9vw, 12px); height: clamp(9px, 0.9vw, 12px); border-radius: 50%; background: #28c840; border: 1px solid #1aab29;"></div>
-                            </div>
-                        </div>
-                        <div style="background: #1e1e1e; padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.2rem, 2vw, 1.8rem); font-family: 'SF Mono', 'Menlo', 'Courier New', monospace; font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 2.2; color: #e0e0e0; min-height: clamp(140px, 20vh, 220px);">
-                            <span><span style="color: #c4a0f5;">›</span> <span style="color: #fff; font-weight: 600;">/compact</span></span>
-                        </div>
-                    </div>
-                    <div style="text-align: center; margin-top: clamp(0.8rem, 1.5vw, 1.2rem);">
-                        <p style="font-family: var(--font-display); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 800;">대화 요약 압축</p>
-                        <p style="font-family: var(--font-ko); font-size: var(--body-size); color: var(--text-secondary); margin-top: clamp(0.2rem, 0.4vw, 0.3rem);">같은 작업 계속할 때</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <span class="slide-number">06 / 22</span>
-    </section>
-
-    <!-- =========== SLIDE 7: 기능 =========== -->
+    <!-- =========== SLIDE 6: 기능 =========== -->
     <section class="slide" aria-label="핵심 기능">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
@@ -830,32 +763,67 @@
                 </div>
             </div>
         </div>
-        <span class="slide-number">07 / 22</span>
+        <span class="slide-number">06 / 22</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/features-overview" target="_blank">code.claude.com/docs/ko/features-overview</a></span>
     </section>
 
-    <!-- =========== SLIDE 8: CLAUDE.md =========== -->
+    <!-- =========== SLIDE 7: CLAUDE.md =========== -->
+    <style>
+        .s6-tree-block .s6-highlight { color: var(--accent-red); font-weight: 700; }
+        .s6-tree-block .s6-rule { color: #8bc34a; }
+    </style>
     <section class="slide" aria-label="CLAUDE.md">
         <div class="slide-content">
             <div class="red-block red-sm reveal-scale"></div>
-            <h2 class="reveal">CLAUDE.md</h2>
+            <h2 class="reveal">CLAUDE.md — Claude가 자동으로 읽는 기본 지침서</h2>
             <div class="divider reveal reveal-line"></div>
-            <p class="reveal" style="font-size: clamp(0.8rem, 1.2vw, 1rem); color: var(--text-secondary); margin-bottom: var(--content-gap);">프로젝트 루트에 위치하는 <strong style="color: var(--text-primary);">Claude를 위한 설명서</strong></p>
+            <p class="reveal">직접 작성하거나 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">/init</code> 으로 생성. <strong>200줄을 넘기지 말라고 권고</strong></p>
 
-            <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-bottom: var(--content-gap);">
-                <p style="font-size: var(--body-size);">&#x2714; 범용적인 규칙이나 전체 구조를 전달</p>
-                <p style="font-size: var(--body-size);">&#x2714; Claude 실행 시 <strong>항상 로드</strong>됨</p>
-                <p style="font-size: var(--body-size);">&#x2714; <strong>200줄 이내</strong> 작성 권고</p>
-                <p style="font-size: var(--body-size);">&#x2714; 직접 작성하거나 <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">/init</code> 으로 간단하게 생성 가능</p>
-            </div>
-
-            <div class="code-block reveal" style="font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2.2; padding: clamp(1.2rem, 2vw, 1.8rem);">
-                <span class="cm"># CLAUDE.md</span><br>
+            <div class="code-block reveal" style="font-size: clamp(0.75rem, 1.2vw, 1rem); line-height: 2.2; padding: clamp(1.2rem, 2vw, 1.8rem); margin-top: var(--content-gap);">
+                <span class="cm"># 빌드 & 테스트</span><br>
+                - `./gradlew test` — 전체 테스트<br>
                 <br>
-                - 한국어로 응답<br>
-                - 파일명은 kebab-case<br>
-                - 커밋 메시지는 conventional commits 형식
+                <span class="cm"># 핵심 규칙</span><br>
+                - DTO 네이밍: {동사}{도메인}Request/Response<br>
+                - System.out.println 사용 금지 → Logger 사용<br>
+                - 한국어로 응답
             </div>
+
+            <blockquote class="reveal">한번 적어두면, 매번 말 안 해도 Claude가 알아서 따른다.</blockquote>
+        </div>
+        <span class="slide-number">07 / 22</span>
+        <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
+    </section>
+
+    <!-- =========== SLIDE 8: .claude/rules/ =========== -->
+    <section class="slide" aria-label=".claude/rules/">
+        <div class="slide-content">
+            <div class="red-block red-sm reveal-scale"></div>
+            <h2 class="reveal">.claude/rules/ — 상세 지침은 분리, 필요할 때만 로드</h2>
+            <div class="divider reveal reveal-line"></div>
+            <p class="reveal">CLAUDE.md는 <strong>항상</strong> 로드 → 내용이 많을수록 토큰 낭비. 상세 지침은 rules로 분리</p>
+
+            <div class="reveal" style="margin-top: var(--content-gap);">
+                <p style="font-family: var(--font-display); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem); color: #8bc34a;">.claude/rules/code-style.md</p>
+                <div class="code-block" style="font-size: clamp(0.7rem, 1.15vw, 0.95rem); line-height: 2.2; padding: clamp(1rem, 1.8vw, 1.4rem);">
+                    <span class="cm">---</span><br>
+                    <span class="key">paths:</span><br>
+                    &nbsp;&nbsp;- <span class="val">"src/**/*.java"</span><br>
+                    <span class="cm">---</span><br>
+                    <br>
+                    - 메서드명은 camelCase<br>
+                    - 클래스당 300줄 이내<br>
+                    - 매직넘버 금지 → 상수로 추출
+                </div>
+            </div>
+
+            <div style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.3rem, 0.6vw, 0.5rem);" class="reveal">
+                <p style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">&#x2714; <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">paths</code>에 매칭되는 파일을 작업할 때 해당 rules 파일이 로드됨</p>
+                <p style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">&#x2714; CLAUDE.md에서 참조할 필요 없음</p>
+                <p style="font-size: clamp(0.75rem, 1.1vw, 0.95rem);">&#x2714; <code style="background: rgba(255,51,0,0.08); padding: 2px 6px; font-size: 0.9em;">paths</code> 미지정 → CLAUDE.md처럼 항상 로드</p>
+            </div>
+
+            <blockquote class="reveal">CLAUDE.md = 항상 로드 / rules + paths = 필요할 때만 로드 → 토큰 절약</blockquote>
         </div>
         <span class="slide-number">08 / 22</span>
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/memory" target="_blank">code.claude.com/docs/ko/memory</a></span>
