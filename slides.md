@@ -261,7 +261,26 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 ---
 
-## Slide 16: Subagents — 구조와 파일 예시 (약 1분)
+## Slide 16: 결론만 말해 (약 30초)
+
+```
+› Wiki에서 결제 서비스 관련 문서 찾아줘
+
+문서 1 탐색 중... → 컨텍스트에 쌓임
+문서 2 탐색 중... → 컨텍스트에 쌓임
+문서 3 탐색 중... → 컨텍스트에 쌓임
+
+› 테스트 돌려줘
+
+테스트 로그 출력... → 컨텍스트에 쌓임
+...
+```
+
+→ 탐색·실행 과정 전부가 내 컨텍스트를 차지한다
+
+---
+
+## Slide 17: Subagents — 구조와 파일 예시 (약 1분)
 
 **문제:** Claude에게 직접 탐색을 시키면, 탐색 과정 전부가 내 컨텍스트에 쌓임
 **해결:** Subagent에게 위임하면, 별도 컨텍스트에서 탐색하고 **결과 요약만 반환**
@@ -287,7 +306,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 17: Subagents — 생성 방법과 호출 방법 (약 1분 30초)
+## Slide 18: Subagents — 생성 방법과 호출 방법 (약 1분 30초)
 
 **생성 방법:** `/agents` → "Create new agent" 선택
 
@@ -312,7 +331,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 18: Subagents — 병렬 작업 예시 (약 1분)
+## Slide 19: Subagents — 병렬 작업 예시 (약 1분)
 
 **실전 예시 — 프로젝트 분석을 3개 Subagent로 동시에:**
 
@@ -335,7 +354,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 19: Agent Teams — 프롬프트 (약 1분)
+## Slide 20: Agent Teams — 프롬프트 (약 1분)
 
 **Agent Teams** — 여러 Claude가 동시에 협업
 
@@ -354,7 +373,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 20: Agent Teams — 동작 구조 (약 1분)
+## Slide 21: Agent Teams — 동작 구조 (약 1분)
 
 **Team Lead** (메인 세션) — Task List로 작업 분배
 
@@ -364,7 +383,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 21: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
+## Slide 22: Hooks — 이벤트에 반응하는 자동 실행 (약 1분 30초)
 
 **Hooks** — 특정 이벤트가 발생할 때 실행할 동작을 정의
 
@@ -399,7 +418,7 @@ Confluence에서 문서를 검색하고
 
 ---
 
-## Slide 22: Plugins (약 1분)
+## Slide 23: Plugins (약 1분)
 
 Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지
 
@@ -428,7 +447,7 @@ my-plugin/
 
 ---
 
-## Slide 23: 유용한 팁 (약 1분)
+## Slide 24: 유용한 팁 (약 1분)
 
 | 기능 | 설명 |
 |------|------|
@@ -444,7 +463,7 @@ my-plugin/
 
 ---
 
-## Slide 24: 데모 (약 5분)
+## Slide 25: 데모 (약 5분)
 
 **실제 워크플로우 시연**
 
