@@ -1967,56 +1967,109 @@
 
     <!-- =========== SLIDE 23: Plugins =========== -->
     <style>
-        .s11-flow {
+        /* === SLIDE 23: PLUGINS — FOLDER DROP === */
+        .s11-scene {
             display: flex; align-items: center; justify-content: center;
-            gap: clamp(1.5rem, 3vw, 2.5rem);
+            gap: clamp(2rem, 4vw, 3.5rem);
             margin-top: clamp(1.5rem, 3vw, 2.5rem);
             max-width: min(92vw, 900px); width: 100%;
         }
-        .s11-box {
-            flex: 1; padding: clamp(1.5rem, 2.5vw, 2rem);
+        /* --- Item cards (left) --- */
+        .s11-items { display: flex; flex-direction: column; gap: clamp(0.5rem, 0.9vw, 0.7rem); }
+        .s11-chip {
+            display: flex; align-items: center; gap: clamp(0.3rem, 0.5vw, 0.4rem);
+            padding: clamp(0.45rem, 0.8vw, 0.65rem) clamp(0.7rem, 1.2vw, 1rem);
+            background: var(--bg-white);
             border: 1px solid var(--rule-light);
-            display: flex; flex-direction: column; align-items: center;
-            gap: clamp(0.8rem, 1.2vw, 1rem);
+            border-radius: clamp(8px, 1vw, 12px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.05);
+            font-family: var(--font-ko); font-size: clamp(0.62rem, 0.95vw, 0.82rem);
+            font-weight: 700; color: var(--text-primary);
+            white-space: nowrap;
         }
-        .s11-label {
-            font-family: var(--font-display); font-size: var(--label-size);
-            font-weight: 800; letter-spacing: 0.08em; color: var(--text-muted);
+        .s11-chip-icon {
+            font-size: clamp(14px, 1.8vw, 20px);
         }
-        .s11-items {
-            display: flex; flex-wrap: wrap; justify-content: center;
-            gap: clamp(0.4rem, 0.8vw, 0.6rem);
+        /* static chips — no animation */
+        /* --- Arrow trail (middle) --- */
+        .s11-trail {
+            display: flex; align-items: center; gap: clamp(0.15rem, 0.3vw, 0.25rem);
         }
-        .s11-item {
-            padding: clamp(0.4rem, 0.7vw, 0.6rem) clamp(0.8rem, 1.2vw, 1rem);
+        .s11-dot {
+            width: clamp(4px, 0.5vw, 6px); height: clamp(4px, 0.5vw, 6px);
+            border-radius: 50%; background: var(--text-muted); opacity: 0.3;
+        }
+        /* static dots — no animation */
+        .s11-trail-arrow {
+            font-size: clamp(0.9rem, 1.4vw, 1.2rem); color: var(--text-muted);
+            margin-left: clamp(0.1rem, 0.2vw, 0.15rem);
+        }
+        /* --- Apple-style folder (right) --- */
+        .s11-folder-wrap {
+            position: relative;
+            width: clamp(120px, 18vw, 200px);
+            flex-shrink: 0;
+        }
+        /* Folder tab */
+        .s11-folder-tab {
+            position: relative; left: clamp(8px, 1.2vw, 14px);
+            width: clamp(48px, 7vw, 76px); height: clamp(14px, 2vw, 22px);
+            background: linear-gradient(180deg, #6CB4EE 0%, #4A9DE0 100%);
+            border-radius: clamp(5px, 0.7vw, 8px) clamp(5px, 0.7vw, 8px) 0 0;
+            z-index: 1;
+        }
+        /* Folder body */
+        .s11-folder-body {
+            position: relative;
+            width: 100%;
+            height: clamp(80px, 12vw, 130px);
+            background: linear-gradient(180deg, #5AABEE 0%, #3D8CD4 40%, #2E7BC0 100%);
+            border-radius: 0 clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px);
+            box-shadow:
+                0 4px 12px rgba(46,123,192,0.2),
+                0 12px 32px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: clamp(0.2rem, 0.4vw, 0.35rem);
+            z-index: 2;
+            margin-top: -1px;
+        }
+        .s11-folder-name {
+            font-family: var(--font-display); font-weight: 800;
+            font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+            color: rgba(255,255,255,0.95);
+            letter-spacing: -0.01em;
+        }
+        .s11-folder-sub {
+            font-family: var(--font-ko); font-weight: 400;
+            font-size: clamp(0.42rem, 0.6vw, 0.52rem);
+            color: rgba(255,255,255,0.6);
+        }
+        /* static folder — no animation */
+        /* --- Share flow (below folder) --- */
+        .s11-share {
+            display: flex; align-items: center; justify-content: center;
+            gap: clamp(0.4rem, 0.7vw, 0.6rem);
+            margin-top: clamp(1.2rem, 2vw, 1.8rem);
+            width: 100%;
+        }
+        .s11-share-step {
+            font-family: var(--font-ko); font-size: clamp(0.55rem, 0.82vw, 0.7rem);
+            font-weight: 700; color: var(--text-secondary);
+            padding: clamp(0.3rem, 0.5vw, 0.4rem) clamp(0.6rem, 1vw, 0.8rem);
+            background: var(--bg-off); border-radius: clamp(4px, 0.5vw, 6px);
             border: 1px solid var(--rule-light);
-            font-family: var(--font-ko); font-size: var(--small-size);
-            font-weight: 700; background: rgba(0,0,0,0.02);
         }
-        .s11-down {
-            font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--text-muted);
+        .s11-share-arrow {
+            font-size: clamp(0.7rem, 1vw, 0.9rem); color: var(--text-muted);
         }
-        .s11-folder {
-            padding: clamp(0.6rem, 1vw, 0.8rem) clamp(1.2rem, 2vw, 1.8rem);
-            background: var(--accent-red); color: white;
-            font-family: var(--font-display); font-size: clamp(0.85rem, 1.3vw, 1.1rem);
-            font-weight: 800;
-        }
-        .s11-arrow {
-            font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 2rem);
-            font-weight: 900; color: var(--text-muted);
-        }
-        .s11-step {
-            font-family: var(--font-ko); font-size: var(--body-size);
-            font-weight: 700; text-align: center;
-        }
-        .s11-step code {
-            background: rgba(255,51,0,0.08); padding: 2px 6px;
-            font-family: 'Courier New', monospace;
+        .s11-share-step code {
+            background: rgba(255,51,0,0.08); padding: 1px 4px;
+            font-family: 'Courier New', monospace; font-size: inherit;
         }
         @media (max-width: 700px) {
-            .s11-flow { flex-direction: column; }
-            .s11-arrow { transform: rotate(90deg); }
+            .s11-scene { flex-direction: column; }
         }
     </style>
     <section class="slide" aria-label="Plugins">
@@ -2024,31 +2077,42 @@
             <h2 class="reveal" style="text-align: center;">Plugins</h2>
             <p class="reveal" style="text-align: center; color: var(--text-secondary); font-size: var(--small-size); margin-top: var(--element-gap);">Skills + Hooks + MCP + Agents를 하나로 묶어 배포하는 패키지</p>
 
-            <div class="s11-flow reveal">
-                <!-- 왼쪽: 묶기 -->
-                <div class="s11-box">
-                    <div class="s11-label">묶기</div>
-                    <div class="s11-items">
-                        <div class="s11-item">📋 Skills</div>
-                        <div class="s11-item">🔗 MCP</div>
-                        <div class="s11-item">🤖 Agents</div>
-                        <div class="s11-item">⚡ Hooks</div>
+            <div class="s11-scene reveal">
+                <!-- Left: item chips -->
+                <div class="s11-items">
+                    <div class="s11-chip"><span class="s11-chip-icon">📋</span> Skills</div>
+                    <div class="s11-chip"><span class="s11-chip-icon">🔗</span> MCP</div>
+                    <div class="s11-chip"><span class="s11-chip-icon">🤖</span> Agents</div>
+                    <div class="s11-chip"><span class="s11-chip-icon">⚡</span> Hooks</div>
+                </div>
+
+                <!-- Middle: animated dot trail -->
+                <div class="s11-trail">
+                    <div class="s11-dot"></div>
+                    <div class="s11-dot"></div>
+                    <div class="s11-dot"></div>
+                    <div class="s11-dot"></div>
+                    <div class="s11-dot"></div>
+                    <span class="s11-trail-arrow">›</span>
+                </div>
+
+                <!-- Right: Apple folder -->
+                <div class="s11-folder-wrap">
+                    <div class="s11-folder-tab"></div>
+                    <div class="s11-folder-body">
+                        <div class="s11-folder-name">my-plugin/</div>
+                        <div class="s11-folder-sub">Plugin Package</div>
                     </div>
-                    <div class="s11-down">↓</div>
-                    <div class="s11-folder">📁 my-plugin/</div>
                 </div>
+            </div>
 
-                <div class="s11-arrow">→</div>
-
-                <!-- 오른쪽: 공유 -->
-                <div class="s11-box">
-                    <div class="s11-label">공유</div>
-                    <div class="s11-step">📁 my-plugin/</div>
-                    <div class="s11-down">↓</div>
-                    <div class="s11-step">🗂️ Git repo</div>
-                    <div class="s11-down">↓</div>
-                    <div class="s11-step"><code>/plugin install</code></div>
-                </div>
+            <!-- Share flow (horizontal) -->
+            <div class="s11-share reveal">
+                <span class="s11-share-step">📁 my-plugin/</span>
+                <span class="s11-share-arrow">→</span>
+                <span class="s11-share-step">🗂️ Git repo</span>
+                <span class="s11-share-arrow">→</span>
+                <span class="s11-share-step"><code>/plugin install</code></span>
             </div>
 
         </div>
