@@ -242,7 +242,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 | scope | 범위 | 저장 위치 |
 |-------|------|----------|
-| **local** (기본) | 이 프로젝트, 나만 | `~/.claude.json` (프로젝트별) |
+| **local** (기본) | 이 프로젝트, 나만 | `.claude/settings.local.json` |
 | **project** | 이 프로젝트, 팀 공유 | `.mcp.json` |
 | **user** | 모든 프로젝트, 나만 | `~/.claude.json` |
 
