@@ -1679,6 +1679,139 @@
         <span class="doc-link"><a href="https://code.claude.com/docs/ko/agent-teams" target="_blank">code.claude.com/docs/ko/agent-teams</a></span>
     </section>
 
+    <style>
+        /* === AGENT TEAMS — REFINED NETWORK === */
+        .at-net {
+            position: relative; width: 100%; aspect-ratio: 16 / 7.5;
+            max-height: clamp(240px, 44vh, 400px); margin-top: var(--content-gap);
+        }
+        /* --- Node cards --- */
+        .at-card {
+            position: absolute; transform: translate(-50%, -50%); z-index: 2;
+            display: flex; align-items: center; gap: clamp(0.35rem, 0.6vw, 0.5rem);
+            padding: clamp(0.4rem, 0.7vw, 0.6rem) clamp(0.6rem, 1vw, 0.9rem);
+            background: var(--bg-white);
+            border: 1px solid var(--rule-light);
+            border-radius: clamp(8px, 1vw, 12px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+            white-space: nowrap;
+        }
+        .at-card-icon {
+            width: clamp(28px, 3.5vw, 42px); height: clamp(28px, 3.5vw, 42px);
+            border-radius: clamp(6px, 0.7vw, 10px);
+            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(14px, 1.8vw, 22px);
+            background: var(--bg-off); flex-shrink: 0;
+        }
+        .at-card-info { display: flex; flex-direction: column; gap: 1px; }
+        .at-card-role {
+            font-family: var(--font-display); font-weight: 800;
+            font-size: clamp(0.58rem, 0.9vw, 0.78rem); color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .at-card-sub {
+            font-family: var(--font-ko); font-weight: 400;
+            font-size: clamp(0.42rem, 0.62vw, 0.55rem); color: var(--text-muted);
+            line-height: 1.2;
+        }
+        /* Status dot */
+        .at-status {
+            width: clamp(5px, 0.6vw, 7px); height: clamp(5px, 0.6vw, 7px);
+            border-radius: 50%; background: #4ade80;
+            margin-left: auto; flex-shrink: 0;
+            animation: atStatusPulse 2s ease-in-out infinite;
+        }
+        @keyframes atStatusPulse {
+            0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 3px rgba(74,222,128,0); }
+        }
+        /* Team Lead special styling */
+        .at-card-lead {
+            border: 2px solid var(--accent-red);
+            box-shadow: 0 4px 12px rgba(255,51,0,0.08), 0 12px 32px rgba(0,0,0,0.08);
+            padding: clamp(0.5rem, 0.9vw, 0.75rem) clamp(0.8rem, 1.3vw, 1.1rem);
+        }
+        .at-card-lead .at-card-icon {
+            background: var(--accent-red-light);
+            width: clamp(32px, 4vw, 48px); height: clamp(32px, 4vw, 48px);
+            font-size: clamp(16px, 2vw, 24px);
+        }
+        .at-card-lead .at-card-role { color: var(--accent-red); }
+        /* Lead ring pulse */
+        .at-card-lead::before {
+            content: ''; position: absolute; inset: -4px;
+            border-radius: clamp(10px, 1.2vw, 14px);
+            border: 2px solid var(--accent-red);
+            opacity: 0; animation: atRingPulse 3s ease-out infinite;
+        }
+        @keyframes atRingPulse {
+            0% { opacity: 0.5; inset: -4px; }
+            100% { opacity: 0; inset: -16px; }
+        }
+        /* --- SVG flow lines --- */
+        .at-path-down {
+            fill: none; stroke: var(--text-muted); stroke-width: 1.5;
+            stroke-dasharray: 6 4; vector-effect: non-scaling-stroke;
+            animation: atFlowDown 2s linear infinite;
+        }
+        @keyframes atFlowDown { to { stroke-dashoffset: -20; } }
+        .at-path-peer {
+            fill: none; stroke: var(--text-muted); stroke-width: 1.5;
+            stroke-dasharray: 6 4; vector-effect: non-scaling-stroke;
+            animation: atFlowRight 1.8s linear infinite;
+        }
+        @keyframes atFlowRight { to { stroke-dashoffset: -20; } }
+        /* peer-rev removed — single animated line per pair is cleaner */
+        /* (flow labels removed) */
+        /* --- Message bubbles (refined packets) --- */
+        .at-msg {
+            position: absolute; z-index: 3; pointer-events: none;
+            width: clamp(16px, 2vw, 24px); height: clamp(10px, 1.2vw, 14px);
+            border-radius: clamp(4px, 0.5vw, 6px);
+            background: var(--accent-red);
+            opacity: 0;
+            will-change: left, top, opacity;
+            box-shadow: 0 2px 8px rgba(255,51,0,0.25);
+        }
+        .at-msg::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%; height: 2px; background: rgba(255,255,255,0.6);
+            border-radius: 1px;
+        }
+        .at-msg-up {
+            background: rgba(74,222,128,0.8);
+            box-shadow: 0 2px 8px rgba(74,222,128,0.25);
+        }
+        /* Down messages (Team Lead 50,22 → each teammate) */
+        .at-md1 { animation: atMd1 4s var(--ease-out-expo) infinite 0s; }
+        .at-md2 { animation: atMd2 4s var(--ease-out-expo) infinite 0.8s; }
+        .at-md3 { animation: atMd3 4s var(--ease-out-expo) infinite 1.6s; }
+        .at-md4 { animation: atMd4 4s var(--ease-out-expo) infinite 2.4s; }
+        @keyframes atMd1 { 0%{left:49%;top:22%;opacity:0;transform:scale(.5)} 8%{opacity:1;transform:scale(1)} 45%{left:14%;top:65%;opacity:1} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMd2 { 0%{left:49%;top:22%;opacity:0;transform:scale(.5)} 8%{opacity:1;transform:scale(1)} 45%{left:37%;top:65%;opacity:1} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMd3 { 0%{left:49%;top:22%;opacity:0;transform:scale(.5)} 8%{opacity:1;transform:scale(1)} 45%{left:61%;top:65%;opacity:1} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMd4 { 0%{left:49%;top:22%;opacity:0;transform:scale(.5)} 8%{opacity:1;transform:scale(1)} 45%{left:85%;top:65%;opacity:1} 55%{opacity:0} 100%{opacity:0} }
+        /* Up messages (results: teammate → Team Lead) */
+        .at-mu1 { animation: atMu1 5s var(--ease-out-expo) infinite 2s; }
+        .at-mu2 { animation: atMu2 5s var(--ease-out-expo) infinite 3.5s; }
+        @keyframes atMu1 { 0%{left:37%;top:65%;opacity:0;transform:scale(.5)} 6%{opacity:.9;transform:scale(1)} 40%{left:49%;top:22%;opacity:.9} 50%{opacity:0} 100%{opacity:0} }
+        @keyframes atMu2 { 0%{left:61%;top:65%;opacity:0;transform:scale(.5)} 6%{opacity:.9;transform:scale(1)} 40%{left:49%;top:22%;opacity:.9} 50%{opacity:0} 100%{opacity:0} }
+        /* Horizontal peer messages → right */
+        .at-mh1 { animation: atMh1 3.5s ease-in-out infinite 0.5s; }
+        .at-mh2 { animation: atMh2 3.5s ease-in-out infinite 1.8s; }
+        .at-mh3 { animation: atMh3 3.5s ease-in-out infinite 2.8s; }
+        @keyframes atMh1 { 0%{left:21%;top:71%;opacity:0;transform:scale(.5)} 8%{opacity:.85;transform:scale(1)} 45%{left:31%;top:71%;opacity:.85} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMh2 { 0%{left:45%;top:71%;opacity:0;transform:scale(.5)} 8%{opacity:.85;transform:scale(1)} 45%{left:55%;top:71%;opacity:.85} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMh3 { 0%{left:69%;top:71%;opacity:0;transform:scale(.5)} 8%{opacity:.85;transform:scale(1)} 45%{left:79%;top:71%;opacity:.85} 55%{opacity:0} 100%{opacity:0} }
+        /* Horizontal peer messages ← left (reverse) */
+        .at-mh1r { animation: atMh1r 3.5s ease-in-out infinite 2.0s; }
+        .at-mh2r { animation: atMh2r 3.5s ease-in-out infinite 0.9s; }
+        .at-mh3r { animation: atMh3r 3.5s ease-in-out infinite 1.2s; }
+        @keyframes atMh1r { 0%{left:31%;top:73%;opacity:0;transform:scale(.5)} 8%{opacity:.85;transform:scale(1)} 45%{left:21%;top:73%;opacity:.85} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMh2r { 0%{left:55%;top:73%;opacity:0;transform:scale(.5)} 8%{opacity:.85;transform:scale(1)} 45%{left:45%;top:73%;opacity:.85} 55%{opacity:0} 100%{opacity:0} }
+        @keyframes atMh3r { 0%{left:79%;top:73%;opacity:0;transform:scale(.5)} 8%{opacity:.85;transform:scale(1)} 45%{left:69%;top:73%;opacity:.85} 55%{opacity:0} 100%{opacity:0} }
+    </style>
     <!-- =========== SLIDE 18: Agent Teams 동작 구조 =========== -->
     <section class="slide" aria-label="Agent Teams 동작 구조">
         <div class="slide-content">
@@ -1686,59 +1819,83 @@
             <h2 class="reveal">Agent Teams — 동작 구조</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <!-- Team Lead -->
-            <div class="reveal" style="margin-top: var(--content-gap); background: var(--bg-off); border: 2px solid var(--accent-red); border-radius: clamp(6px, 0.8vw, 12px); padding: clamp(0.6rem, 1.2vw, 1rem); display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.2rem);">
-                <div>
-                    <h3 style="font-size: clamp(0.85rem, 1.3vw, 1.1rem); color: var(--accent-red);">Team Lead</h3>
-                    <p style="font-size: clamp(0.55rem, 0.85vw, 0.72rem); color: var(--text-muted);">메인 세션 · 팀 생성 · 작업 분배 · 결과 종합</p>
-                </div>
-                <div style="margin-left: auto; display: flex; gap: clamp(0.4rem, 0.8vw, 0.6rem);">
-                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 6px); padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.5rem, 0.8vw, 0.7rem); font-family: 'Courier New', monospace; font-size: clamp(0.5rem, 0.75vw, 0.65rem); line-height: 1.7; color: #e0e0e0;">
-                        <strong style="color: #4ade80;">📋 Task List</strong><br>
-                        &nbsp;✅ 티켓 분석 &nbsp;<span style="color: #facc15;">🔄</span> 프론트 &nbsp;<span style="color: #facc15;">🔄</span> 백엔드 &nbsp;<span style="color: #888;">⏳ 테스트</span>
+            <!-- Network Diagram -->
+            <div class="at-net reveal">
+                <!-- SVG connection paths (viewBox 0 0 100 100, matches CSS % positions) -->
+                <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <defs>
+                        <filter id="atGlow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="0.3" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Team Lead(50,15) → Teammates (straight lines, card-center to card-center) -->
+                    <line x1="50" y1="22" x2="14" y2="65" class="at-path-down"/>
+                    <line x1="50" y1="22" x2="38" y2="65" class="at-path-down" style="animation-delay:0.3s"/>
+                    <line x1="50" y1="22" x2="62" y2="65" class="at-path-down" style="animation-delay:0.6s"/>
+                    <line x1="50" y1="22" x2="86" y2="65" class="at-path-down" style="animation-delay:0.9s"/>
+                    <!-- Peer-to-peer (between teammate card edges) -->
+                    <line x1="21" y1="72" x2="31" y2="72" class="at-path-peer" filter="url(#atGlow)"/>
+                    <line x1="45" y1="72" x2="55" y2="72" class="at-path-peer" filter="url(#atGlow)" style="animation-delay:0.4s"/>
+                    <line x1="69" y1="72" x2="79" y2="72" class="at-path-peer" filter="url(#atGlow)" style="animation-delay:0.8s"/>
+                </svg>
+
+                <!-- Message bubbles -->
+                <div class="at-msg at-md1"></div>
+                <div class="at-msg at-md2"></div>
+                <div class="at-msg at-md3"></div>
+                <div class="at-msg at-md4"></div>
+                <div class="at-msg at-msg-up at-mu1"></div>
+                <div class="at-msg at-msg-up at-mu2"></div>
+                <div class="at-msg at-mh1"></div>
+                <div class="at-msg at-mh2"></div>
+                <div class="at-msg at-mh3"></div>
+                <div class="at-msg at-mh1r"></div>
+                <div class="at-msg at-mh2r"></div>
+                <div class="at-msg at-mh3r"></div>
+
+                <!-- Team Lead card -->
+                <div class="at-card at-card-lead" style="left:50%;top:15%;">
+                    <div class="at-card-icon">🎯</div>
+                    <div class="at-card-info">
+                        <div class="at-card-role">Team Lead</div>
+                        <div class="at-card-sub">작업 분배 · 결과 종합</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 연결선 -->
-            <div class="reveal" style="text-align: center; font-size: clamp(0.7rem, 1vw, 0.9rem); color: var(--text-muted); line-height: 1.2; padding: clamp(0.2rem, 0.4vw, 0.3rem) 0;">
-                ↕ 작업 분배 &amp; 결과 보고
-            </div>
-
-            <!-- Teammates -->
-            <div class="reveal" style="display: flex; gap: clamp(0.4rem, 0.8vw, 0.7rem); align-items: stretch;">
-                <!-- 분석 -->
-                <div class="feat-card" style="flex: 1; padding: clamp(1rem, 2vw, 1.5rem) clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
-                    <div style="font-size: clamp(24px, 4vw, 36px);">🔍</div>
-                    <h4 style="font-size: clamp(0.8rem, 1.3vw, 1.1rem); margin-top: clamp(0.3rem, 0.5vw, 0.4rem);">분석 담당</h4>
-                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted); margin-top: clamp(0.2rem, 0.3vw, 0.3rem);">독립 세션</p>
+                    <div class="at-status"></div>
                 </div>
 
-                <div style="display: flex; align-items: center; font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red);">⇄</div>
-
-                <!-- 프론트 -->
-                <div class="feat-card" style="flex: 1; padding: clamp(1rem, 2vw, 1.5rem) clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
-                    <div style="font-size: clamp(24px, 4vw, 36px);">🖥</div>
-                    <h4 style="font-size: clamp(0.8rem, 1.3vw, 1.1rem); margin-top: clamp(0.3rem, 0.5vw, 0.4rem);">프론트 담당</h4>
-                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted); margin-top: clamp(0.2rem, 0.3vw, 0.3rem);">독립 세션</p>
+                <!-- Teammate cards -->
+                <div class="at-card" style="left:14%;top:72%;">
+                    <div class="at-card-icon">🔍</div>
+                    <div class="at-card-info">
+                        <div class="at-card-role">분석</div>
+                        <div class="at-card-sub">독립 세션</div>
+                    </div>
+                    <div class="at-status"></div>
                 </div>
-
-                <div style="display: flex; align-items: center; font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red);">⇄</div>
-
-                <!-- 백엔드 -->
-                <div class="feat-card" style="flex: 1; padding: clamp(1rem, 2vw, 1.5rem) clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
-                    <div style="font-size: clamp(24px, 4vw, 36px);">⚙</div>
-                    <h4 style="font-size: clamp(0.8rem, 1.3vw, 1.1rem); margin-top: clamp(0.3rem, 0.5vw, 0.4rem);">백엔드 담당</h4>
-                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted); margin-top: clamp(0.2rem, 0.3vw, 0.3rem);">독립 세션</p>
+                <div class="at-card" style="left:38%;top:72%;">
+                    <div class="at-card-icon">🖥️</div>
+                    <div class="at-card-info">
+                        <div class="at-card-role">프론트</div>
+                        <div class="at-card-sub">독립 세션</div>
+                    </div>
+                    <div class="at-status"></div>
                 </div>
-
-                <div style="display: flex; align-items: center; font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accent-red);">⇄</div>
-
-                <!-- 테스트 -->
-                <div class="feat-card" style="flex: 1; padding: clamp(1rem, 2vw, 1.5rem) clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
-                    <div style="font-size: clamp(24px, 4vw, 36px);">🧪</div>
-                    <h4 style="font-size: clamp(0.8rem, 1.3vw, 1.1rem); margin-top: clamp(0.3rem, 0.5vw, 0.4rem);">테스트 담당</h4>
-                    <p style="font-size: clamp(0.6rem, 0.9vw, 0.78rem); color: var(--text-muted); margin-top: clamp(0.2rem, 0.3vw, 0.3rem);">독립 세션</p>
+                <div class="at-card" style="left:62%;top:72%;">
+                    <div class="at-card-icon">⚙️</div>
+                    <div class="at-card-info">
+                        <div class="at-card-role">백엔드</div>
+                        <div class="at-card-sub">독립 세션</div>
+                    </div>
+                    <div class="at-status"></div>
+                </div>
+                <div class="at-card" style="left:86%;top:72%;">
+                    <div class="at-card-icon">🧪</div>
+                    <div class="at-card-info">
+                        <div class="at-card-role">테스트</div>
+                        <div class="at-card-sub">독립 세션</div>
+                    </div>
+                    <div class="at-status"></div>
                 </div>
             </div>
 
