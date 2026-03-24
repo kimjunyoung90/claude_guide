@@ -1521,27 +1521,12 @@
             <h2 class="reveal">Subagents — 구조와 파일 예시</h2>
             <div class="divider reveal reveal-line"></div>
 
-            <div class="reveal" style="margin-top: var(--content-gap); display: flex; gap: clamp(1rem, 2vw, 1.5rem); max-width: min(90vw, 800px);">
-                <!-- 직접 실행 -->
-                <div style="flex: 1;">
-                    <p style="font-size: clamp(0.75rem, 1.1vw, 0.92rem); color: var(--text-muted); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">직접 실행</p>
-                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.9rem); line-height: 2; color: #e0e0e0;">
-                        <span style="color: #888;">›</span> <span style="color: #fff;">결제 서비스 정책 찾아줘</span><br>
-                        <br>
-                        <span style="color: #f87171;">문서 1 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
-                        <span style="color: #f87171;">문서 2 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span><br>
-                        <span style="color: #f87171;">문서 3 탐색...</span> <span style="color: #888;">← 컨텍스트에 쌓임</span>
-                    </div>
-                </div>
-                <!-- Subagent 위임 -->
-                <div style="flex: 1;">
-                    <p style="font-size: clamp(0.75rem, 1.1vw, 0.92rem); color: var(--accent-red); font-weight: 700; margin-bottom: clamp(0.3rem, 0.5vw, 0.4rem);">Subagent 위임</p>
-                    <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.9rem); line-height: 2; color: #e0e0e0; border: 2px solid var(--accent-red);">
-                        <span style="color: #888;">›</span> <span style="color: #fff;">@search-agent 결제 서비스 정책 찾아줘</span><br>
-                        <br>
-                        <span style="color: #888;">→ (별도 컨텍스트에서 탐색 중...)</span><br>
-                        <span style="color: #4ade80;">✓ 결과 요약만 내 컨텍스트에 반환</span>
-                    </div>
+            <div class="reveal" style="margin-top: var(--content-gap); max-width: min(90vw, 800px); width: 100%;">
+                <div style="background: #1e1e1e; border-radius: clamp(4px, 0.5vw, 8px); padding: clamp(0.6rem, 1.2vw, 1rem); font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.1vw, 0.9rem); line-height: 2; color: #e0e0e0; border: 2px solid var(--accent-red);">
+                    <span style="color: #888;">›</span> <span style="color: #fff;">@search-agent 결제 서비스 정책 찾아줘</span><br>
+                    <br>
+                    <span style="color: #888;">→ (별도 컨텍스트에서 탐색 중...)</span><br>
+                    <span style="color: #4ade80;">✓ 결과 요약만 내 컨텍스트에 반환</span>
                 </div>
             </div>
 

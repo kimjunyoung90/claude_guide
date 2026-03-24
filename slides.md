@@ -282,8 +282,7 @@ Claude Code (Client) → MCP Server (jira-server) → Jira (외부 프로그램)
 
 ## Slide 17: Subagents — 구조와 파일 예시 (약 1분)
 
-**문제:** Claude에게 직접 탐색을 시키면, 탐색 과정 전부가 내 컨텍스트에 쌓임
-**해결:** Subagent에게 위임하면, 별도 컨텍스트에서 탐색하고 **결과 요약만 반환**
+Subagent에게 위임하면, 별도 컨텍스트에서 탐색하고 **결과 요약만 반환**
 
 **구조:**
 ```
